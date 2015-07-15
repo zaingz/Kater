@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inavailabilities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inavailabilities.each do |inavailability| %>
+      <tr>
+        <td><%= link_to 'Show', inavailability %></td>
+        <td><%= link_to 'Edit', edit_inavailability_path(inavailability) %></td>
+        <td><%= link_to 'Destroy', inavailability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inavailability', new_inavailability_path %>

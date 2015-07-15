@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Food Item Add Ons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_item_add_ons.each do |food_item_add_on| %>
+      <tr>
+        <td><%= link_to 'Show', food_item_add_on %></td>
+        <td><%= link_to 'Edit', edit_food_item_add_on_path(food_item_add_on) %></td>
+        <td><%= link_to 'Destroy', food_item_add_on, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food item add on', new_food_item_add_on_path %>

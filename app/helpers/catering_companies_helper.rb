@@ -1,0 +1,2 @@
+module CateringCompaniesHelper
+end

@@ -1,0 +1,7 @@
+<h1>This is index</h1>
+
+<% unless current_user %>
+<%= link_to "Sign-In", new_user_session_path %>
+    <%else%>
+    hello<h3><%= current_user.email%></h3>
+<% end%>
