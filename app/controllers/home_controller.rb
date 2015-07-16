@@ -16,13 +16,28 @@ class HomeController < ApplicationController
 	  end
   end
 
+  def save_new_user
+    @resource = User.new(user_params)
+    if @resource.save
+      redirect_to root_path
+    else
+      render :create_new_user 
+    end
+    
+  end
+
   def create_new_user
-  	render "devise/registrations/new"
+  	# render "devise/registrations/new"
   end
 
   def edit_user
   	@resource = User.find(params[:id])
   	render "devise/registrations/edit"
+  end
+
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name,  :mobile_number1, :email, :birthdate, :gender,:level, :occupation, :password, :password_confirmation )
   end
   
 end
