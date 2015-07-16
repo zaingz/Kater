@@ -5,13 +5,15 @@
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
-	<h3 class="panel-title">Shop Keeper</h3>
+	<h3 class="panel-title"><%=current_user.catering_company.name%></h3>
 	</div>
 	<div class="panel-body">
 		<div class="list-group">
+          <% if !current_user.catering_company%>
 			<a href="<%= new_catering_company_path %>" class="list-group-item ">
 				<h4 class="list-group-item-heading">Create Company</h4>			
 			</a>
+              <% end%>
 
 			<a href="<%= new_deal_path %>" class="list-group-item ">
 				<h4 class="list-group-item-heading">Create Deals</h4>			
@@ -31,5 +33,33 @@
 </div>
 
 
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h3 class="panel-title">Your food items</h3>
+  </div>
+  <div class="panel-body">
+    <div class="list-group">
+
+      <%current_user.catering_company.food_items.each do |food|%>
+
+      <a href="<%= new_deal_path %>" class="list-group-item ">
+        <h4 class="list-group-item-heading"><%=food.name%></h4>
+        <h5><%= food.price%></h5>
+        <%if(food.deal)%>
+        <h5>Deal: <%= food.deal.name%></h5>
+            <%end%>
+
+      </a>
+
+     <%end%>
+
+
+    </div>
+  </div>
+
+
+</div>
 
 

@@ -1,7 +1,8 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:show, :edit, :update, :destroy]
 
-  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy ]
+  before_action :authenticate_user!
+  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy, :new ]
   # GET /deals
   # GET /deals.json
   def index
@@ -26,10 +27,12 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
-
+    @deal.catering_company= current_user.catering_company
+    item = FoodItem.find(deal_params[:food_item_id])
+    item.update!(deal: @deal)
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
+        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
         format.json { render :show, status: :created, location: @deal }
       else
         format.html { render :new }
@@ -70,6 +73,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:name, :description,  :price, :catering_company_id, :food_item_id )
+      params.require(:deal).permit(:name, :description,  :price, :food_item_id )
     end
 end

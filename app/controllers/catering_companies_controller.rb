@@ -1,22 +1,25 @@
 class CateringCompaniesController < ApplicationController
   before_action :set_catering_company, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
-  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy ]
+  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy, :new ]
 
-  # GET /catering_companies
-  # GET /catering_companies.json
   def index
-    @catering_companies = CateringCompany.all
+    @catering_company = current_user.catering_company
   end
 
-  # GET /catering_companies/1
-  # GET /catering_companies/1.json
-  def show
-  end
+
 
   # GET /catering_companies/new
   def new
-    @catering_company = CateringCompany.new
+    if (!current_user.catering_company)
+         @catering_company = CateringCompany.new
+    else
+      flash[:notice]= 'You can have only one company'
+      redirect_to :controller => 'home', action: 'dashboard'
+    end
+
+
   end
 
   # GET /catering_companies/1/edit
@@ -27,10 +30,10 @@ class CateringCompaniesController < ApplicationController
   # POST /catering_companies.json
   def create
     @catering_company = CateringCompany.new(catering_company_params)
-
+    @catering_company.user_id = current_user.id
     respond_to do |format|
       if @catering_company.save
-        format.html { redirect_to @catering_company, notice: 'Catering company was successfully created.' }
+        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
         format.json { render :show, status: :created, location: @catering_company }
       else
         format.html { render :new }

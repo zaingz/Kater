@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'home/create_new_user' => 'home#create_new_user'
   get 'home/edit_user/:id' => 'home#edit_user'
   post 'home/save_new_user' => 'home#save_new_user'
-
+  get '/dashboard' => 'home#dashboard'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

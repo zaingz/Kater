@@ -13,6 +13,7 @@ class CreateCateringCompanies < ActiveRecord::Migration
       t.string :city, null: false, default: "", limit:25
       t.string :state,  null: false, default: "",limit:25
       t.string :country,  null: false, default: "",limit:25
+      t.references :user
 
       t.timestamps null: false
     end

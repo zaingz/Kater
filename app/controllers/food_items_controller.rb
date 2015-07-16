@@ -1,8 +1,10 @@
 class FoodItemsController < ApplicationController
+
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy ]
-  # GET /food_items
-  # GET /food_items.json
+  before_action :authenticate_user!
+  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy, :new ]
+
+
   def index
     @food_items = FoodItem.all
   end
@@ -25,10 +27,11 @@ class FoodItemsController < ApplicationController
   # POST /food_items.json
   def create
     @food_item = FoodItem.new(food_item_params)
+    @food_item.catering_company = current_user.catering_company
 
     respond_to do |format|
       if @food_item.save
-        format.html { redirect_to @food_item, notice: 'Food item was successfully created.' }
+        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
         format.json { render :show, status: :created, location: @food_item }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class FoodItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_item_params
-      params.require(:food_item).permit(:name, :description,  :price, :catering_company_id, :deal_id, :food_item_add_on_id )
+      params.require(:food_item).permit(:name, :description,  :price )
     end
 end

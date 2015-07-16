@@ -24,9 +24,22 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_as_shop_admin
-    if !current_user and current_user.level!=2
-      flash[:alert]= 'You are not shop_admin'
-      redirect_to root_path
+    if current_user
+       if current_user.level==2
+          flash[:notice]= 'Welcome'
+       else
+         flash[:notice]= 'You are not shoop keeper'
+          redirect_to root_path
+       end
+    end
+  end
+
+  def authorize_as_admin
+    if current_user and (current_user.level==2 || current_user.level==1)
+        flash[:notice]= 'Welcome'
+    else
+      flash[:notice]= 'You dont have a dashboard'
+      redirect_to :controller => 'home', :action => 'index'
     end
   end
 

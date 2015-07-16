@@ -12,12 +12,10 @@
   <% end %>
 
 
-  :name,  :price, :food_item_id
-
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :price %>    
-    <%= f.input :food_item_id, collection: FoodItem.all %>
+    <%= f.input :food_item_id, collection: @food_items %>
 
   </div>
 

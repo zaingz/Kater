@@ -35,14 +35,43 @@
 </div>
 
 
-<!-- <h1>This is Super User</h1>
 
-<li>
-	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-</li>
+<div class="clearfix"></div>
 
-<% unless current_user %>
-<%= link_to "Sign-In", new_user_session_path %>
-    <%else%>
-    hello<h3><%= current_user.email%></h3>
-<% end%>	 -->
+<hr>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+
+      <th>#</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Contact Number</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @companies.each_with_index do |user, index| %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= user.name %></td>
+          <td><%= user.description %></td>
+          <td><%= user.contact_number %></td>
+          
+        </tr>
+    <%end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+

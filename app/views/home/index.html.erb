@@ -1,7 +1,10 @@
-<h1>This is index</h1>
+<h1>This is index Here we will have our landing page :)</h1>
+<p><%= flash[:notice]%></p>
 
 <% unless current_user %>
-<%= link_to "Sign-In", new_user_session_path %>
+    <%= link_to "Sign-In", new_user_session_path %>
+    <hr>
+    <%= link_to "Sign-Up", '/users/sign_up' %>
     <%else%>
-    hello<h3><%= current_user.email%></h3>
+    hello<h3> <%= link_to current_user.email, edit_user_registration_path %></h3>
 <% end%>

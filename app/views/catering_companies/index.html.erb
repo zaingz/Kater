@@ -6,20 +6,21 @@
   <thead>
     <tr>
       <th colspan="3"></th>
+      <%=@catering_company.name %>
+
     </tr>
   </thead>
 
   <tbody>
-    <% @catering_companies.each do |catering_company| %>
+
       <tr>
-        <td><%= link_to 'Show', catering_company %></td>
-        <td><%= link_to 'Edit', edit_catering_company_path(catering_company) %></td>
-        <td><%= link_to 'Destroy', catering_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', @catering_company %></td>
+        <td><%= link_to 'Edit', edit_catering_company_path(@catering_company) %></td>
+        <td><%= link_to 'Destroy', @catering_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Catering company', new_catering_company_path %>

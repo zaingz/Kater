@@ -1,6 +1,7 @@
 class FoodItemAddOnsController < ApplicationController
   before_action :set_food_item_add_on, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy ]
+  before_action :authenticate_user!
+  before_action :authorize_as_shop_admin, only: [:edit, :update,:destroy, :new ]
 
   # GET /food_item_add_ons
   # GET /food_item_add_ons.json
@@ -16,6 +17,7 @@ class FoodItemAddOnsController < ApplicationController
   # GET /food_item_add_ons/new
   def new
     @food_item_add_on = FoodItemAddOn.new
+    @food_items = FoodItem.where(catering_company_id: current_user.catering_company.id )
   end
 
   # GET /food_item_add_ons/1/edit
@@ -27,9 +29,12 @@ class FoodItemAddOnsController < ApplicationController
   def create
     @food_item_add_on = FoodItemAddOn.new(food_item_add_on_params)
 
+
+
+#Todo: can select multiple items for a sinfle addons
     respond_to do |format|
       if @food_item_add_on.save
-        format.html { redirect_to @food_item_add_on, notice: 'Food item add on was successfully created.' }
+        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
         format.json { render :show, status: :created, location: @food_item_add_on }
       else
         format.html { render :new }
