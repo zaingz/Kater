@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :addresses
   devise_for :users
 
+  get 'home/create_new_user' => 'home#create_new_user'
+  get 'home/edit_user/:id' => 'home#edit_user'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

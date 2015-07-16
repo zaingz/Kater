@@ -1,7 +1,9 @@
 class FoodItemAddOn < ActiveRecord::Base
 
-  belongs_to :food_item
+	attr_accessor :food_item_id
 
-  validates_presence_of :name, :price
+	belongs_to :food_item
+
+	validates_presence_of :name, :price
 
 end

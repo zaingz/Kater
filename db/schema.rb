@@ -87,6 +87,10 @@ ActiveRecord::Schema.define(version: 20150715091300) do
   create_table "ratings", force: :cascade do |t|
     t.string   "tittle",              default: "", null: false
     t.text     "description",         default: "", null: false
+    t.integer  "food",                default: 0,  null: false
+    t.integer  "service",             default: 0,  null: false
+    t.integer  "ambience",            default: 0,  null: false
+    t.integer  "value",               default: 0,  null: false
     t.integer  "user_id"
     t.integer  "catering_company_id"
     t.datetime "created_at",                       null: false

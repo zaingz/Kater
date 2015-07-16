@@ -1,0 +1,48 @@
+
+
+<%= link_to "Create New",  {controller: "home", action: "create_new_user"} , class: "btn btn-primary pull-right", role: "button" %>
+
+
+
+<div class="clearfix"></div>
+
+<hr>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    	<% @users.each_with_index do |user, index| %>
+    		<tr>
+          <td><%= index+1 %></td>
+	    		<td><%= user.first_name %></td>
+	    		<td><%= user.last_name %></td>
+	    		<td><%= user.email %></td>
+	    		<td><%= link_to(raw('<span class="glyphicon glyphicon-pencil" />'), {controller: "home", action: "edit_user", id: user.id})%> </td>
+
+    		</tr>
+    	<%end %>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- <h1>This is Super User</h1>
+
+<li>
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+</li>
+
+<% unless current_user %>
+<%= link_to "Sign-In", new_user_session_path %>
+    <%else%>
+    hello<h3><%= current_user.email%></h3>
+<% end%>	 -->

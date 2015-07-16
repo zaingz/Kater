@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def login_required
+    redirect_to('/') if current_user.blank?
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :mobile_number1, :mobile_number2,
@@ -32,4 +36,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  # def after_sign_in_path_for(resource)
+  #   current_user_path
+  # end
+
 end
