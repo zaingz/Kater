@@ -28,8 +28,7 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
     @deal.catering_company= current_user.catering_company
-    item = FoodItem.find(deal_params[:food_item_id])
-    item.update!(deal: @deal)
+
     respond_to do |format|
       if @deal.save
         format.html { redirect_to :controller => 'home', :action => 'dashboard' }

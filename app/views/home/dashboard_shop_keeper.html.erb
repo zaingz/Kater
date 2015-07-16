@@ -5,7 +5,9 @@
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
+	<%if current_user.catering_company%>
 	<h3 class="panel-title"><%=current_user.catering_company.name%></h3>
+	<%end%>
 	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -42,6 +44,7 @@
   <div class="panel-body">
     <div class="list-group">
 
+    <% if current_user.catering_company %>
       <%current_user.catering_company.food_items.each do |food|%>
 
       <a href="<%= new_deal_path %>" class="list-group-item ">
@@ -49,12 +52,12 @@
         <h5><%= food.price%></h5>
         <%if(food.deal)%>
         <h5>Deal: <%= food.deal.name%></h5>
-            <%end%>
+      <%end%>
 
       </a>
 
      <%end%>
-
+<%end%>
 
     </div>
   </div>
