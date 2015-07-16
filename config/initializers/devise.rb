@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '907f9355aebdecd23150e0d214b49d91e583795d6221efa5581691f48501919a7d49544268890a29f53418439385c6714e0b72d3a244897e454a238212731e2d'
+   config.secret_key = '907f9355aebdecd23150e0d214b49d91e583795d6221efa5581691f48501919a7d49544268890a29f53418439385c6714e0b72d3a244897e454a238212731e2d'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -143,6 +143,7 @@ Devise.setup do |config|
   # ==> Configuration for :validatable
   # Range for password length.
   config.password_length = 8..72
+
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
