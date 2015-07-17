@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150717064500) do
     t.datetime "updated_at",                       null: false
   end
 
-
   create_table "deals_food_items", id: false, force: :cascade do |t|
     t.integer "food_item_id"
     t.integer "deal_id"

@@ -47,7 +47,7 @@ input:focus, textarea:focus, select:focus{
 
 #homebody{
 	background:  no-repeat top center;
-	background-image: url('/assets/images/logo.png');
+	background-image: url('/images/home-banner-bg.jpg');
 	width:100%;
 	background-size:cover;
 	padding-bottom:100px;

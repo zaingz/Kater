@@ -13,6 +13,8 @@ reg_user = User.create(:email => 'req@kater.com', :password => '12345678', :pass
 shopKeeper_user = User.create(:email => 'shoopkeeper@kater.com', :password => '12345678', :password_confirmation =>'12345678',
                        :level => 2, :birthdate => Date.today)
 
+admin_user = User.create(:email => 'admin@kater.com', :password => '12345678', :password_confirmation =>'12345678',
+                       :level => 1, :birthdate => Date.today)
 com = CateringCompany.create(:name=> 'Gourmet', :description=> 'Best company',  :number_of_employes => 5,  :contact_number => 03333333,
                              :address=> 'best address', :city=> 'lahore', :state=> 'punjab', :country=> 'Pakistan',
                              :user => shopKeeper_user)
