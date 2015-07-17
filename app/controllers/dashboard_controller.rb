@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
   def super_admin
 
-  	@users = User.all
+  	@users =where.not(:level => 1)
   	@c_company = CateringCompany.all
 
   end
@@ -32,7 +32,7 @@ class DashboardController < ApplicationController
   end
 
   def super_admin_manage_user
-  	@users = User.all
+  	@users = where.not(:level => 1)
   end
 
   # def user_id
