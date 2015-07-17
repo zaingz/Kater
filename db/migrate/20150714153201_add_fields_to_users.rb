@@ -8,5 +8,7 @@ class AddFieldsToUsers < ActiveRecord::Migration
     add_column :users, :occupation, :string,   default: ""
     add_column :users, :gender, :string,   default: "", limit:10
     add_column :users, :level, :integer,   default: 3, limit:3
+    add_column :users, :country, :string, null: true
+    add_column :users, :address, :text, null: true
   end
 end

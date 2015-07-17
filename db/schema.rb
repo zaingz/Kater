@@ -16,11 +16,6 @@ ActiveRecord::Schema.define(version: 20150716195320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Deals_FoodItems", id: false, force: :cascade do |t|
-    t.integer "food_item_id", null: false
-    t.integer "deal_id",      null: false
-  end
-
   create_table "addresses", force: :cascade do |t|
     t.string   "full_name",                 default: "", null: false
     t.string   "street_address",            default: "", null: false
@@ -57,6 +52,11 @@ ActiveRecord::Schema.define(version: 20150716195320) do
     t.integer  "catering_company_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+  end
+
+  create_table "deals_food_itemsoodItems", id: false, force: :cascade do |t|
+    t.integer "food_itemsood_item_id", null: false
+    t.integer "deal_id",               null: false
   end
 
   create_table "food_item_add_ons", force: :cascade do |t|
@@ -119,14 +119,16 @@ ActiveRecord::Schema.define(version: 20150716195320) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
-    t.string   "first_name",                        default: "", null: false
-    t.string   "last_name",                         default: "", null: false
-    t.string   "mobile_number1",         limit: 20, default: "", null: false
-    t.string   "mobile_number2",         limit: 20, default: "", null: false
-    t.date     "birthdate",                                      null: false
-    t.string   "occupation",                        default: "", null: false
-    t.string   "gender",                 limit: 10, default: "", null: false
-    t.integer  "level",                             default: 3,  null: false
+    t.string   "first_name",                        default: ""
+    t.string   "last_name",                         default: ""
+    t.string   "mobile_number1",         limit: 20, default: ""
+    t.string   "mobile_number2",         limit: 20, default: ""
+    t.date     "birthdate"
+    t.string   "occupation",                        default: ""
+    t.string   "gender",                 limit: 10, default: ""
+    t.integer  "level",                             default: 3
+    t.string   "country"
+    t.text     "address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

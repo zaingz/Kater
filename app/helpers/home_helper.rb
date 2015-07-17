@@ -12,4 +12,6 @@ module HomeHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  
+
 end
