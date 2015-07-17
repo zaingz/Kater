@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'dashboard/super_admin'
+
+  get 'dashboard/manager_admin'
+
   root 'home#index'
 
   resources :inavailabilities
@@ -17,7 +21,9 @@ Rails.application.routes.draw do
   get 'home/create_new_user' => 'home#create_new_user'
   get 'home/edit_user/:id' => 'home#edit_user'
   post 'home/save_new_user' => 'home#save_new_user'
-  get '/dashboard' => 'home#dashboard'
+
+
+  get '/admin/dashboard' => 'dashboard#super_admin'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

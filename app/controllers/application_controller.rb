@@ -17,9 +17,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_as_super_admin
-    if !current_user and current_user.level!=1
-      flash[:alert]= 'You are not super_admin'
-      redirect_to root_path
+    if current_user
+      if current_user.level==1
+        flash[:notice]= 'Welcome to admin panael'
+      else
+        flash[:notice]= 'You have no access'
+        redirect_to root_path
+      end
     end
   end
 

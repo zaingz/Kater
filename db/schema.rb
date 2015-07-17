@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715091300) do
+ActiveRecord::Schema.define(version: 20150716195320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Deals_FoodItems", id: false, force: :cascade do |t|
+    t.integer "food_item_id", null: false
+    t.integer "deal_id",      null: false
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string   "full_name",                 default: "", null: false
@@ -40,40 +45,36 @@ ActiveRecord::Schema.define(version: 20150715091300) do
     t.string   "city",               limit: 25, default: "",    null: false
     t.string   "state",              limit: 25, default: "",    null: false
     t.string   "country",            limit: 25, default: "",    null: false
+    t.integer  "user_id"
     t.datetime "created_at",                                    null: false
     t.datetime "updated_at",                                    null: false
   end
 
   create_table "deals", force: :cascade do |t|
-    t.string   "name",        default: "", null: false
-    t.text     "description", default: "", null: false
-    t.float    "price",                    null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name",                default: "", null: false
+    t.text     "description",         default: "", null: false
+    t.float    "price",                            null: false
+    t.integer  "catering_company_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
-
-  create_table "deals_food_items", id: false, force: :cascade do |t|
-    t.integer "food_item_id"
-    t.integer "deal_id"
-  end
-
-  add_index "deals_food_items", ["food_item_id", "deal_id"], name: "index_deals_food_items_on_food_item_id_and_deal_id", using: :btree
 
   create_table "food_item_add_ons", force: :cascade do |t|
-    t.string   "name",          default: "", null: false
-    t.integer  "food_items_id"
-    t.float    "price",                      null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "name",         default: "", null: false
+    t.integer  "food_item_id"
+    t.float    "price",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "food_items", force: :cascade do |t|
-    t.string   "name",                  default: "", null: false
-    t.text     "description",           default: "", null: false
-    t.float    "price",                              null: false
-    t.integer  "catering_companies_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "name",                default: "", null: false
+    t.text     "description",         default: "", null: false
+    t.float    "price",                            null: false
+    t.integer  "catering_company_id"
+    t.integer  "deals_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "inavailabilities", force: :cascade do |t|
