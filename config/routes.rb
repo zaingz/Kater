@@ -25,6 +25,11 @@ Rails.application.routes.draw do
 
   get '/admin/dashboard' => 'dashboard#super_admin'
   get '/admin/dashboard/manage_users' => 'dashboard#super_admin_manage_user'
+  get '/admin/dashboard/manage_company' => 'dashboard#super_admin_manage_company'
+
+  delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'
+  delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_comp'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
