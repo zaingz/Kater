@@ -3,7 +3,14 @@ class HomeController < ApplicationController
 	before_action :authorize_as_admin, :only => [:dashboard]
 
   def index
+		if current_user
+			if current_user.level==1
+				redirect_to :controller => 'dashboard', :action => 'super_admin'
+			elsif current_user.level==2
+				redirect_to :controller => 'dashboard', :action => 'manager_admin'
+			end
 
+		end
   end
 
   def create_new_user
