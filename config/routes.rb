@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
 
   get '/admin/dashboard' => 'dashboard#super_admin'
-
+  get '/admin/dashboard/manage_users' => 'dashboard#super_admin_manage_user'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
