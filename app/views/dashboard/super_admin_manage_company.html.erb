@@ -14,10 +14,8 @@
       <li>
         <a href="/admin/dashboard/manage_orders"><i class="fa fa-fw fa-edit"></i> Manage Orders</a>
       </li>
-
-
-    </ul>
-  </div>
+    </ul
+>  </div>
 
 
 
@@ -45,22 +43,26 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>Name</th>
+                <th>Number Of Employes</th>
+                <th>Address</th>
+                <th>Contact Number</th>
                 <th>Delete</th>
               </tr>
             </thead>
 
+            
+
             <tbody>
-              <% @users.each_with_index do |user, index| %>
+              <% @c_company.each_with_index do |comp, index| %>
                 <tr>
                   <td><%= index+1 %></td>
-                  <td><%= user.first_name %></td>
-                  <td><%= user.last_name %></td>
-                  <td><%= user.email %></td>
+                  <td><%= comp.name %></td>
+                  <td><%= comp.number_of_employes %></td>
+                  <td><%= comp.address %></td>
+                  <td><%= comp.contact_number %></td>
 
-                  <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "destroy_user", id: user.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+                  <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "destroy_comp", id: comp.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
                   
                 </tr>
               <%end %>
