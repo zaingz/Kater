@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_one :catering_company
 
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
