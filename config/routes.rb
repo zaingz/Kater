@@ -26,10 +26,22 @@ Rails.application.routes.draw do
   get '/admin/dashboard' => 'dashboard#super_admin'
   get '/admin/dashboard/manage_users' => 'dashboard#super_admin_manage_user'
   get '/admin/dashboard/manage_company' => 'dashboard#super_admin_manage_company'
+  get '/admin/dashboard/manage_orders' => 'dashboard#super_admin_manage_orders'
 
   delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'
   delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_comp'
+  delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_order'
 
+
+
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'home#index', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => 'home#index', as: :unauthenticated_root
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

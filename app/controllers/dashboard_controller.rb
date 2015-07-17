@@ -31,6 +31,10 @@ class DashboardController < ApplicationController
   	@c_company = CateringCompany.all
   end
 
+  def super_admin_manage_orders
+  	# here we will fetch all orders
+  end
+
   def super_admin_manage_user
   	@users = User.all
   end
