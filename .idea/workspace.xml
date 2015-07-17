@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a94a39f-bd60-4a98-bd6b-e8959848f5a8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
     </list>
     <ignored path="kater.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,8 +86,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85833335">
-              <caret line="333" column="7" selection-start-line="333" selection-start-column="7" selection-end-line="333" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.19722222">
+              <caret line="319" column="9" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -667,7 +666,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35514018" sideWeight="0.4969743" order="11" side_tool="false" content_ui="tabs" />
@@ -1105,8 +1104,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85833335">
-          <caret line="333" column="7" selection-start-line="333" selection-start-column="7" selection-end-line="333" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.19722222">
+          <caret line="319" column="9" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
           <folding />
         </state>
       </provider>
