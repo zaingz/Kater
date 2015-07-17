@@ -12,4 +12,11 @@ class DashboardController < ApplicationController
 
   def manager_admin
   end
+
+
+  def super_admin_manage_user
+
+  end
+
+
 end
