@@ -1,37 +1,35 @@
 class HomeController < ApplicationController
-  before_filter :login_required, :except => [:index]
+    before_filter :login_required, :except => [:index]
 	before_action :authorize_as_admin, :only => [:dashboard]
 
-  def index
+  	def index
 		if current_user
 			if current_user.level==1
 				redirect_to :controller => 'dashboard', :action => 'super_admin'
 			elsif current_user.level==2
 				redirect_to :controller => 'dashboard', :action => 'manager_admin'
 			end
-
 		end
-  end
+  	end
 
-  def create_new_user
+  	def create_new_user
 		# render "devise/registrations/new"
 	end
-
+	
 	def save_new_user
-		   @resource = User.new(user_params)
-		   if @resource.save
-					     redirect_to action: 'dashboard'
-			 else
-							render :create_new_user
-			 end
-
-		 end
-
-
-  def edit_user
-  	@resource = User.find(params[:id])
-  	render "devise/registrations/edit"
-  end
+		@users = User.where.not(level: 1)
+		@user = User.new(user_params)
+		if @user.save
+			redirect_to :controller =>'dashboard', action: 'super_admin_manage_user'
+		else
+			render 'dashboard/super_admin_manage_user'
+		end
+	end
+  	
+  	def edit_user
+  		@resource = User.find(params[:id])
+  		render "devise/registrations/edit"
+  	end
 
 	def dashboard
 		if current_user.level == 1
@@ -39,20 +37,15 @@ class HomeController < ApplicationController
 			@companies = CateringCompany.all
 			render 'dashboard_super'
 		elsif current_user.level == 2
-
 			render 'dashboard_shop_keeper'
-
 		end
 	end
 
 private
-
-
-
-	  def user_params
-			params.require(:user).permit(:first_name, :last_name,  :mobile_number1,
-																	:email, :birthdate, :gender,:level, :occupation, :password, :password_confirmation )
-		end
+  	def user_params
+		params.require(:user).permit(:first_name, :last_name,  :mobile_number1,
+																:email, :birthdate, :gender,:level, :occupation, :password, :password_confirmation )
+	end
 
 
 end

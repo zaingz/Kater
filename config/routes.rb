@@ -28,11 +28,26 @@ Rails.application.routes.draw do
   get '/admin/dashboard/manage_company' => 'dashboard#super_admin_manage_company'
   get '/admin/dashboard/manage_orders' => 'dashboard#super_admin_manage_orders'
 
+  get '/admin/dashboard/shopkeeper/create_company' => 'dashboard#create_company'
+  
+  get '/admin/dashboard/shopkeeper/create_food_item' => 'dashboard#create_food_item'
+  get '/admin/dashboard/shopkeeper/create_deal' => 'dashboard#create_deal'
+  get '/admin/dashboard/shopkeeper/manage_orders' => 'dashboard#manage_orders'
+  
+  
+  # to manage add ons
+  get '/admin/dashboard/shopkeeper/manage_addons/' => 'dashboard#manage_addons'
+  get '/admin/dashboard/shopkeeper/manage_deals/' => 'dashboard#manage_deals'
+  
+  
+  delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'
   delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'
   delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_comp'
   delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_order'
+  
+  delete '/admin/dashboard/shopkeeper/food_item/delete/:id' => 'dashboard#delete_food_item'
 
-
+  
 
   devise_scope :user do
     authenticated :user do

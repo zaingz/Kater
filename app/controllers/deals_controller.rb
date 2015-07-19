@@ -21,6 +21,9 @@ class DealsController < ApplicationController
 
   # GET /deals/1/edit
   def edit
+    
+    @deals = current_user.catering_company.deals
+    render "/dashboard/manage_deals"
   end
 
   # POST /deals
@@ -31,7 +34,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if @deal.save
-        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'manage_deals' }
         format.json { render :show, status: :created, location: @deal }
       else
         format.html { render :new }
@@ -45,7 +48,7 @@ class DealsController < ApplicationController
   def update
     respond_to do |format|
       if @deal.update(deal_params)
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
+        format.html {  redirect_to :controller => 'dashboard', :action => 'manage_deals' }
         format.json { render :show, status: :ok, location: @deal }
       else
         format.html { render :edit }

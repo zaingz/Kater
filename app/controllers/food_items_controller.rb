@@ -21,6 +21,9 @@ class FoodItemsController < ApplicationController
 
   # GET /food_items/1/edit
   def edit
+    
+    @all_food_items = current_user.catering_company.food_items
+    render "/dashboard/create_food_item"
   end
 
   # POST /food_items
@@ -31,7 +34,7 @@ class FoodItemsController < ApplicationController
 
     respond_to do |format|
       if @food_item.save
-        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'create_food_item' }
         format.json { render :show, status: :created, location: @food_item }
       else
         format.html { render :new }
@@ -45,7 +48,7 @@ class FoodItemsController < ApplicationController
   def update
     respond_to do |format|
       if @food_item.update(food_item_params)
-        format.html { redirect_to @food_item, notice: 'Food item was successfully updated.' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'create_food_item' }
         format.json { render :show, status: :ok, location: @food_item }
       else
         format.html { render :edit }
@@ -72,6 +75,7 @@ class FoodItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_item_params
-      params.require(:food_item).permit(:name, :description,  :price )
+      params.require(:food_item).permit(:name, :description,  :price, food_item_add_ons_attributes: [:name,
+                                                   :price] )
     end
 end

@@ -22,7 +22,7 @@ reg_user2 = User.create(:email => 'boser2@kater.com', :password => '12345678', :
                        :level => 2, :birthdate => Date.today, :first_name=> 'Ahsan',  :last_name => 'Ali' )
 
 
-shopKeeper_user = User.create(:email => 'shoopkeeper@kater.com', :password => '12345678', :password_confirmation =>'12345678',
+shopKeeper_user = User.create(:email => 'shopkeeper@kater.com', :password => '12345678', :password_confirmation =>'12345678',
                        :level => 2, :birthdate => Date.today, :first_name=> 'Nadeem',  :last_name => 'Murtaza' )
 
 admin_user = User.create(:email => 'admin@kater.com', :password => '12345678', :password_confirmation =>'12345678',

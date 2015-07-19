@@ -33,7 +33,8 @@ class CateringCompaniesController < ApplicationController
     @catering_company.user_id = current_user.id
     respond_to do |format|
       if @catering_company.save
-        format.html { redirect_to :controller => 'home', :action => 'dashboard' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'manager_admin
+        ' }
         format.json { render :show, status: :created, location: @catering_company }
       else
         format.html { render :new }

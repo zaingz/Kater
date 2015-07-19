@@ -1,0 +1,48 @@
+<%= simple_form_for(@food_item) do |f| %>
+  <% if @food_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@food_item.errors.count, "error") %> prohibited this food_item from being saved:</h2>
+
+      <ul>
+      <% @food_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <!-- TODO: change it -->
+    
+    
+
+  </div>
+  
+  
+  <div class="row">
+    <div class="col col-md-6">
+      <h2 class="text-muted">Create Add On</h2>
+      <%= f.simple_fields_for(:food_item_add_on) do |x| %>
+      
+      
+        
+        <div class="form-inputs">
+          <%= x.input :name %>
+          <%= x.input :price %>    
+          
+      
+        </div>
+      
+        
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create Food Item", :class => "btn btn-success"  %>
+  </div>
+<% end %>
