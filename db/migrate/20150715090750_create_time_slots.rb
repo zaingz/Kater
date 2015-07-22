@@ -6,7 +6,7 @@ class CreateTimeSlots < ActiveRecord::Migration
       t.datetime :start_time
       t.datetime :end_time
 
-
+      t.references :catering_company
 
       t.timestamps null: false
     end

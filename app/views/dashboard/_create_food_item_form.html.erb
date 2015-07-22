@@ -26,7 +26,7 @@
   <div class="row">
     <div class="col col-md-6">
       <h2 class="text-muted">Create Add On</h2>
-      <%= f.simple_fields_for(:food_item_add_on) do |x| %>
+      <%= f.simple_fields_for(:food_item_add_ons) do |x| %>
       
       
         
@@ -36,9 +36,12 @@
           
       
         </div>
-      
+        
+        <hr>
         
       <% end %>
+
+
     </div>
   </div>
 
@@ -46,3 +49,5 @@
     <%= f.button :submit, "Create Food Item", :class => "btn btn-success"  %>
   </div>
 <% end %>
+
+

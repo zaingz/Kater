@@ -1,0 +1,271 @@
+    
+    <!--  -->
+    
+
+
+    <div class="container-fluid" id="innerpage" style="padding-top:112px;"> 
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#" class="findbtn visible-xs btn btn-success">Find Caterers</a>
+                <div class="filterbox">
+                    <h3>Find Caterers</h3>
+                    <div class="form-group">
+                        <label class="control-label">Date</label>
+                        <input type="text" class="form-control input-sm" />
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Area</label>
+                        <select class="form-control input-sm">
+                            <option>Select Area</option>
+                            <option>Select Area</option>
+                            <option>Select Area</option>
+                            <option>Select Area</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Catering Company</label>
+                        <select class="form-control input-sm">
+                            <option>Select Caterer</option>
+                            <option>Select Caterer</option>
+                            <option>Select Caterer</option>
+                            <option>Select Caterer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="advcebtn">Advanced Options <i class="fa fa-angle-right"></i> <i class="fa fa-angle-down"></i></a>
+                    </div>
+                    <div class="hideadvance">
+                        <div class="form-group">
+                            <label class="control-label">Price (KD)</label>
+                            <div class="slider">
+                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup"> 
+                                    <input type="text" class="leftLabel form-control" value="" />  
+                                    <input type="text" class="rightLabel form-control" value="" />  
+                                    <input type="submit" class="btn btn-search" value="Search" /> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Capacity (persons)</label>
+                            <div class="slider">
+                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="20" data-cur_max="80">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup">
+                                    <input type="text" class="leftLabel form-control" value="" />
+                                    <input type="text" class="rightLabel form-control" value="" />
+                                    <input type="submit" class="btn btn-search" value="Search" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                All Female Servers
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" value="">
+                                Arabic Speaking
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
+                        </div>
+                    </div>
+                </div>
+                <div class="addbanners hidden-xs hidden-sm">
+                    <a href="#"><%=image_tag('rightbanner.jpg') %></a>
+                </div>
+            </div>
+            <div class="col-md-9">              
+                 <div class="innerbannertwo bx-wrapper">
+                    <ul class="bxslider">
+
+                        <li><%=image_tag('inner-banner-two.jpg') %></li>
+                        <li><%=image_tag('inner-banner-two.jpg') %></li>
+                    </ul>
+                                    
+                <div class="pageouter">
+                  <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+                </div>
+                 </div> 
+                <div class="contentbdox">
+                    <div class="celenderbox">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <big class="hidden-xs">Select the date</big>
+                                <div class="dates visible-xs">
+                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                    <span>April</span>
+                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="dates visible-xs">
+                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                    <span>Thur 16</span>   
+                                    <span><b>Fri 15</b></span>
+                                    <span>Sat 14</span>
+                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-8 col-xs-12 hidden-xs">
+                                <div class="dates">
+                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                    <span>April Thursday 16   &nbsp;|&nbsp;</span>   
+                                    <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
+                                    <span>April saturday 18</span>
+                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
+                        </div>
+                    </div>
+                </div> 
+
+                <% @companies.each do |comp| %>
+                    <div class="productbox"> 
+                            <div class="row">
+                            <div class="col-md-2 col-sm-3">
+                                <div class="img-thumbnail">
+                                    <%=image_tag('cater-img.jpg') %>
+                                    
+                                </div><br />
+                                <a href="#"><%=comp.name %></a>
+                                <div class="ratings">                                    
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-10 co-sm-9">
+                                <div class="tags">
+                                    <% comp.available_time_slots.each do |slot| %>
+                                        <span><%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></span>
+                                    <%end%>
+                                    <!-- <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span class="active">08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span class="closed">08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span> -->
+                                </div>
+                                <div class="bottominfo">
+                                    <p>Note: Your serving time is <span>08:00 PM</span></p>
+                                    
+                                    
+                                    <%=link_to "order now", {controller: 'dashboard', action: 'place_order', id: comp.id}, { class: "btn btn-warning" } %> 
+                                    
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                <%end%>
+                <div class="row search-btn">
+                    <a href="#" class="btn btn-warning btn-lg">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <div id="footertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Useful Links</h3>
+                    <div class="links">
+                        <a href="about-us.html">About Kater</a>     
+                        <a href="privacy-policy.html">Privacy Policy</a>        
+                        <a href="terms-and-condition.html">Terms & Conditions</a>       
+                        <a href="get-in-touch.html">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>Newsletter</h3>
+                    <div class="newsletter">
+                        <input type="text" class="form-control" placeholder="Your email address" />
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3>Follow Along</h3>
+                    <div class="followalong">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footerbottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-7">
+                    <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+                    <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>                    
+                </div>
+                <div class="col-md-6 col-sm-5">
+                    <div class="payicons">
+                        <%=image_tag('play-icon-1.jpg') %>
+                        <%=image_tag('play-icon-2.jpg') %>
+                        <%=image_tag('play-icon-3.jpg') %>
+                        <%=image_tag('play-icon-4.jpg') %>
+                        <%=image_tag('play-icon-5.jpg') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $('.nstSlider').nstSlider({
+        "left_grip_selector": ".leftGrip",
+        "right_grip_selector": ".rightGrip",
+        "value_bar_selector": ".bar",
+        "value_changed_callback": function(cause, leftValue, rightValue) {
+            $(this).parent().find('.leftLabel').val(leftValue);
+            $(this).parent().find('.rightLabel').val(rightValue);
+        }
+    });
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true   ,
+              nextSelector: '#slider-next',
+              prevSelector: '#slider-prev',
+        });
+        $('.datepicker').datepicker();
+        
+        $(".findbtn").click( function (){
+            $(".filterbox").toggle();
+        });
+        
+        $(".advcebtn").click( function (){
+            $(".hideadvance").toggle();
+            $(this).toggleClass('arrown');
+        });
+        
+    });  
+    var $document = $(document),
+    $element = $('#header'),
+    elementsidebar = 'headerfixed' 
+    
+    $(window).scroll(function() {
+      $element.toggleClass(elementsidebar, $document.scrollTop() >= 50); 
+    });
+</script>

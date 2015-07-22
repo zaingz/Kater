@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150722095421) do
     t.string   "country",        limit: 25, default: "", null: false
     t.integer  "zip_code",                               null: false
     t.integer  "user_id"
+    t.integer  "order_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
@@ -118,11 +119,12 @@ ActiveRecord::Schema.define(version: 20150722095421) do
   end
 
   create_table "time_slots", force: :cascade do |t|
-    t.string   "tittle",     default: "", null: false
+    t.string   "tittle",              default: "", null: false
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "catering_company_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "users", force: :cascade do |t|

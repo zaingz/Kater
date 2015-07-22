@@ -91,7 +91,8 @@
                             </div>
                         </div>
                         <div class="col-md-12 search-btn">
-                        	<a href="#" class="btn btn-warning btn-lg">Search</a>
+                        	<%=link_to "Search", {controller: "dashboard", action: "search_results"}, { :class=>"btn btn-warning btn-lg" } %>
+                            
                         </div>
                     </div>
                 </div>

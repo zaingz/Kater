@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   get '/admin/dashboard/shopkeeper/manage_addons/' => 'dashboard#manage_addons'
   get '/admin/dashboard/shopkeeper/manage_deals/' => 'dashboard#manage_deals'
   
+  get '/serach/results/' => 'dashboard#search_results'
+  get '/place/order/:id' => 'dashboard#place_order'
+  get '/add_item/' => 'dashboard#add_item_to_cart'
+  
+
   
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'
   delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'

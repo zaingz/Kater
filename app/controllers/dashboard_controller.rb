@@ -23,6 +23,7 @@ class DashboardController < ApplicationController
   def create_food_item
     @all_food_items = current_user.catering_company.food_items
     @food_item = FoodItem.new
+    @food_item.food_item_add_ons.build
     
   end
   
@@ -82,5 +83,25 @@ class DashboardController < ApplicationController
   # def user_id
   # 	params.permit(:id)
   # end
+
+
+  def search_results
+    @companies = CateringCompany.all
+  end
+
+  def place_order
+    @comp = CateringCompany.find params[:id]
+  end
+
+  def add_item_to_cart
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    food_items = cart.fetch("food_items", [])
+    food_items.append(  {item_id: params[:food_item_id], add_on_id: params[:add_on_id]}  )
+    cart["food_items"] = food_items
+    cookies[:cart] = JSON.generate(cart)    
+    
+    redirect_to :back
+  end
 
 end

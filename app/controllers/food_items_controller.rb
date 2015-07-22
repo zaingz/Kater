@@ -17,6 +17,7 @@ class FoodItemsController < ApplicationController
   # GET /food_items/new
   def new
     @food_item = FoodItem.new
+    @food_item.food_item_add_ons.build
   end
 
   # GET /food_items/1/edit
@@ -30,7 +31,9 @@ class FoodItemsController < ApplicationController
   # POST /food_items.json
   def create
     @food_item = FoodItem.new(food_item_params)
+    
     @food_item.catering_company = current_user.catering_company
+    #@food_item.food_item_add_ons << FoodItemAddOn.create(params[:food_item][:food_item_add_on])
 
     respond_to do |format|
       if @food_item.save
@@ -75,7 +78,6 @@ class FoodItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_item_params
-      params.require(:food_item).permit(:name, :description,  :price, food_item_add_ons_attributes: [:name,
-                                                   :price] )
+      params.require(:food_item).permit(:name, :description,  :price, food_item_add_ons_attributes: [:name, :price] )
     end
 end
