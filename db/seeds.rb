@@ -46,10 +46,10 @@ food2 = FoodItem.create(:name=>'Piza', :description=>'Yumy Piza', :price=>200, :
 food3 = FoodItem.create(:name=>'Chess', :description=>'Yumy Cheez', :price=>200, :catering_company => com)
 food4 = FoodItem.create(:name=>'Shake', :description=>'Yumy Shake', :price=>500, :catering_company => com)
 
+addon = FoodItemAddOn.create(:name=> 'Extra chess', :price=>5, :food_item=>food)
 
-
-
-
+addon1 = FoodItemAddOn.create(:name=> 'Extra mayo', :price=>5, :food_item=>food)
+addon2 = FoodItemAddOn.create(:name=> 'Extra chess', :price=>5, :food_item=>food2)
 
 
 food2 = FoodItem.create(:name=>'Mozeralla', :description=>'Yumy Piza', :price=>200, :catering_company => com)
