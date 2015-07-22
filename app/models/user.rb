@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :addresses
   has_many :ratings
+  has_many :orders
   has_one :catering_company
 
 

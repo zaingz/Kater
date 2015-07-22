@@ -7,8 +7,7 @@ class CreateDeals < ActiveRecord::Migration
       t.text :description, null: false, default: ""
       t.float :price, null: false
       t.references :catering_company
-      t.references :cart
-
+      t.references :order_item
 
 
       t.timestamps null: false

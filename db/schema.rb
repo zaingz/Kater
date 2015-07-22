@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717064500) do
+ActiveRecord::Schema.define(version: 20150722095421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150717064500) do
     t.string   "name",                          default: "",    null: false
     t.text     "description",                   default: "",    null: false
     t.integer  "number_of_employes",            default: 1,     null: false
+    t.integer  "discount"
     t.boolean  "female_servers",                default: false, null: false
     t.boolean  "arabic_speaking",               default: false, null: false
     t.integer  "sitting_capacity",              default: 1,     null: false
@@ -50,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150717064500) do
     t.text     "description",         default: "", null: false
     t.float    "price",                            null: false
     t.integer  "catering_company_id"
-    t.integer  "cart_id"
+    t.integer  "order_item_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150717064500) do
     t.float    "price",                            null: false
     t.integer  "catering_company_id"
     t.integer  "deals_id"
-    t.integer  "cart_id"
+    t.integer  "order_item_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
@@ -83,6 +84,22 @@ ActiveRecord::Schema.define(version: 20150717064500) do
     t.integer  "time_slot_id"
     t.integer  "catering_company_id"
     t.date     "date"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.text     "request_message"
+    t.boolean  "completed"
+    t.integer  "user_id"
+    t.integer  "catering_company_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

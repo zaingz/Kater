@@ -5,6 +5,7 @@ class CreateCateringCompanies < ActiveRecord::Migration
       t.string :name, null: false, default: ""
       t.text :description, null: false, default: ""
       t.integer :number_of_employes, null: false, default: 1
+      t.integer :discount
       t.boolean :female_servers , null: false, default: false
       t.boolean :arabic_speaking , null: false, default: false
       t.integer :sitting_capacity,  null: false, default: 1

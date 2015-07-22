@@ -9,6 +9,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :country,  null: false, default: "",limit:25
       t.integer :zip_code, null: false
       t.references :user
+      t.references :order
       t.timestamps null: false
     end
   end
