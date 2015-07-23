@@ -1,5 +1,6 @@
 <div id="wrapper">
 
+<!--
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul style="position: fixed;" class="nav navbar-nav side-nav">
       <li class="active">
@@ -18,7 +19,8 @@
 
     </ul>
   </div>
-
+-->
+  <%= render '/dashboard/admin_sidebar'%>
 
 
   <div style="margin-top: 95px;" id="page-wrapper">
@@ -31,7 +33,7 @@
             </h1>
             <ol class="breadcrumb">
               <li class="active">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Dashboard / Catering Company
               </li>
             </ol>
           </div>
@@ -59,7 +61,8 @@
               <% @c_company.each_with_index do |comp, index| %>
                 <tr>
                   <td><%= index+1 %></td>
-                  <td><%= comp.name %></td>
+                  <td><%= image_tag(comp.pico_url(:thumbnail), :width => 50, :height => 50, class: 'img-thumbnail') %><span style="padding-top: 10px;padding-left: 10px;"><%= comp.name  %></span> </td>
+
                   <td><%= comp.number_of_employes %></td>
                   <td><%= comp.address %></td>
                   <td><%= comp.contact_number %></td>

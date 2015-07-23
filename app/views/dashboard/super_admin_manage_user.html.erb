@@ -1,6 +1,6 @@
 <div id="wrapper">
 
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
+<!--  <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul style="position: fixed;" class="nav navbar-nav side-nav">
       <li class="active">
         <a href="/admin/dashboard/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
@@ -17,8 +17,8 @@
 
 
     </ul>
-  </div>
-
+  </div>-->
+  <%= render '/dashboard/admin_sidebar'%>
 
 
   <div style="margin-top: 95px;" id="page-wrapper">
@@ -31,7 +31,7 @@
             </h1>
             <ol class="breadcrumb">
               <li class="active">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Dashboard / Users
               </li>
             </ol>
           </div>
@@ -59,6 +59,7 @@
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Email</th>
+                <th>Company</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -70,7 +71,11 @@
                   <td><%= user.first_name %></td>
                   <td><%= user.last_name %></td>
                   <td><%= user.email %></td>
-
+                  <% if(user.level == 2)%>
+                        <td><i class="fa fa-check"></i></td>
+                  <%else%>
+                      <td><i class="fa fa-times"></i></td>
+                  <%end%>
                   <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "destroy_user", id: user.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
                   
                 </tr>

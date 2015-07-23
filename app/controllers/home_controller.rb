@@ -22,7 +22,8 @@ class HomeController < ApplicationController
 		if @user.save
 			redirect_to :controller =>'dashboard', action: 'super_admin_manage_user'
 		else
-			render 'dashboard/super_admin_manage_user'
+
+			render '/dashboard/super_admin_manage_user'
 		end
 	end
   	

@@ -77,6 +77,6 @@ class CateringCompaniesController < ApplicationController
     def catering_company_params
       params.require(:catering_company).permit(:name, :description,  :number_of_employes,:female_servers,
                                                :arabic_speaking,  :contact_number,
-                                               :address, :city, :state, :country)
+                                               :address, :city, :state, :country, :pico)
     end
 end

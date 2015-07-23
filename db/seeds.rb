@@ -28,23 +28,24 @@ shopKeeper_user = User.create(:email => 'shopkeeper@kater.com', :password => '12
 admin_user = User.create(:email => 'admin@kater.com', :password => '12345678', :password_confirmation =>'12345678',
                        :level => 1, :birthdate => Date.today)
 
-com = CateringCompany.create(:name=> 'Gourmet', :description=> 'Best company',  :number_of_employes => 5,  :contact_number => 03333333,
-                             :address=> 'best address', :city=> 'lahore', :state=> 'punjab', :country=> 'Pakistan',
+com = CateringCompany.create(:name=> Faker::Company.name, :description=> Faker::Lorem.paragraph,  :number_of_employes => 5,  :contact_number => Faker::PhoneNumber.cell_phone,
+                             :address=> Faker::Address.street_address, :city=> Faker::Address.city, :state=> Faker::Address.state, :country=> Faker::Address.country,
                              :user => shopKeeper_user)
 
+t = TimeSlot.create(:tittle => 'Morning Shift', :start_time =>2.days.ago,
+                    :end_time => 1.day.ago, :catering_company=>com)
+
+com2 = CateringCompany.create(:name=> Faker::Company.name, :description=> Faker::Lorem.paragraph,  :number_of_employes => 5,  :contact_number => Faker::PhoneNumber.cell_phone,
+                              :address=> Faker::Address.street_address, :city=> Faker::Address.city, :state=> Faker::Address.state, :country=> Faker::Address.country,
+                              :user => shopKeeper_user)
+
+food = FoodItem.create(:name=>'Burger', :description=> Faker::Lorem.paragraph, :price=>100, :catering_company => com)
 
 
-com2 = CateringCompany.create(:name=> 'Macdounalds', :description=> 'World very good place',  :number_of_employes => 5,  :contact_number => 03333333,
-                             :address=> 'best address', :city=> 'lahore', :state=> 'punjab', :country=> 'Pakistan',
-                             :user => reg_user2)
 
-food = FoodItem.create(:name=>'Burger', :description=>'Yumy burger', :price=>100, :catering_company => com)
-
-
-
-food2 = FoodItem.create(:name=>'Piza', :description=>'Yumy Piza', :price=>200, :catering_company => com)
-food3 = FoodItem.create(:name=>'Chess', :description=>'Yumy Cheez', :price=>200, :catering_company => com)
-food4 = FoodItem.create(:name=>'Shake', :description=>'Yumy Shake', :price=>500, :catering_company => com)
+food2 = FoodItem.create(:name=>'Piza', :description=> Faker::Lorem.paragraph, :price=>200, :catering_company => com)
+food3 = FoodItem.create(:name=>'Chess', :description=> Faker::Lorem.paragraph, :price=>200, :catering_company => com)
+food4 = FoodItem.create(:name=>'Shake', :description=> Faker::Lorem.paragraph, :price=>500, :catering_company => com)
 
 addon = FoodItemAddOn.create(:name=> 'Extra chess', :price=>5, :food_item=>food)
 
@@ -52,9 +53,9 @@ addon1 = FoodItemAddOn.create(:name=> 'Extra mayo', :price=>5, :food_item=>food)
 addon2 = FoodItemAddOn.create(:name=> 'Extra chess', :price=>5, :food_item=>food2)
 
 
-food2 = FoodItem.create(:name=>'Mozeralla', :description=>'Yumy Piza', :price=>200, :catering_company => com)
-food3 = FoodItem.create(:name=>'Sandwich', :description=>'Yumy Cheez', :price=>200, :catering_company => com)
-food4 = FoodItem.create(:name=>'Pakoras', :description=>'Yumy Shake', :price=>500, :catering_company => com)
+foodz2 = FoodItem.create(:name=>'Mozeralla', :description=> Faker::Lorem.paragraph, :price=>200, :catering_company => com)
+foodz3 = FoodItem.create(:name=>'Sandwich', :description=> Faker::Lorem.paragraph, :price=>200, :catering_company => com)
+foodz4 = FoodItem.create(:name=>'Pakoras', :description=> Faker::Lorem.paragraph, :price=>500, :catering_company => com)
 
 
 
@@ -62,6 +63,6 @@ food4 = FoodItem.create(:name=>'Pakoras', :description=>'Yumy Shake', :price=>50
 
 
 
-deal1= Deal.create(:name=>'Jumbo Deal', :description=>'Yumy Shakes and fruites', :price=>500, :catering_company => com)
-deal2= Deal.create(:name=>'Mega Deal', :description=>'Yumy Shakes and fruites', :price=>200, :catering_company => com)
+deal1= Deal.create(:name=>'Jumbo Deal', :description=> Faker::Lorem.paragraph, :price=>500, :catering_company => com)
+deal2= Deal.create(:name=>'Mega Deal', :description=> Faker::Lorem.paragraph, :price=>200, :catering_company => com)
 

@@ -9,4 +9,5 @@ class FoodItem < ActiveRecord::Base
 
 	accepts_nested_attributes_for :food_item_add_ons
 
+	mount_uploader :pico, PicoUploader
 end

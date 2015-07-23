@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dnnrvtq1g
+  api_key: '848994379669213'
+  api_secret: a4TignSvhgidXvV_TfZWBMjLgBM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dnnrvtq1g
+  api_key: '848994379669213'
+  api_secret: a4TignSvhgidXvV_TfZWBMjLgBM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dnnrvtq1g
+  api_key: '848994379669213'
+  api_secret: a4TignSvhgidXvV_TfZWBMjLgBM
+  enhance_image_tag: true
+  static_image_support: false

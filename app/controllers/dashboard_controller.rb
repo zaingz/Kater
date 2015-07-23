@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:search_results,:place_order]
   before_action :authorize_as_super_admin, only: [:super_admin]
 
   def super_admin
@@ -86,6 +86,7 @@ class DashboardController < ApplicationController
 
 
   def search_results
+
     @companies = CateringCompany.all
   end
 
