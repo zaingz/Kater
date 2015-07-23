@@ -1,0 +1,57 @@
+<a href="#" class="mycartbtn visible-xs btn btn-success">My Cart</a>
+<div class="myCartWgt sidBarWgt" id="cartbox">
+    <h3 class="h3Hdng">My Cart</h3>                        
+    <div class="box">
+        <h3 class="h3Hdng">08:00 am - 11:00 pm</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            
+            <tr>
+                <th>Items</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </tr>
+            <% total = 0 %>
+            <% get_cart_food_items.each do |item| %>
+                <tr>                    
+                    <% food_item = FoodItem.find(item['item_id']) %>
+                    <td><%=food_item.name %></td>
+                    <td>1</td>
+                    <td><%=food_item.price %> KD</td>
+                    <% total += food_item.price %>
+                </tr>
+
+                <%if item['add_on_id'] %>
+                <tr>                    
+                    <% food_item_add_on = FoodItemAddOn.find(item['add_on_id']) %>
+                    <td><%=food_item_add_on.name %></td>
+                    <td>1</td>
+                    <td><%=food_item_add_on.price %> KD</td>
+                    <% total += food_item_add_on.price %>
+                </tr>
+                <%end %>
+            <%end%>
+            
+            <!-- <tr>
+                <td>Deal2</td>
+                <td>2</td>
+                <td>10KD</td>
+            </tr>
+            <tr>
+                <td>kater Charges</td>
+                <td>0</td>
+                <td>15KD</td>
+            </tr>
+            <tr>
+                <td colspan="2">Discount</td>
+                <td>5KD</td>
+            </tr> -->
+            <tr>
+                <td colspan="2">Total</td>
+                <td><%=total%></td>
+            </tr>
+        </table>
+        <input type="button" class="btnMyCart" value="place order">
+    </div>
+</div>

@@ -13,7 +13,11 @@ class CateringCompany < ActiveRecord::Base
   validates_uniqueness_of :name, :contact_number
 
   def available_time_slots
-    self.time_slots.where.not('id not in (?)', self.inavailabilities.pluck(:time_slot_id))
+    temp = self.inavailabilities.pluck(:time_slot_id)
+    temp.append(-1)
+    self.time_slots.where('id not in (?)', temp)
+
+    
   end
   mount_uploader :pico, PicoUploader
 

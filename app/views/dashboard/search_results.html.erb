@@ -152,7 +152,7 @@
                             </div>
                             <div class="col-md-10 co-sm-9">
                                 <div class="tags">
-                                  <%=  comp.available_time_slots.first%>
+                                  
                                     <% comp.available_time_slots.each do |slot| %>
                                         <span><%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></span>
                                     <%end%>
