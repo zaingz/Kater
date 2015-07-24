@@ -40,14 +40,13 @@ input:focus, textarea:focus, select:focus{
 }
 
 #header .topmenu a{
-	faont-size:16px;
+	font-size:16px;
 	color:#3c3c3b;
 	padding:0 10px;
 }
 
 #homebody{
-	background:  no-repeat top center;
-	background-image: url('/images/home-banner-bg.jpg');
+	background:url(../images/home-banner-bg.jpg) no-repeat top center;
 	width:100%;
 	background-size:cover;
 	padding-bottom:100px;
