@@ -105,4 +105,8 @@ class DashboardController < ApplicationController
     redirect_to :back
   end
 
+  def order_page
+
+  end
+
 end

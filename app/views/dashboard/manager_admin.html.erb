@@ -179,12 +179,16 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-4">
+                <% if current_user.catering_company%>
                   <%= image_tag(current_user.catering_company.pico_url(:standard), class: 'img-thumbnail') %>
+                  <%end%>
                 </div>
                 <div class="col-xs-8 text-right">
                   <div class="huge">
                     <% if current_user.catering_company %>
                         <%= current_user.catering_company.name %>
+                        <%else%>
+                        <h3>No company yet!</h3>
                     <% end %>
 
                   </div>
