@@ -361,6 +361,7 @@ height: 100%;
 	font-weight:300;
 	color:#3c3c3b;
 }
+
 .ratings {
 	text-align:center;
 }
@@ -1991,3 +1992,4 @@ a{
 		background:url(../images/arrow-icon.png) no-repeat 98% center #fff;
 	}
 }
+

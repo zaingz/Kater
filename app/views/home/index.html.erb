@@ -22,10 +22,12 @@
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Area</label>
                                 <select class="form-control">
-                                    <option>Khaitan</option>
-                                	<option>Dasmān</option>
-                                	<option>Sharq</option>
-                                	<option>More areas will be added here...</option>
+                                  <% @cities.each do |c|%>
+                                    <option><%= c%></option>
+                                	<option><%= c%></option>
+                                	<option><%= c%></option>
+                                      <%end%>
+
                                 </select>
                             </div>             	
                         </div>

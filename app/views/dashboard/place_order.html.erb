@@ -163,9 +163,74 @@
                                     <!--Menu option END-->
                                     </div>
                                 
-                                <!--//-->
+
                             <%end%>
-                            
+
+
+                          <% @comp.deals.each_with_index do |f_item, index| %>
+                              <div class="mainmaenu clearfix">
+
+
+                                <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
+                                <div class="clearfix">
+                                  <div class="menImg col-md-3 col-sm-3 col-xs-12">
+                                    <h3 class="visible-xs"><%=f_item.name %></h3>
+                                    <%=image_tag 'deals.png' %>
+                                  </div>
+                                  <div class="menList col-md-9 col-sm-9 col-xs-12">
+                                    <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                                      <h3 class="hidden-xs"><%=f_item.name %></h3>
+                                      <p><%=f_item.description %> </p>
+                                    </div>
+                                    <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                                      <h3><%=f_item.price %> KD</h3>
+
+                                      <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!--Menu Options-->
+                                <div class="menuOptions">
+                                  <div class="clearfix ChooseItem">
+                                    <form id="<%=index %>" action="/add_item/" method="get" >
+                                      <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
+                                      <%if not f_item.food_items.empty? %>
+                                          <h3>This Deal contains:</h3>
+                                          <div class="radOpt">
+                                            <%f_item.food_items.each do |add_on| %>
+                                                <div class="radio">
+                                                  <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                                </div>
+                                            <%end%>
+
+                                            <!-- <div class="radio">
+                                              <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                                            </div>
+                                            <div class="radio">
+                                              <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                                            </div>
+                                             <div class="radio">
+                                              <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                                            </div> -->
+                                          </div>
+                                      <%end%>
+                                      <button type="submit" class="">Add to Cart</button>
+                                    </form>
+
+                                  </div>
+                                </div>
+
+                                <!-- </form> -->
+                                <!--Menu option END-->
+                              </div>
+
+                              <!--//-->
+                          <%end%>
+
+
+
+
+
                          </div>
                     </div>
                 </div> 

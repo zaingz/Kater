@@ -76,7 +76,7 @@
 </head>
 <body>
 
-  <div style="position: fixed; width: 100%; z-index: 100;" id="header">
+  <div style=" width: 100%; z-index: 100;" id="header">
       <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid clearfix">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -100,7 +100,11 @@
               <a href="arabic/index.html" lang="ar" dir="rtl">العربیہ</a>
               <!-- Modal HTML --> 
             <%else%>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>  
+                <%= link_to(current_user.email, user_account_page_path) %>
+                |
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+
             <%end%>                          
           
           </div>

@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 	before_action :authorize_as_admin, :only => [:dashboard]
 
   	def index
+			@cities = CateringCompany.all.pluck(:city)
+			@cities & @cities
 		if current_user
 			if current_user.level==1
 				redirect_to :controller => 'dashboard', :action => 'super_admin'

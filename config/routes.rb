@@ -44,8 +44,9 @@ Rails.application.routes.draw do
   get '/place/order/:id' => 'dashboard#place_order'
   get '/add_item/' => 'dashboard#add_item_to_cart'
   
+  get '/user/account' => 'dashboard#user_account_page', as: :user_account_page
 
-  
+
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'
   delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'
   delete '/admin/dashboard/manage_company/delete/:id' => 'dashboard#destroy_comp'
