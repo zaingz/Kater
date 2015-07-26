@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="sideBar">
-                    
+
                     <!--  -->
                     <%= render "cart" %>
                     <!--  -->
@@ -21,23 +21,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">              
+            <div class="col-md-9">
                  <div class="innerbannertwo bx-wrapper">
                     <ul class="bxslider">
                         <li><%=image_tag 'inner-banner-two.jpg' %></li>
                         <li><%=image_tag 'inner-banner-two.jpg' %></li>
-                    </ul>                
+                    </ul>
                 <div class="pageouter">
                   <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
                 </div>
-                 </div> 
-                 <div class="mainContentTop tabsContent">
-                    <h2 class="h2Hdng">Place Order</h2> 
                  </div>
-                <div class="contentbdox">   
+                 <div class="mainContentTop tabsContent">
+                    <h2 class="h2Hdng">Place Order</h2>
+                 </div>
+                <div class="contentbdox">
                     <div class="celenderbox">
                         <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-12">                            
+                            <div class="col-md-3 col-sm-3 col-xs-12">
                                 <big class="hidden-xs">Select the date</big>
                                 <div class="dates visible-xs">
                                     <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
@@ -46,16 +46,16 @@
                                 </div>
                                 <div class="dates visible-xs">
                                     <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>Thur 16</span>   
+                                    <span>Thur 16</span>
                                     <span>Fri 15</span>
                                     <span>Sat 14</span>
                                     <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
-                                </div>  
+                                </div>
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-12 hidden-xs">
                                 <div class="dates">
                                     <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>April Thursday 16   &nbsp;|&nbsp;</span>   
+                                    <span>April Thursday 16   &nbsp;|&nbsp;</span>
                                     <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
                                     <span>April Saturday 18</span>
                                     <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
@@ -64,11 +64,11 @@
                             <div class="col-md-1 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
                         </div>
                     </div>
-                </div>  
-                <div class="productbox"> 
+                </div>
+                <div class="productbox">
                         <div class="row">
                         <div class="col-md-2 col-sm-3">
-                            <div class="img-thumbnail">                             
+                            <div class="img-thumbnail">
                                 <%=image_tag 'cater-img.jpg' %>
                             </div><br />
                             <a href="#"><%=@comp.name%></a>
@@ -101,7 +101,7 @@
                             <div class="bottominfo">
                                 <p>Note: Your serving time is <span>08:00 PM</span></p>
                                 <a href="#" class="btn btn-warning">order now</a>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,11 +109,11 @@
                     <div class="myMenu">
                         <div class="table-responsive menudtL">
 
-                            
-                            <% @comp.food_items.each_with_index do |f_item, index| %>                                                                
+
+                            <% @comp.food_items.each_with_index do |f_item, index| %>
                                     <div class="mainmaenu clearfix">
-                                        
-                                        
+
+
                                             <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
                                             <div class="clearfix">
                                                 <div class="menImg col-md-3 col-sm-3 col-xs-12">
@@ -127,7 +127,7 @@
                                                     </div>
                                                     <div class="me2 col-md-3 col-sm-3 col-xs-12">
                                                         <h3><%=f_item.price %> KD</h3>
-                                                        
+
                                                         <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
                                                     </div>
                                                 </div>
@@ -139,13 +139,13 @@
                                                     <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                                                     <%if not f_item.food_item_add_ons.empty? %>
                                                         <h3>Please choose an add on</h3>
-                                                        <div class="radOpt">                                                
+                                                        <div class="radOpt">
                                                             <%f_item.food_item_add_ons.each do |add_on| %>
                                                                  <div class="radio">
                                                                     <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
                                                                 </div>
                                                             <%end%>
-                                                            
+
                                                             <!-- <div class="radio">
                                                               <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
                                                             </div>
@@ -160,13 +160,13 @@
                                                      <button type="submit" class="">Add to Cart</button>
                                                      </form>
 
-                                                </div>                                                                                    
+                                                </div>
                                             </div>
-                                        
+
                                         <!-- </form> -->
                                     <!--Menu option END-->
                                     </div>
-                                
+
 
                             <%end%>
 
@@ -238,21 +238,21 @@
 
                          </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
      <!-- </form> -->
-    </div>    
-    
+    </div>
+
     <div id="footertop">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <h3>Useful Links</h3>
                     <div class="links">
-                        <a href="about-us.html">About Kater</a>     
-                        <a href="privacy-policy.html">Privacy Policy</a>        
-                        <a href="terms-and-condition.html">Terms & Conditions</a>       
+                        <a href="about-us.html">About Kater</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-and-condition.html">Terms & Conditions</a>
                         <a href="get-in-touch.html">Contact Us</a>
                     </div>
                 </div>
@@ -275,13 +275,13 @@
             </div>
         </div>
     </div>
-    
+
     <div id="footerbottom">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-sm-7">
                     <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
-                    <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>                    
+                    <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>
                 </div>
                 <div class="col-md-6 col-sm-5">
                     <div class="payicons">
@@ -300,19 +300,19 @@
             </div>
         </div>
     </div>
-    
-    <script type="text/javascript"> 
+
+    <script type="text/javascript">
         var $document = $(document),
         $element = $('.myCartWgt'),
         $elementsidebar = $('.sideBar'),
         className = 'hoveradd';
         sideclassName = 'sidebarhoverad';
-        
+
         $(window).scroll(function() {
           $element.toggleClass(className, $document.scrollTop() >= 50);
           $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
         });
-        
+
     $(document).ready(function(e) {
         $(".viewOrder").click(function(e) {
             $(this).parent().parent().hide();
@@ -348,26 +348,26 @@
                 $(this).parent().parent().parent().next().slideDown();
             }
         });
-    }); 
+    });
         $(document).ready(function(){
             $('.bxslider').bxSlider({
-                auto: true, 
+                auto: true,
               nextSelector: '#slider-next',
               prevSelector: '#slider-prev',
             });
             $('.datepicker').datepicker();
-    
+
             $(".mycartbtn").click( function (){
                 $(".myCartWgt").toggle();
             });
-        });  
-        
+        });
+
     var $document = $(document),
     $elementss = $('#header'),
-    elementsidebar = 'headerfixed' 
-    
+    elementsidebar = 'headerfixed'
+
     $(window).scroll(function() {
-      $elementss.toggleClass(elementsidebar, $document.scrollTop() >= 50); 
+      $elementss.toggleClass(elementsidebar, $document.scrollTop() >= 50);
     });
 
     </script>

@@ -145,6 +145,7 @@ class DashboardController < ApplicationController
 
   end
 
+
   def select_time_slot
     cart = cookies.fetch(:cart, '{}')
     cart = JSON.parse(cart)
@@ -152,6 +153,12 @@ class DashboardController < ApplicationController
     cookies[:cart] = JSON.generate(cart) 
 
     redirect_to :back
+  end
+
+
+
+  def order_final_page
+
   end
 
 
