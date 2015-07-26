@@ -118,4 +118,8 @@ class DashboardController < ApplicationController
 
   end
 
+  def cater_page
+
+  end
+
 end

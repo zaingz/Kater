@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   
   get '/user/account' => 'dashboard#user_account_page', as: :user_account_page
 
+  get '/catering/company/:id' => 'dashboard#cater_page'
+
 
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'
   delete '/admin/dashboard/manage_users/delete/:id' => 'dashboard#destroy_user'
