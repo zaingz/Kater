@@ -30,7 +30,7 @@
 
 
       <div class="mainContentTop tabsContent">
-        <h2 class="h2Hdng">My Cart</h2>
+        <h2 class="h2Hdng">Checkout</h2>
       </div>
       <div class="contentbdox">
         <div class="abovedate">April 28 Friday   |   6:00 PM - 9:00 PM</div>
@@ -60,7 +60,10 @@
           <div class="celenderdate">
             <div class="span1">
               <img src="images/johnyLogo.png" class="pull-left"/>
-              <h2><a href="#mydeal" data-toggle="modal">johnny Rockets</a></h2>
+              <h2><a href="#">johnny Rockets</a></h2>
+            </div>
+            <div class="span2">
+              <a href="#mydeal" data-toggle="modal">Deal 01</a>
               <div id="mydeal" class="modal fade">
 
                 <div class="modal-dialog">
@@ -106,9 +109,6 @@
                 </div>
               </div>
             </div>
-            <div class="span2">
-              Deal 01
-            </div>
             <div class="span3">
               <div class="input-group">
                                   <span class="input-group-btn">
@@ -137,7 +137,10 @@
           <div class="celenderdate">
             <div class="span1">
               <img src="images/johnyLogo.png" class="pull-left"/>
-              <h2><a href="#mydeal" data-toggle="modal">johnny Rockets</a></h2>
+              <h2><a href="#">johnny Rockets</a></h2>
+            </div>
+            <div class="span2">
+              <a href="#mydeal" data-toggle="modal">Deal 01</a>
               <div id="mydeal" class="modal fade">
 
                 <div class="modal-dialog">
@@ -175,16 +178,13 @@
                           </div>
                         </div>
                         <div class="listdeals text-center">
-                          <a href="#" class="btn btn-close">Close</a>
+                          <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="span2">
-              Deal 01
             </div>
             <div class="span3">
               <div class="input-group">
@@ -211,14 +211,25 @@
               <a href="#">x</a>
             </div>
           </div>
-
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="innerpage">
               <div class="carttop clearfix">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <table class="table">
+
+                    <tr class="nobord">
+                      <td>
+                        Special Request for this order comes here.
+                      </td>
+                    </tr>
+                    <tr class="nobord">
+                      <td style="font-size:14px">
+                        All Female Servers   |   Arabic Speaking Only
+                      </td>
+                    </tr>
+
                     <tr class="subTotl">
                       <td>
                         Sub Total
@@ -241,14 +252,107 @@
                     </tr>
                   </table>
                 </div>
-                <div class="col-md-6">
-                  <textarea rows="5" class="form-control" placeholder="Special Request"></textarea>
-                </div>
               </div>
-              <div class="cartbuttons clearfix text-center">
-                <a href="#" class="btn btn-close-two">Add More</a>
-                <a href="/order/final/checkout/" class="btn btn-close">order now</a>
-                <a href="#" class="btn btn-close-two">Clear all</a>
+              <div class="row customForm">
+                <h3 class="customTitle clearfix">Billing Address</h3>
+                <div class="row alradytext">Already register? <a href="#">LOGIN</a></div>
+                <form class="clearfix">
+                  <div class="col-sm-6">
+                    <input placeholder="First Name" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Last Name" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Email" type="email">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Mobile Number" type="text">
+                  </div>
+                  <div class="col-sm-12">
+                    <input placeholder="Street Address" type="text">
+                  </div>
+                  <div class="col-sm-12">
+                    <input placeholder="Street Address (optional)" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="City" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="State" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Zip Code" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Country" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Password" type="text">
+                  </div>
+                  <div class="col-sm-6">
+                    <input placeholder="Confirm Password" type="text">
+                  </div>
+                </form>
+              </div>
+              <div class="row customForm">
+                <h3 class="customTitle clearfix">Payment Method</h3>
+                <div class="row alradytext">
+                  <div class="col-md-8 col-md-offset-3">
+                    <div class="col-md-5">
+                      <label class="radio-inline"> <input type="radio" name="payments" value="cashcard" checked="checked" />Cash on Delivery</label>
+                    </div>
+                    <div class="col-md-5">
+                      <label class="radio-inline"> <input type="radio" name="payments" value="creditcard" />Credit Card</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="selectpayment">
+                  <div class="alradypay">
+                    <div class="col-md-11 col-md-offset-1">
+                      <div class="col-md-2">
+                        <label class="radio-inline"> <input type="radio" /> <img src="images/pay-icon-1.jpg" /></label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="radio-inline"> <input type="radio" /> <img src="images/pay-icon-2.jpg" /></label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="radio-inline"> <input type="radio" /> <img src="images/pay-icon-3.jpg" /></label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="radio-inline"> <input type="radio" /> <img src="images/pay-icon-4.jpg" /></label>
+                      </div>
+                      <div class="col-md-2">
+                        <label class="radio-inline"> <input type="radio" /> <img src="images/pay-icon-5.jpg" /></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix customForm">
+                    <div class="col-md-12">
+                      <div class="col-sm-6">
+                        <label class="control-label">Card Holder</label>
+                        <input type="text" placeholder="Name">
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label">Card Number</label>
+                        <input type="text" placeholder="0000 0000 0000">
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label">Valid Through</label>
+                        <input type="text" placeholder="MM/YY">
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label">CVC</label>
+                        <input type="text" placeholder="000">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <a href="#" class="btn btn-close">Place order</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -256,7 +360,6 @@
       </div>
     </div>
   </div>
-  </form>
 </div>
 
 <div id="footertop">
@@ -334,6 +437,7 @@
             $(this).parent().parent().prev().show();
         });
     });
+
     $(document).ready(function(){
         $('.bxslider').bxSlider({
             auto: true	 ,
@@ -341,31 +445,39 @@
             prevSelector: '#slider-prev',
         });
 
+        $('input[name="payments"]').click(function(){
+            if($(this).attr("value")=="creditcard"){
+                $("#selectpayment").show();
+            }
+            if($(this).attr("value")=="cashcard"){
+                $("#selectpayment").hide();
+            }
+        });
+
         $(".mycartbtn").click( function (){
             $(".myCartWgt").toggle();
         });
+
     });
 
     var $document = $(document),
-            $elementx = $('.myCartWgt'),
+            $element = $('.myCartWgt'),
             $elementsidebar = $('.sideBar'),
-            classNamex = 'hoveradd';
+            className = 'hoveradd';
     sideclassName = 'sidebarhoverad';
 
     $(window).scroll(function() {
-        $elementx.toggleClass(classNamex, $document.scrollTop() >= 50);
+        $element.toggleClass(className, $document.scrollTop() >= 50);
         $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
     });
 
     var $document = $(document),
-            $element = $('#header'),
+            $elementss = $('#header'),
             elementsidebar = 'headerfixed'
 
     $(window).scroll(function() {
-        $element.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+        $elementss.toggleClass(elementsidebar, $document.scrollTop() >= 50);
     });
-
-
     // count one
     $('.btn-number').click(function(e){
         e.preventDefault();
@@ -437,5 +549,4 @@
             e.preventDefault();
         }
     });
-
 </script>

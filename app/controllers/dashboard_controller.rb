@@ -134,4 +134,8 @@ class DashboardController < ApplicationController
 
   end
 
+  def order_final_page
+
+  end
+
 end
