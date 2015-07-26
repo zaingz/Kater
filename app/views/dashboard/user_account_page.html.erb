@@ -2,7 +2,7 @@
 
 
 <div class="container-fluid" id="innerpage">
-  <form>
+  <!-- <form> -->
     <div class="row">
       <div class="col-md-3">
         <div class="sideBar">
@@ -65,92 +65,103 @@
         <div class="contentbdox">
           <div class="innerpage">
             <div class="row">
+              <%= form_for current_user, url: registration_path( current_user), mehotd: 'PUT' do |f| %>
               <div class="col-md-12">
                 <div id="accountInfo1" class="accInfo">
+
                   <div class="row customForm">
-                    <form class="clearfix">
+                    <!-- <form class="clearfix"> -->
+                    
                       <div class=" col-sm-6">
-                        <label>First Name</label>
-                        <input type="text" class="" placeholder="Khalid">
+                        <%= f.label :first_name %>
+                        <%= f.text_field :first_name %>
+                        <!-- <label>First Name</label> -->
+
+                        <!-- <input type="text" value="<%= current_user.first_name %>" class="" placeholder="First Name"> -->
                       </div>
                       <div class="col-sm-6">
-                        <label>Last Name</label>
-                        <input type="text" class="" placeholder="Al-Amiri">
+                        <%= f.label :last_name %>
+                        <%= f.text_field :last_name %>
+                        <!-- <label>Last Name</label>
+                        <input type="text" value="" class="" placeholder="Last Name"> -->
                       </div>
                       <div class=" col-sm-6">
-                        <label>Mobile Number</label>
-                        <input type="text" class="" placeholder="66957070">
+                        <!-- <label>Mobile Number</label>
+                        <input type="text" value="<%= current_user.mobile_number1 %>" class="" placeholder=""> -->
+                        <%= f.label :mobile_number1 %>
+                        <%= f.text_field :mobile_number1 %>
                       </div>
                       <div class=" col-sm-6">
-                        <label>Other Number</label>
-                        <input type="text" class="" placeholder="66957070">
+                        <%= f.label :mobile_number2 %>
+                        <%= f.text_field :mobile_number2 %>
+                        <!-- <label>Other Number</label>
+                        <input type="text" value="<%= current_user.mobile_number2 %>" class="" placeholder=""> -->
                       </div>
                       <div class="clearfix">
-                        <div class=" col-sm-6">
-                          <label>Birthday</label>
-                          <div class="clearfix birthdaySelects">
-                            <select class="daySelect">
-                              <option>5</option>
-                              <option>6</option>
-                              <option>7</option>
-                            </select>
-                            <select class="monthSelect">
-                              <option>December</option>
-                              <option>Janauary</option>
-                              <option>February</option>
-                            </select>
-                            <select class="yearSelect">
-                              <option>1991</option>
-                              <option>1992</option>
-                              <option>1993</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class=" col-sm-6">
+                        <!-- <div class=" col-sm-6"> -->
+                          <!-- <label>Birthday</label> -->
+                          <%= f.label :birthdate %>
+                          <%= f.text_field :birthdate, class: 'form-control datepicker' %>
+                          <script type="text/javascript">
+                            $('.datepicker').datepicker(
+                              {
+                                format: 'yyyy-mm-dd'
+                              });
+                          </script>
+                          
+                        <!-- </div> -->
+                        <!-- <div class=" col-sm-6">
                           <label><input type="checkbox">
                             Subscribe to Kater Newsletter</label>
                           <label><input type="checkbox">
                             Keep me posted by Kater SMS</label>
-                        </div>
-                      </div>
+                        </div> -->
+                      
+                      
                       <div class=" col-sm-6">
-                        <label>Occupation</label>
-                        <input type="text" class="" placeholder="Student">
+                        <%= f.label :occupation %>
+                        <%= f.text_field :occupation %>
                         <div class="row">
                           <div class="col-sm-6 col-md-4">
-                            <label><input type="radio"> Male</label>
+                            <%= f.label :gender %>
+                            <%= f.select :gender, [ 'Male', 'Female', 'Other' ],selected: current_user.gender , prompt: 'Select One' %>
+                            
                           </div>
-                          <div class="col-sm-6 col-md-8">
-                            <label><input type="radio"> Female </label>
-                          </div>
+                          <!-- <div class="col-sm-6 col-md-8">
+                            <label><%= f.text_field :occupation %> Female </label>
+                          </div> -->
                         </div>
                       </div>
-                      <div class="col-sm-6 text-right margtop">
+                      <!-- <div class="col-sm-6 text-right margtop">
                         <input type="submit" value="Save Changes" />
-                      </div>
-                    </form>
+                      </div> -->
+                      
+                    <!-- </form> -->
                   </div>
                   <div class="row customForm">
-                    <h3 class="customTitle clearfix">Change Password</h3>
-                    <form class="clearfix">
+                    <!-- <h3 class="customTitle clearfix">Change Password</h3> -->
+                    <!-- <form class="clearfix"> -->
                       <div class="col-sm-12">
-                        <label>Current Password</label>
-                        <input type="password" />
+                        <%= f.label :current_password %>
+                        <%= f.password_field :current_password %>
                       </div>
                       <div class="col-sm-6">
-                        <label>New Password</label>
-                        <input type="password" />
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
                       </div>
                       <div class="col-sm-6">
-                        <label>Confirm Password</label>
-                        <input type="password" />
+                        <%= f.label :password_confirmation %>
+                        <%= f.password_field :password_confirmation %>
                       </div>
                       <div class="col-sm-12 text-right">
                         <input type="submit" value="Save Changes" />
                       </div>
-                    </form>
+                      
+                    <!-- </form> -->
                   </div>
-                  <div class="row customForm">
+                  <%end %>
+                  <br>
+                  <!-- <div class="row customForm">
                     <h3 class="customTitle clearfix">Change Email</h3>
                     <form class="clearfix">
                       <div class="col-sm-12">
@@ -169,41 +180,68 @@
                         <input type="submit" value="Save Changes" />
                       </div>
                     </form>
-                  </div>
+                  </div> -->
                   <div class="row customForm">
                     <h3 class="customTitle clearfix">Billing Address</h3>
-                    <form class="clearfix">
-                      <div class="col-sm-6">
+
+
+                    <!-- <form class="clearfix"> -->
+                    <%= form_for @address do |f| %>
+
+                      <% if @address.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@address.errors.count, "error") %> prohibited this food_item from being saved:</h2>
+
+                          <ul>
+                          <% @address.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                      <!-- <div class="col-sm-6">
+                        
                         <input type="text" placeholder="First Name" />
                       </div>
                       <div class="col-sm-6">
                         <input type="text" placeholder="Last Name" />
+                      </div> -->
+                      <div class="col-sm-6">
+                        <%= f.text_field :full_name, :placeholder => "Full Name" %>
                       </div>
                       <div class="col-sm-6"  id="myOrders">
-                        <input type="email" placeholder="Email" />
+                        <%= f.email_field :email, :placeholder => "Email" %>
+                        
                       </div>
                       <div class="col-sm-6">
-                        <input type="text" placeholder="Mobile Number" />
+                        <%= f.text_field :mobile_number1, :placeholder => "Mobile Number" %>
+                        <!-- <input type="text" placeholder="Mobile Number" /> -->
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.text_field :mobile_number2, :placeholder => "Mobile Number (optional)" %>
+                        <!-- <input type="text" placeholder="Mobile Number" /> -->
                       </div>
                       <div class="col-sm-12">
-                        <input type="text" placeholder="Street Address" />
+                        <%= f.text_field :street_address, :placeholder => "Street Address" %>
                       </div>
                       <div class="col-sm-12">
-                        <input type="text" placeholder="Street Address (optional)" />
+                      <%= f.text_field :street_address_opt, :placeholder => "Street Address (optional)" %>                        
                       </div>
                       <div class="col-sm-12">
-                        <select class="form-control" name="Area" style="color:#bababa;">
+                        <%= f.select :city, KUWAIT_CITIES , prompt: 'Select One' %>
+                        <!-- <select class="form-control" name="Area" style="color:#bababa;">
                           <option>Area</option>
                           <option>Dasmān</option>
                           <option>Sharq</option>
                           <option>Dasma</option>
                           <option>More areas will be added here...</option>
-                        </select>
+                        </select> -->
                       </div>
                       <div class="col-sm-12 text-right">
-                        <input type="submit" value="Save Changes" />
+                        <input class="btn btn-primary" type="submit" value="Save Changes" />
                       </div>
-                    </form>
+                    <!-- </form> -->
+                    <%end %>
                   </div>
                 </div>
               </div>
@@ -848,7 +886,7 @@
 
       </div>
     </div>
-  </form>
+  <!-- </form> -->
 </div>
 
 <div id="footertop">

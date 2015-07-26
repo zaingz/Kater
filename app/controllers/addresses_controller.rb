@@ -19,13 +19,13 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-
+    @address.user = current_user
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'user_account_page' }
         format.json { render :show, status: :created, location: @address }
       else
-        format.html { render :new }
+        format.html { render "dashboard/user_account_page" }
         format.json { render json: @address.errors, status: :unprocessable_entity }
       end
     end
@@ -58,6 +58,7 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:city, :country,  :full_name, :state, :street_address,:zip_code, :user_id )
+    params.require(:address).permit( :city, :country , 
+      :mobile_numer1,:mobile_numer2,:email,  :full_name, :street_address, :street_address_opt, :user_id )
   end
 end

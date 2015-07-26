@@ -110,7 +110,7 @@ class DashboardController < ApplicationController
   end
 
   def user_account_page
-
+    @address = Address.new
   end
 
 end

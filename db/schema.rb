@@ -17,16 +17,18 @@ ActiveRecord::Schema.define(version: 20150723115015) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "full_name",                 default: "", null: false
-    t.string   "street_address",            default: "", null: false
-    t.string   "city",           limit: 25, default: "", null: false
-    t.string   "state",          limit: 25, default: "", null: false
-    t.string   "country",        limit: 25, default: "", null: false
-    t.integer  "zip_code",                               null: false
+    t.string   "full_name",                     default: "",       null: false
+    t.string   "street_address",                default: "",       null: false
+    t.string   "street_address_opt",            default: ""
+    t.string   "mobile_number1",                default: "",       null: false
+    t.string   "mobile_number2",                default: ""
+    t.string   "email",                         default: ""
+    t.string   "city",               limit: 25, default: "",       null: false
+    t.string   "country",            limit: 25, default: "Kuwait"
     t.integer  "user_id"
     t.integer  "order_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "catering_companies", force: :cascade do |t|

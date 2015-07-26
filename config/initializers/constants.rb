@@ -1,0 +1,1 @@
+KUWAIT_CITIES = ["Dasmān", "Sharq ","Dasma","Da'iya","Sawābir","Mirgāb", "Jibla","Salhiya","Bneid il-Gār","Keifan","Mansūriya","Abdullah as-Salim suburb","Nuzha","Faiha'","Shamiya","Rawda","Adiliya","Khaldiya ","Qadsiya","Qurtuba","Surra","Yarmūk","Shuwaikh","Rai","Ghirnata","Sulaibikhat","Doha","Nahdha","Jabir al-Ahmad City","Qairawān"]
