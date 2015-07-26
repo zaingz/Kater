@@ -8,5 +8,7 @@ class Deal < ActiveRecord::Base
 	belongs_to :order_item
 
 
+	mount_uploader :pico, PicoUploader
+
 
 end

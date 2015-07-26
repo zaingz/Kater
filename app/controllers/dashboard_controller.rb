@@ -84,6 +84,11 @@ class DashboardController < ApplicationController
   # 	params.permit(:id)
   # end
 
+  def manage_time_slots
+    @time_slot = TimeSlot.new
+
+  end
+
 
   def search_results
 

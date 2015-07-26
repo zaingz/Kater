@@ -3,8 +3,8 @@ class CreateTimeSlots < ActiveRecord::Migration
     create_table :time_slots do |t|
 
       t.string :tittle, null: false, default: ""
-      t.datetime :start_time
-      t.datetime :end_time
+      t.time :start_time
+      t.time :end_time
 
       t.references :catering_company
 

@@ -76,7 +76,7 @@
 </head>
 <body>
 
-  <div style=" width: 100%; z-index: 100;" id="header">
+  <div style="position:<%=current_user &&  (current_user.level==2 ||current_user.level==1) ? 'fixed' : '' %>; width: 100%; z-index: 100;" id="header">
       <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid clearfix">
           <!-- Brand and toggle get grouped for better mobile display -->
