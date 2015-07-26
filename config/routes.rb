@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   get '/order/checkout/' => 'dashboard#order_page'
   get '/place/order/:id' => 'dashboard#place_order'
   get '/add_item/' => 'dashboard#add_item_to_cart'
-  
+  get '/add_deal/:id/' => 'dashboard#add_deal_to_cart'
+
+
   get '/user/account' => 'dashboard#user_account_page', as: :user_account_page
 
   get '/catering/company/:id' => 'dashboard#cater_page'

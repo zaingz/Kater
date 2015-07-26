@@ -9,7 +9,8 @@
             
             <tr>
                 <th>Items</th>
-                <th>Qty</th>
+                <th></th>
+
                 <th>Price</th>
             </tr>
             <% total = 0 %>
@@ -17,7 +18,7 @@
                 <tr>                    
                     <% food_item = FoodItem.find(item['item_id']) %>
                     <td><%=food_item.name %></td>
-                    <td>1</td>
+                    <td></td>
                     <td><%=food_item.price %> KD</td>
                     <% total += food_item.price %>
                 </tr>
@@ -26,11 +27,22 @@
                 <tr>                    
                     <% food_item_add_on = FoodItemAddOn.find(item['add_on_id']) %>
                     <td><%=food_item_add_on.name %></td>
-                    <td>1</td>
+                    <td></td>
                     <td><%=food_item_add_on.price %> KD</td>
                     <% total += food_item_add_on.price %>
                 </tr>
                 <%end %>
+            <%end%>
+
+            <% get_cart_deals.each do |item| %>
+                <tr>                    
+                    <% food_item = Deal.find(item['item_id']) %>
+                    <td><%=food_item.name %></td>
+                    <td></td>
+                    <td><%=food_item.price %> KD</td>
+                    <% total += food_item.price %>
+                </tr>
+                
             <%end%>
             
             <!-- <tr>
@@ -54,6 +66,23 @@
         </table>
 
         <a type="button" class="btnMyCart" value="place order" href="http://localhost:3000/order/checkout/">place order</a>
-      <a style="margin-top: 10px; background: firebrick;"  type="button" class="btnMyCart"  value="clear cart" href="#">Clear Cart</a>
+        <button style="margin-top: 10px; background: firebrick;"  type="button" class="btnMyCart"  value="clear cart" onclick="deleteAllCookies('cart')">Clear Cart</button>
+
+        <script type="text/javascript">
+            function deleteAllCookies(name) {
+                // This function will attempt to remove a cookie from all paths.
+                var pathBits = location.pathname.split('/');
+                var pathCurrent = ' path=';
+
+                // do a simple pathless delete first.
+                document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+
+                for (var i = 0; i < pathBits.length; i++) {
+                    pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+                    document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+                }
+                window.location.reload();
+            }
+        </script>
     </div>
 </div>

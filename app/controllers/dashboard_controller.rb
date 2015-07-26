@@ -110,6 +110,18 @@ class DashboardController < ApplicationController
     redirect_to :back
   end
 
+  def add_deal_to_cart
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    deals = cart.fetch("deals", [])
+    deals.append(  {item_id: params[:id]}  )
+    cart["deals"] = deals
+    cookies[:cart] = JSON.generate(cart)   
+    
+    redirect_to :back
+  end
+
+
   def order_page
 
   end

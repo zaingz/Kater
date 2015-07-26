@@ -190,9 +190,10 @@
                                   </div>
                                 </div>
                                 <!--Menu Options-->
+                                
                                 <div class="menuOptions">
                                   <div class="clearfix ChooseItem">
-                                    <form id="<%=index %>" action="/add_item/" method="get" >
+                                    <!-- <form id="<%=index %>" action="/add_item/" method="get" > -->
                                       <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                                       <%if not f_item.food_items.empty? %>
                                           <h3>This Deal contains:</h3>
@@ -214,8 +215,8 @@
                                             </div> -->
                                           </div>
                                       <%end%>
-                                      <button type="submit" class="">Add to Cart</button>
-                                    </form>
+                                      <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/" %>
+                                    <!-- </form> -->
 
                                   </div>
                                 </div>
