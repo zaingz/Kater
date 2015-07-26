@@ -134,6 +134,18 @@ class DashboardController < ApplicationController
 
 
   def order_page
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    food_items = cart.fetch("food_items", [])
+    food_item_id_list = food_items.collect {|key,value| key["item_id"]}
+
+
+
+    deals = cart.fetch("deals", [])
+    deals_id_list = deals.collect {|key,value| key["item_id"]}
+
+    @food_items = food_item_id_list.collect {|f| FoodItem.find f} 
+    @deals = deals_id_list.collect {|f| Deal.find f} 
 
   end
 
@@ -159,6 +171,22 @@ class DashboardController < ApplicationController
 
   def order_final_page
 
+
+
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    cart[:special_request] = params[:special_request]
+    cookies[:cart] = JSON.generate(cart)
+    food_items = cart.fetch("food_items", [])
+    food_item_id_list = food_items.collect {|key,value| key["item_id"]}
+
+
+
+    deals = cart.fetch("deals", [])
+    deals_id_list = deals.collect {|key,value| key["item_id"]}
+
+    @food_items = food_item_id_list.collect {|f| FoodItem.find f} 
+    @deals = deals_id_list.collect {|f| Deal.find f} 
   end
 
 

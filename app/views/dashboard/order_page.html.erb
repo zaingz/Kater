@@ -33,7 +33,8 @@
         <h2 class="h2Hdng">My Cart</h2>
       </div>
       <div class="contentbdox">
-        <div class="abovedate">April 28 Friday   |   6:00 PM - 9:00 PM</div>
+        <% slot = get_selected_time_slots%>
+        <div class="abovedate"><%=Date.current.strftime("%B %d %A") %>  |   <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></div>
         <div class="row ">
           <div class="datetwo clearfix">
             <div class="span1">
@@ -57,46 +58,35 @@
           </div>
         </div>
         <div class="row">
+          <%total = 0%>
+          <%@food_items.each_with_index do |item, index|%>
           <div class="celenderdate">
+            
+                
             <div class="span1">
               <img src="images/johnyLogo.png" class="pull-left"/>
-              <h2><a href="#mydeal" data-toggle="modal">johnny Rockets</a></h2>
-              <div id="mydeal" class="modal fade">
+              
+
+              <h2><a href='#<%= "food_item_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
+              <div id='<%= "food_item_#{index}" %>' class="modal fade">
 
                 <div class="modal-dialog">
 
                   <div class="modal-content">
                     <div class="modal-body createpopup deals">
-                      <h2>Deal 1</h2>
+                      <h2><%=item.name%> | attached add ons</h2>
                       <div class="row">
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            chicken club sandwich
-                            <span>Serve in the box</span>
+                        <%attached_add_ons = get_food_item_add_ons(item.id.to_s)%>
+                        <%attached_add_ons.each do |add_on|%>
+                          <div class="listdeals">
+                            <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
+                            <div class="col-md-8">
+                              <%=add_on.name%>
+                              <!-- <span>Serve in the box</span> -->
+                            </div>
                           </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Houstan
-                            <span></span>
-                          </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Chili cheeese
-                            <span></span>
-                          </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Delux shake
-                            <span>Serve in the glass</span>
-                          </div>
-                        </div>
+                        <%end%>
+                        
                         <div class="listdeals text-center">
                           <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
                         </div>
@@ -106,76 +96,87 @@
                 </div>
               </div>
             </div>
+            
             <div class="span2">
-              Deal 01
+              <%=item.name%>
             </div>
             <div class="span3">
               <div class="input-group">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field='quant[<%="f_#{item.id}_#{index}" %>]'>
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
-                <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                <input id='<%= "f___#{item.id}_#{index}" %>' type="text" name="quant[<%="f_#{item.id}_#{index}" %>]" class="form-control input-number" value="1" min="1" max="10">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[1]">
+                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="f_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
                                       </button>
                                   </span>
+
               </div>
+              <script type="text/javascript">
+                $(function(){
+                $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+
+                $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+                $('#grand_total').html(parseInt($('#grand_total').html())+parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+
+                $( '#<%= "f___#{item.id}_#{index}" %>' ).change(function() {
+                  $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($(this).val())*<%=item.price%>);
+                  $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
+                  $('#grand_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
+                });
+              });
+              </script>
             </div>
             <div class="span4">
-              999.000
+              <%=item.price%>
+              <%total += item.price%>
             </div>
             <div class="span5">
-              9990.000
+              <span id='<%="f___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
               <a href="#">x</a>
             </div>
           </div>
+          <%end%>
+
+          <!--  -->
+          <!--  -->
+          <!-- Deals -->
+
+
+          <%@deals.each_with_index do |item, index|%>
           <div class="celenderdate">
+            
+                
             <div class="span1">
               <img src="images/johnyLogo.png" class="pull-left"/>
-              <h2><a href="#mydeal" data-toggle="modal">johnny Rockets</a></h2>
-              <div id="mydeal" class="modal fade">
+              
+
+              <h2><a href='#<%= "deal_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
+              <div id='<%= "deal_#{index}" %>' class="modal fade">
 
                 <div class="modal-dialog">
 
                   <div class="modal-content">
                     <div class="modal-body createpopup deals">
-                      <h2>Deal 1</h2>
+                      <h2><%=item.name%> Food Items</h2>
                       <div class="row">
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            chicken club sandwich
-                            <span>Serve in the box</span>
+                        <%item.food_items.each do |f_item|%>
+                          <div class="listdeals">
+                            <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
+                            <div class="col-md-8">
+                              <%=f_item.name%>
+                              <!-- <span>Serve in the box</span> -->
+                            </div>
                           </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Houstan
-                            <span></span>
-                          </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Chili cheeese
-                            <span></span>
-                          </div>
-                        </div>
-                        <div class="listdeals">
-                          <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                          <div class="col-md-8">
-                            Delux shake
-                            <span>Serve in the glass</span>
-                          </div>
-                        </div>
+                        <%end%>
+                        
                         <div class="listdeals text-center">
-                          <a href="#" class="btn btn-close">Close</a>
+                          <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
                         </div>
                       </div>
                     </div>
@@ -183,76 +184,98 @@
                 </div>
               </div>
             </div>
+            
             <div class="span2">
-              Deal 01
+              <%=item.name%>
             </div>
             <div class="span3">
               <div class="input-group">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number"  data-type="minus" data-field="quant[2]">
+                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
-                <input type="text" name="quant[2]" class="form-control input-number" value="10" min="1" max="100">
+                <input id='<%= "d___#{item.id}_#{index}" %>' type="text" name="quant[<%="d_#{item.id}_#{index}" %>]" class="form-control input-number" value="1" min="1" max="10">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[2]">
+                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
                                       </button>
                                   </span>
+
               </div>
+              <script type="text/javascript">
+                $(function(){
+                $('#<%="d___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+                $('#sub_total').html(parseInt($('#sub_total').html())+ parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%> );
+                $('#grand_total').html(parseInt($('#grand_total').html())+ parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%> );
+                
+                $( '#<%= "d___#{item.id}_#{index}" %>' ).change(function() {
+                  $('#<%="d___#{item.id}_#{index}_span"%>').html(parseInt($(this).val())*<%=item.price%>);
+
+                  $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
+                  $('#grand_total').html(parseInt($('#grand_total').html())+parseInt($(this).val())*<%=item.price%>);
+
+                });
+              });
+              </script>
             </div>
             <div class="span4">
-              999.000
+              <%=item.price%>
+              <%total += item.price%>
             </div>
             <div class="span5">
-              9990.000
+              <span id='<%="d___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
               <a href="#">x</a>
             </div>
           </div>
-
+          <%end%>
+          
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="innerpage">
-              <div class="carttop clearfix">
-                <div class="col-md-6">
-                  <table class="table">
-                    <tr class="subTotl">
-                      <td>
-                        Sub Total
-                      </td>
-                      <td class="text-right">
-                        39960.000
-                      </td>
-                    </tr>
-                    <tr class="subTotl">
-                      <td>
-                        Discount
-                      </td>
-                      <td class="text-right">
-                        20%
-                      </td>
-                    </tr>
-                    <tr class="grandTotal">
-                      <td>Grand Total</td>
-                      <td class="text-right">31968.000 KD</td>
-                    </tr>
-                  </table>
+        <form action="/order/final/checkout">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="innerpage">
+                <div class="carttop clearfix">
+                  <div class="col-md-6">
+                    <table class="table">
+                      <tr class="subTotl">
+                        <td>
+                          Sub Total
+                        </td>
+                        <td class="text-right">
+                          <span id="sub_total">0</span>
+                        </td>
+                      </tr>
+                      <!-- <tr class="subTotl">
+                        <td>
+                          Discount
+                        </td>
+                        <td class="text-right">
+                          20%
+                        </td>
+                      </tr> -->
+                      <tr class="grandTotal">
+                        <td>Grand Total</td>
+                        <td class="text-right"><span id="grand_total">0</span></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-6">
+                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request"></textarea>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <textarea rows="5" class="form-control" placeholder="Special Request"></textarea>
+                <div class="cartbuttons clearfix text-center">
+                  <a href="#" class="btn btn-close-two">Add More</a>
+                  <!-- <a href="/order/final/checkout/" class="btn btn-close">order now</a> -->
+                  <button class="btn btn-close" type="submit">order now</button>
+                  <a href="#" class="btn btn-close-two">Clear all</a>
                 </div>
-              </div>
-              <div class="cartbuttons clearfix text-center">
-                <a href="#" class="btn btn-close-two">Add More</a>
-                <a href="/order/final/checkout/" class="btn btn-close">order now</a>
-                <a href="#" class="btn btn-close-two">Clear all</a>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

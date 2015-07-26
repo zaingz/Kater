@@ -1,9 +1,22 @@
 module ApplicationHelper
+	
 	def get_cart_food_items
 	    cart = cookies.fetch(:cart, '{}')
 	    cart = JSON.parse(cart)
 	    food_items = cart.fetch("food_items", []) 
 
+	    #food_items.collect {|key,value| key["a"]}
+
+	end
+
+	def get_food_item_add_ons item_id
+	    cart = cookies.fetch(:cart, '{}')
+	    cart = JSON.parse(cart)
+	    food_items = cart.fetch("food_items", []) 
+
+		list_ids = food_items.collect {|k,v| k["add_on_id"] if k["item_id"]==item_id }	    
+
+		FoodItemAddOn.find list_ids
 	    #food_items.collect {|key,value| key["a"]}
 
 	end
