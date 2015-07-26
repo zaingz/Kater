@@ -84,6 +84,11 @@ class DashboardController < ApplicationController
   # 	params.permit(:id)
   # end
 
+  def manage_time_slots
+    @time_slot = TimeSlot.new
+
+  end
+
 
   def search_results
 
@@ -111,6 +116,10 @@ class DashboardController < ApplicationController
 
   def user_account_page
     @address = Address.new
+  end
+
+  def cater_page
+
   end
 
 end

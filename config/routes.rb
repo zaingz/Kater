@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   # to manage add ons
   get '/admin/dashboard/shopkeeper/manage_addons/' => 'dashboard#manage_addons'
   get '/admin/dashboard/shopkeeper/manage_deals/' => 'dashboard#manage_deals'
+
+  get '/admin/dashboard/shopkeeper/manage_time_slots/' => 'dashboard#manage_time_slots'
   
   get '/serach/results/' => 'dashboard#search_results'
   get '/order/checkout/' => 'dashboard#order_page'
@@ -45,6 +47,8 @@ Rails.application.routes.draw do
   get '/add_item/' => 'dashboard#add_item_to_cart'
   
   get '/user/account' => 'dashboard#user_account_page', as: :user_account_page
+
+  get '/catering/company/:id' => 'dashboard#cater_page'
 
 
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'

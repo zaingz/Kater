@@ -31,7 +31,7 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
     @deal.catering_company= current_user.catering_company
-
+    @deal.food_items = FoodItem.where params[:food_item_ids]
     respond_to do |format|
       if @deal.save
         format.html { redirect_to :controller => 'dashboard', :action => 'manage_deals' }

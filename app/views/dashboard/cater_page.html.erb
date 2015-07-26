@@ -1,0 +1,735 @@
+<%# encoding: utf-8 %>
+<div class="container-fluid" id="innerpage">
+  <form>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sideBar">
+          <%= render 'dashboard/cart'%>
+
+          <div class="cancelPolicy sidBarWgt">
+            <h3>Cancelation Policy</h3>
+            <p>Lorem ipsum dolor sit amet, eu has tota velit, et ius aliquip albucius. Percipit fabellas et vis.</p>
+          </div>
+          <div class="minOrderPolicy sidBarWgt">
+            <h3>Minimum Order Policy</h3>
+            <p>Lorem ipsum dolor sit amet, eu has tota velit, et ius aliquip albucius. Percipit fabellas et vis.</p>
+          </div>
+          <div class="sideBarImg text-center hidden-xs hidden-sm">
+            <%= image_tag("rightbanner.jpg") %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="innerbannertwo bx-wrapper">
+          <ul class="bxslider">
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+          </ul>
+          <div class="pageouter">
+            <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+          </div>
+        </div>
+        <div class="mainContentTop">
+          <div class="topcntn clearfix">
+            <div class="logosec col-md-3 col-xs-12">
+              <a href="#">
+                <img src="images/johnyLogo.png"  />
+              </a>
+              <h2>Johny Rockets</h2>
+            </div>
+            <div class="allstf col-md-6 col-xs-7">
+              <ul class="clearfix">
+                <li>
+                  All Female Servers
+                </li>
+                <li>
+                  Arabic Speaking Only
+                </li>
+              </ul>
+            </div>
+            <div class="fivstar col-md-3 col-xs-5">
+              <ul class="clearfix">
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-tabs customTabs">
+            <ul class="list-unstyled clearfix">
+              <li role="presentation" class="active">
+                <a href="#Schedule">
+                  <i class="fa fa-calendar"></i> Schedule
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#Menu">
+                  <i class="fa fa-list"></i> Menu
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#accountInfo">
+                  <i class="fa fa-info"></i> About
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#gallerY">
+                  <i class="fa fa-picture-o"></i> Gallery
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#Reviews">
+                  <i class="fa fa-star"></i> Reviews
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contentbdox">
+
+          <div id="Schedule" class="Schedule tab-pane">
+            <div class="addreview">
+              <div class="contentbdox">
+                <div class="celenderbox">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12"><big>Select the date</big></div>
+                    <div class="col-md-7 col-sm-8 col-xs-12">
+                      <div class="dates">
+                        <a class="text-left" href="#"><i class="fa fa-angle-left"></i></a>
+                        <span>April Thursday 16   &nbsp;|&nbsp;</span>
+                        <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
+                        <span>April saturday</span>
+                        <a class="text-right" data-date-format="mm/dd/yyyy" href="#"><i class="fa fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-md-2 col-sm-1 col-xs-12"><a class="chngecal" href="javascript:void(0);"><i class="fa fa-calendar"></i></a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="productbox">
+                <div class="row">
+                  <div class="col-md-2 col-sm-3">
+                    <div class="img-thumbnail">
+                      <img  src="images/cater-img.jpg"  />
+                    </div><br />
+                    <a href="#">Johnny Rockets</a>
+                    <div class="ratings">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-10 co-sm-9">
+                    <div class="tags">
+                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span class="active">08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span class="closed">08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                    </div>
+                    <div class="bottominfo">
+                      <p>Note: Your serving time is <span>08:00 PM</span></p>
+                      <a href="#" class="btn btn-warning">order now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div id="Menu" class="Menu tab-pane">
+            <div class="myMenu">
+              <div class="table-responsive menudtL">
+                <div class="mainmaenu clearfix">
+                  <div class="clearfix">
+                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
+                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
+                      <img src="images/deals.png" />
+                    </div>
+                    <div class="menList col-md-9 col-sm-9 col-xs-8">
+                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                        <h3 class="hidden-xs">Pizza & Burgers</h3>
+                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
+                      </div>
+                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                        <h3>79.00 KD</h3>
+                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu Options-->
+                  <div class="menuOptions">
+                    <div class="clearfix ChooseItem">
+                      <h3>Please choose an item from Pizzas</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="clearfix ChooseItem Burgers">
+                      <h3>Please choose an item from Burgers</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu option END-->
+                </div>
+                <!--//-->
+                <div class="mainmaenu clearfix">
+                  <div class="clearfix">
+                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
+                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
+                      <img src="images/deals.png" />
+                    </div>
+                    <div class="menList col-md-9 col-sm-9 col-xs-8">
+                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                        <h3 class="hidden-xs">Pizza & Burgers</h3>
+                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
+                      </div>
+                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                        <h3>79.00 KD</h3>
+                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu Options-->
+                  <div class="menuOptions">
+                    <div class="clearfix ChooseItem">
+                      <h3>Please choose an item from Pizzas</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="clearfix ChooseItem Burgers">
+                      <h3>Please choose an item from Burgers</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu option END-->
+                </div>
+                <!--//-->
+                <div class="mainmaenu clearfix">
+                  <div class="clearfix">
+                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
+                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
+                      <img src="images/deals.png" />
+                    </div>
+                    <div class="menList col-md-9 col-sm-9 col-xs-8">
+                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                        <h3 class="hidden-xs">Pizza & Burgers</h3>
+                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
+                      </div>
+                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                        <h3>79.00 KD</h3>
+                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu Options-->
+                  <div class="menuOptions">
+                    <div class="clearfix ChooseItem">
+                      <h3>Please choose an item from Pizzas</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="clearfix ChooseItem Burgers">
+                      <h3>Please choose an item from Burgers</h3>
+                      <div class="radOpt">
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
+                        </div>
+                        <div class="radio">
+                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Menu option END-->
+                </div>
+                <!--//-->
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row" >
+            <div class="col-md-12 tabsContent">
+              <div id="accountInfo" class="accInfo tab-pane">
+                <div class="row innerpage">
+                  <div class="dtlTxt">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br /><br />
+
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  </div>
+                </div>
+              </div >
+            </div>
+          </div>
+
+          <div id="gallerY" class="wgallerY tab-pane">
+            <div class="addpic row">
+              <div class="imgs clearfix">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                  <img src="images/deals-2.png" />
+                  <p>Pizza & Burgers</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div id="Reviews" class="adReviews tab-pane">
+            <div class="row">
+              <div class="pstRvwBx">
+                <div class="clearfix">
+                  <div class="col-sm-8">
+                    <div class="clearfix rvwPoints">
+                      <div class="rvwPointsA">
+                        4.0
+                      </div>
+                      <div class="rvwPointsB">
+                        <h3>Overall Rating</h3>
+                        <div class="ratingStars">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <span>based on recent rating</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!--//-->
+                    <div class="pointsDfrience">
+                      <ul class="clearfix pointsDfrienceList">
+                        <li>
+                          <h5>Food</h5>
+                          <p>4.0</p>
+                        </li>
+                        <li>
+                          <h5>Service</h5>
+                          <p>4.1</p>
+                        </li>
+                        <li>
+                          <h5>Ambience</h5>
+                          <p>3.9</p>
+                        </li>
+                        <li>
+                          <h5>Value</h5>
+                          <p>3.5</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--//-->
+                    <div class="rvwBtm">
+                      <i class="fa fa-thumbs-o-up"></i>
+                      85% recommend it to the friends
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <ul class="list-unstyled">
+                      <li class="clearfix">
+                        <span>5</span>
+                        <div class="rvwBar"><div style="width:80%"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>4</span>
+                        <div class="rvwBar"><div style="width:60%"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>3</span>
+                        <div class="rvwBar"><div style="width:50%"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>2</span>
+                        <div class="rvwBar"><div style="width:40%"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>1</span>
+                        <div class="rvwBar"><div style="width:100%"></div></div>
+                      </li>
+                    </ul>
+                    <a href="#" class="pstRvwBtn">Post A Review</a>
+                  </div>
+                </div>
+              </div>
+              <!--//-->
+              <div class="postRvwForm customForm clearfix">
+                <form class="clearfix">
+                  <div class="col-sm-12">
+                    <h4>Post a Review</h4>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" placeholder="First Name" />
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" placeholder="Last Name" />
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" placeholder="Email" />
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" placeholder="Mobile Number" />
+                  </div>
+                  <div class="col-sm-12">
+                    <textarea placeholder="Street Address"></textarea>
+                  </div>
+                  <div class="clearfix">
+                    <ul class="clearfix pointsDfrienceList">
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Food</h5>
+                        <div class="ratingStars">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Service</h5>
+                        <div class="ratingStars">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Ambience</h5>
+                        <div class="ratingStars">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Value</h5>
+                        <div class="ratingStars">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-sm-12 text-center postFrmBtmBtn">
+                    <input type="submit" value="Submit Review" class="postRvwBtn" />
+                  </div>
+                </form>
+              </div>
+              <!--//-->
+              <div class="rvwShowBx clearfix">
+                <div class="col-sm-3">
+                  <div class="starRating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>
+                      <strong>5</strong> Food
+                    </li>
+                    <li>
+                      <strong>2</strong> Service
+                    </li>
+                    <li>
+                      <strong>3</strong> Ambience
+                    </li>
+                    <li>
+                      <strong>4</strong> Value
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-9">
+                  <h3>Service and Food was Fine. The did Try</h3>
+                  <h6 class="rvwName">
+                    <span>Fiaz Ahmad</span>
+                    Dined 5 days ago
+                  </h6>
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                  </p>
+                </div>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div id="footertop">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Useful Links</h3>
+        <div class="links">
+          <a href="about-us.html">About Kater</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-condition.html">Terms & Conditions</a>
+          <a href="get-in-touch.html">Contact Us</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="text" class="form-control" placeholder="Your email address" />
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Follow Along</h3>
+        <div class="followalong">
+          <a href="#"><i class="fa fa-facebook-f"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footerbottom">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-7">
+        <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+        <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>
+      </div>
+      <div class="col-md-6 col-sm-5">
+        <div class="payicons">
+          <%= image_tag("pay-icon-1.jpg") %>
+          <%= image_tag("pay-icon-2.jpg") %>
+          <%= image_tag("pay-icon-3.jpg") %>
+          <%= image_tag("pay-icon-4.jpg") %>
+          <%= image_tag("pay-icon-5.jpg") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(e) {
+        $(".viewOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".hideOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        //editAddress
+        $(".editAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".addressRowShow .delAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        // Menu Select
+        $(".me2SlctBtn").click(function(e) {
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(this).text("Select Items");
+                $(this).parent().parent().parent().next().slideUp();
+            }
+            else {
+                $(this).addClass("active");
+                $(this).text("Close");
+                $(this).parent().parent().parent().next().slideDown();
+            }
+        });
+        //
+        /*$( ".clndrBtn" ).click(function(e) {
+         $( ".clndrBtn" ).datepicker({
+         showOn: "button"
+         });
+         });*/
+    });
+
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true	,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+        });
+
+        //$(".mainContentTop .customTabs").
+
+
+        $(".mycartbtn").click( function (){
+            $(".myCartWgt").toggle();
+        });
+    });
+
+    var $document = $(document),
+            $elementx = $('.myCartWgt'),
+            $elementsidebar = $('.sideBar'),
+            classNamex = 'hoveradd';
+    sideclassName = 'sidebarhoverad';
+
+    $(window).scroll(function() {
+        $elementx.toggleClass(classNamex, $document.scrollTop() >= 50);
+        $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
+    });
+
+    var $document = $(document),
+            $element = $('.mainContentTop .customTabs'),
+            $elements = $('.contentbdox'),
+            className = 'hoveradds';
+    classNames = 'extraspace';
+
+    $document.scroll(function() {
+        $element.toggleClass(className, $document.scrollTop() >= 300);
+        $elements.toggleClass(classNames, $document.scrollTop() >= 300);
+    });
+
+    var $document = $(document),
+            $elementz = $('#header'),
+            elementsidebar = 'headerfixed'
+
+    $(window).scroll(function() {
+        $elementz.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+</script>
