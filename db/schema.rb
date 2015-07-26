@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150726072430) do
+ActiveRecord::Schema.define(version: 20150726155019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20150726072430) do
     t.float    "price",                            null: false
     t.integer  "catering_company_id"
     t.integer  "deals_id"
-    t.integer  "order_item_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "pico"
@@ -94,8 +93,30 @@ ActiveRecord::Schema.define(version: 20150726072430) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "oder_item_deals", force: :cascade do |t|
+    t.integer  "order_item_id"
+    t.integer  "deal_id"
+    t.integer  "quanitiy",      default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "oder_item_foods", force: :cascade do |t|
+    t.integer  "order_item_id"
+    t.integer  "food_item_id"
+    t.integer  "quanitiy",      default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "order_food_item_add_ons", force: :cascade do |t|
+    t.integer  "oder_item_food_id"
+    t.integer  "food_item_add_on_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
-    t.integer  "quantity"
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -125,8 +146,8 @@ ActiveRecord::Schema.define(version: 20150726072430) do
 
   create_table "time_slots", force: :cascade do |t|
     t.string   "tittle",              default: "", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.time     "start_time"
+    t.time     "end_time"
     t.integer  "catering_company_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false

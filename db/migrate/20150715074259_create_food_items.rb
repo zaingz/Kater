@@ -7,7 +7,6 @@ class CreateFoodItems < ActiveRecord::Migration
       t.float :price, null: false
       t.references :catering_company
       t.references :deals
-      t.references :order_item
 
 
 

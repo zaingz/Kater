@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get '/user/account' => 'dashboard#user_account_page', as: :user_account_page
 
   get '/catering/company/:id' => 'dashboard#cater_page'
+  get '/select/slot/time/:id' => 'dashboard#select_time_slot'
 
 
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'

@@ -15,6 +15,16 @@ module ApplicationHelper
 
 	end
 
+	def get_selected_time_slots
+		
+		cart = cookies.fetch(:cart, '{}')
+	    cart = JSON.parse(cart)
+	    slot_id = cart.fetch("slot_id", nil) 
+	    TimeSlot.find slot_id
+		rescue ActiveRecord::RecordNotFound
+			nil
+	end
+
 	# can be security issue
 	# def get_cart_total_price
 	# 	cart = cookies.fetch(:cart, '{}')

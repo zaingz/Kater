@@ -97,6 +97,17 @@ class DashboardController < ApplicationController
 
   def place_order
     @comp = CateringCompany.find params[:id]
+    first_time_slot = @comp.time_slots.first
+    if first_time_slot
+      cart = cookies.fetch(:cart, "{}")
+      cart = JSON.parse(cart)
+
+      cart["slot_id"] = cart.fetch("slot_id", first_time_slot.id )
+      cookies[:cart] = JSON.generate(cart)  
+
+
+    end
+
   end
 
   def add_item_to_cart
@@ -133,5 +144,15 @@ class DashboardController < ApplicationController
   def cater_page
 
   end
+
+  def select_time_slot
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    cart["slot_id"] = params[:id]
+    cookies[:cart] = JSON.generate(cart) 
+
+    redirect_to :back
+  end
+
 
 end

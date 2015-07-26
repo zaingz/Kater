@@ -2,7 +2,16 @@
 <div class="myCartWgt sidBarWgt" id="cartbox">
     <h3 class="h3Hdng">My Cart</h3>                        
     <div class="box">
-        <h3 class="h3Hdng">08:00 am - 11:00 pm</h3>
+        
+
+        <h3 class="h3Hdng">
+            <%cart = cookies.fetch(:cart, "{}") %>
+            <%cart = JSON.parse(cart) %>
+            <%if cart.has_key?("slot_id") %>
+                <%selected_time_slot = TimeSlot.find(cart["slot_id"])%>
+                <%="#{selected_time_slot.start_time.strftime('%I:%M %p')} - #{selected_time_slot.end_time.strftime('%I:%M %p')}" %>
+            <%end %>
+        </h3>
     </div>
     <div class="table-responsive">
         <table class="table">
