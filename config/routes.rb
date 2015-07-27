@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   get '/admin/dashboard/shopkeeper/manage_time_slots/' => 'dashboard#manage_time_slots'
   
-  get '/serach/results/' => 'dashboard#search_results'
+  post '/serach/results/' => 'dashboard#search_results'
   get '/order/checkout/' => 'dashboard#order_page'
   get '/place/order/:id' => 'dashboard#place_order'
   get '/add_item/' => 'dashboard#add_item_to_cart'
@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   get '/select/slot/time/:id' => 'dashboard#select_time_slot'
 
   get '/order/final/checkout' => 'dashboard#order_final_page'
+
+  post '/order/place/final/' => 'dashboard#place_order_final'
 
 
 

@@ -10,18 +10,21 @@
         	<div class="row">
             	<div class="col-md-10 col-md-offset-1">
                 	<big>Find Caterers</big>
+                    <!--  -->
+                    <form action="/serach/results/" method="post">
+                    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
                 	<div class="homesearch row">
                     	<div class="col-md-3">
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Date</label>
-                                <input type="text" class="form-control datepicker" placeholder="2015-04-26"> 
+                                <input name="search[date]" type="text" class="form-control datepicker" placeholder="2015-04-26"> 
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
                     	<div class="col-md-3">
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Area</label>
-                                <select class="form-control">
+                                <select name="search[area]" class="form-control">
                                   <% KUWAIT_CITIES.each do |c|%>
                                     <option><%= c%></option>
                                 	<option><%= c%></option>
@@ -34,7 +37,7 @@
                     	<div class="col-md-3">
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Catering Company</label>
-                                <select class="form-control">
+                                <select name="search[caterers]" class="form-control">
                                 	<option>Selected caterer</option> 
                                 </select>
                             </div>             	
@@ -53,12 +56,13 @@
                                             <div class="rightGrip"></div>
                                         </div>
                                         <div class="formgroup"> 
-                                            <input type="text" class="leftLabel form-control" value="" />  
-                                            <input type="text" class="rightLabel form-control" value="" />
+                                            <input name="search[price_min]" type="text" class="leftLabel form-control" value="" />  
+                                            <input name="search[price_max]" type="text" class="rightLabel form-control" value="" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Price (KD)</label>
@@ -79,13 +83,13 @@
                                 <div class="form-group advncecheck">
                                     <div class="checkbox">
                                       <label>
-                                        <input type="checkbox" value="">
+                                        <input name="search[female_servers]" type="checkbox" value="">
                                         All Female Servers
                                       </label>
                                     </div>
                                     <div class="checkbox">
                                       <label>
-                                        <input type="checkbox" value="">
+                                        <input name="search[arabic_speaking]" type="checkbox" value="">
                                         Arabic Speaking
                                       </label>
                                     </div>
@@ -93,10 +97,13 @@
                             </div>
                         </div>
                         <div class="col-md-12 search-btn">
-                        	<%=link_to "Search", {controller: "dashboard", action: "search_results"}, { :class=>"btn btn-warning btn-lg" } %>
+                            <button class="btn btn-warning btn-lg" type="submit">Search</button>
+                        	
                             
                         </div>
                     </div>
+                    </form>
+                    <!--  -->
                 </div>
             </div>
         </div>
@@ -309,7 +316,9 @@
 <script type="text/javascript">
   $(function () {
     $('#myTab a:first').tab('show');
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    });
 	$('.carousel').carousel({
 		item: 3	
 	}); 

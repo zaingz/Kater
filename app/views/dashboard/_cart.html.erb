@@ -7,9 +7,11 @@
         <h3 class="h3Hdng">
             <%cart = cookies.fetch(:cart, "{}") %>
             <%cart = JSON.parse(cart) %>
-            <%if cart.has_key?("slot_id") %>
-                <%selected_time_slot = TimeSlot.find(cart["slot_id"])%>
+            <%if cart.has_key?("slot_id") %>                
+                <%selected_time_slot = get_selected_time_slots%>
+                <% if selected_time_slot %>
                 <%="#{selected_time_slot.start_time.strftime('%I:%M %p')} - #{selected_time_slot.end_time.strftime('%I:%M %p')}" %>
+                <%end%>
             <%end %>
         </h3>
     </div>
@@ -25,7 +27,7 @@
             <% total = 0 %>
             <% get_cart_food_items.each do |item| %>
                 <tr>                    
-                    <% food_item = FoodItem.find(item['item_id']) %>
+                    <% food_item = FoodItem.find(item["item_id"]) %>
                     <td><%=food_item.name %></td>
                     <td></td>
                     <td><%=food_item.price %> KD</td>

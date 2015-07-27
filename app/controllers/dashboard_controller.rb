@@ -91,9 +91,11 @@ class DashboardController < ApplicationController
 
 
   def search_results
-
+    p search_params
     @companies = CateringCompany.all
   end
+
+
 
   def place_order
     @comp = CateringCompany.find params[:id]
@@ -114,9 +116,9 @@ class DashboardController < ApplicationController
     cart = cookies.fetch(:cart, '{}')
     cart = JSON.parse(cart)
     food_items = cart.fetch("food_items", [])
-    food_items.append(  {item_id: params[:food_item_id], add_on_id: params[:add_on_id]}  )
+    food_items.append(  {item_id: params[:food_item_id], add_on_id: params[:add_on_id], quantity: 1}  )
     cart["food_items"] = food_items
-    cookies[:cart] = JSON.generate(cart)    
+    cookies[:cart] = JSON.generate(cart) 
     
     redirect_to :back
   end
@@ -125,7 +127,7 @@ class DashboardController < ApplicationController
     cart = cookies.fetch(:cart, '{}')
     cart = JSON.parse(cart)
     deals = cart.fetch("deals", [])
-    deals.append(  {item_id: params[:id]}  )
+    deals.append(  {item_id: params[:id], quantity: 1}  )
     cart["deals"] = deals
     cookies[:cart] = JSON.generate(cart)   
     
@@ -191,9 +193,6 @@ class DashboardController < ApplicationController
 
 
   def order_final_page
-
-
-
     cart = cookies.fetch(:cart, '{}')
     cart = JSON.parse(cart)
     cart[:special_request] = params[:special_request]
@@ -209,6 +208,72 @@ class DashboardController < ApplicationController
     @food_items = food_item_id_list.collect {|f| FoodItem.find f} 
     @deals = deals_id_list.collect {|f| Deal.find f} 
   end
+
+  def place_order_final
+    #create order here
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    food_items = cart.fetch("food_items", [])
+    deals = cart.fetch("deals", [])
+
+    slot = TimeSlot.find_by_id( cart["slot_id"] )
+
+    if not slot.nil? 
+      a = Address.new order_params[:address]
+      a.user = current_user
+      continue = true
+      if a.save
+        o = Order.new( request_message: cart["special_request"], completed: false,
+         user: current_user, catering_company: slot.catering_company, address: a)
+      elsif order_params.has_key?(:selected_address)
+        o = Order.new( request_message: cart["special_request"], completed: false,
+         user: current_user, catering_company: slot.catering_company, address_id:order_params[:selected_address])
+      else
+        flash[:error] = "Please slect an address or fill the form below"
+
+        # redirect not working properly
+        #redirect_to :back
+        continue = false
+      end
+      if continue
+        o_item = OrderItem.new( order: o ) 
+
+        food_items.each do |item|
+          
+          o_i_f = OderItemFood.create( order_item: o_item, food_item_id: item["item_id"].to_i, quanitiy: item["quantity"].to_i )
+          if item["add_on_id"]
+            OrderFoodItemAddOn.create(oder_item_food_id:item["item_id"].to_i , food_item_add_on_id: item["add_on_id"].to_i)
+          end 
+        end
+
+        deals.each do |item|
+          o_i_f = OderItemDeal.create( order_item: o_item, deal_id: item["item_id"].to_i, quanitiy: item["quantity"].to_i )
+        end
+
+        o.save
+        o_item.save
+
+        Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: Date.current)
+
+        cookies[:cart] = "{}"
+        flash[:success] = "Order has been created succesfullt"
+      end
+    else
+      flash[:error] = "please select available slot"  
+    end
+    
+    redirect_to :back
+    
+  end
+
+  private 
+    def order_params
+      params.permit(:selected_address, address: [:full_name, :email, :mobile_number1, :mobile_number2, :street_address, :street_address_opt, :city])
+    end
+
+    def search_params
+      params.require(:search).permit(:date, :area, :caterers, :price_min, :price_max, :female_servers, :arabic_speaking)
+    end
 
 
 end

@@ -11,7 +11,6 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :city, null: false, default: "", limit:25
       t.string :country,  null: true, default: "Kuwait",limit:25      
       t.references :user
-      t.references :order
       t.timestamps null: false
     end
   end

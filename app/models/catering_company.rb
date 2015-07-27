@@ -19,6 +19,8 @@ class CateringCompany < ActiveRecord::Base
 
     
   end
+
+  
   mount_uploader :pico, PicoUploader
 
 end

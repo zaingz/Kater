@@ -1,5 +1,5 @@
 class TimeSlot < ActiveRecord::Base
-  belongs_to :inavailability
+  has_one :inavailability
   belongs_to :catering_company
 
 end

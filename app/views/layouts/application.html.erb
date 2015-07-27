@@ -41,9 +41,24 @@
 
   <%= javascript_include_tag 'jquery.bxslider.js', media: 'all' %>
 
-  
+  <%= javascript_include_tag 'jquery.cookie.js', media: 'all' %>
 
-  
+  <script type="text/javascript">
+
+      // key can be food_items and deals
+      function updateQuantity(key, item_id, item_index, updated_val)
+      {
+        cart = JSON.parse($.cookie()["cart"]);
+        cart[key].forEach(function(entry, index) {
+            if(entry["item_id"] == item_id && item_index == index){
+              cart[key][index]["quantity"] = updated_val;
+            }
+        }); 
+
+        $.cookie("cart", JSON.stringify(cart), { path: '/' });
+      }
+    
+  </script>
 
   
 
@@ -139,6 +154,13 @@
       </div>
       </nav>
   </div>
+
+  <% flash.each do |type, message| %>
+    <div class="alert <%= bootstrap_class_for(type) %> fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= message %>
+    </div>
+  <% end %>
 
   <%= yield %>
 

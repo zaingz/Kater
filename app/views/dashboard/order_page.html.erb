@@ -34,7 +34,9 @@
       </div>
       <div class="contentbdox">
         <% slot = get_selected_time_slots%>
+        <% if slot %>
         <div class="abovedate"><%=Date.current.strftime("%B %d %A") %>  |   <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></div>
+        <%end %>
         <div class="row ">
           <div class="datetwo clearfix">
             <div class="span1">
@@ -109,7 +111,7 @@
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
-                <input id='<%= "f___#{item.id}_#{index}" %>' type="text" name="quant[<%="f_#{item.id}_#{index}" %>]" class="form-control input-number" value="1" min="1" max="10">
+                <input id='<%= "f___#{item.id}_#{index}" %>' type="text" name="quant[<%="f_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('food_items', item.id.to_s, index)%>" min="1" max="10">
                                   <span class="input-group-btn">
                                       <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="f_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
@@ -119,15 +121,57 @@
               </div>
               <script type="text/javascript">
                 $(function(){
-                $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+                
+                <%add_on_price=0%>
+                <%add_ons=(get_food_item_add_ons(item.id.to_s))%>
+                
+                <% if add_ons %>
+                  <% add_ons.each do |add_on| %>
+                    <%add_on_price += add_on.price%>
+                  <%end%>
+                <%end%>
+                $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price+add_on_price%>);
 
-                $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
-                $('#grand_total').html(parseInt($('#grand_total').html())+parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
+                
+                var prev_val=parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val());
+                $('#sub_total').html( 
+                  parseInt($('#sub_total').html())
+                  +parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price+add_on_price%>);
+                $('#grand_total').html(
+                  parseInt($('#grand_total').html())
+                  +parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price+add_on_price%>);
 
-                $( '#<%= "f___#{item.id}_#{index}" %>' ).change(function() {
-                  $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($(this).val())*<%=item.price%>);
-                  $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
-                  $('#grand_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
+                $( '#<%= "f___#{item.id}_#{index}" %>' ).change(function(e) {
+                  updateQuantity("food_items", <%="#{item.id}".to_i %>, <%="#{index}".to_i %>, $(this).val())
+                  if($(this).val() < prev_val)
+                  {
+                    $('#<%="f___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price+add_on_price%>
+                    );
+                    var total = parseInt($('#sub_total').html())
+                      - <%=item.price+add_on_price%>;
+
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  else{
+                    $('#<%="f___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price+add_on_price%>
+                    );
+                    var total = parseInt($('#sub_total').html())
+                      + <%=item.price+add_on_price%>;
+
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  prev_val = $(this).val();
+                  
                 });
               });
               </script>
@@ -197,7 +241,7 @@
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
-                <input id='<%= "d___#{item.id}_#{index}" %>' type="text" name="quant[<%="d_#{item.id}_#{index}" %>]" class="form-control input-number" value="1" min="1" max="10">
+                <input id='<%= "d___#{item.id}_#{index}" %>' type="text" name="quant[<%="d_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('deals', item.id.to_s, index)%>" min="1" max="10">
                                   <span class="input-group-btn">
                                       <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
@@ -207,15 +251,50 @@
               </div>
               <script type="text/javascript">
                 $(function(){
-                $('#<%="d___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%>);
-                $('#sub_total').html(parseInt($('#sub_total').html())+ parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%> );
-                $('#grand_total').html(parseInt($('#grand_total').html())+ parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())*<%=item.price%> );
                 
-                $( '#<%= "d___#{item.id}_#{index}" %>' ).change(function() {
-                  $('#<%="d___#{item.id}_#{index}_span"%>').html(parseInt($(this).val())*<%=item.price%>);
+                
 
-                  $('#sub_total').html(parseInt($('#sub_total').html())+parseInt($(this).val())*<%=item.price%>);
-                  $('#grand_total').html(parseInt($('#grand_total').html())+parseInt($(this).val())*<%=item.price%>);
+                $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                  parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price%>
+                  );
+
+                $('#sub_total').html(
+                    parseInt($('#sub_total').html())
+                    + parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                    *<%=item.price%> 
+                  );
+
+                $('#grand_total').html(
+                  parseInt($('#grand_total').html())+ 
+                  parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price%> );
+
+                var prev_val=parseInt($( '#<%="d___#{item.id}_#{index}" %>' ).val());
+                
+                $( '#<%= "d___#{item.id}_#{index}" %>' ).change(function(e) {
+                  updateQuantity("deals", <%="#{item.id}".to_i %>, <%="#{index}".to_i %>, $(this).val())
+                  if(prev_val < $(this).val())
+                  {
+                    $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price%>);
+                    var total = parseInt($('#sub_total').html())                      
+                      + <%=item.price%>
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }else{
+                    $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price%>);
+                    var total = parseInt($('#sub_total').html())                      
+                      - <%=item.price%>
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  prev_val = $(this).val();
 
                 });
               });
@@ -265,7 +344,7 @@
                     </table>
                   </div>
                   <div class="col-md-6">
-                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request"></textarea>
+                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request"><%=JSON.parse(cookies["cart"])["special_request"]%></textarea>
                   </div>
                 </div>
                 <div class="cartbuttons clearfix text-center">

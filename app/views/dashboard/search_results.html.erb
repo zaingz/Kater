@@ -154,9 +154,35 @@
                             <div class="col-md-10 co-sm-9">
                                 <div class="tags">
                                   
-                                    <% comp.available_time_slots.each do |slot| %>
-                                        <span><%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></span>
+                                    
+
+
+                                    <% comp.time_slots.each do |slot| %>
+                                        <%if (comp.inavailabilities.where(time_slot: slot)).blank?%>
+                                            <a href=<%="/select/slot/time/#{slot.id}"%>>
+                                        <%else%>
+                                            <a >
+                                        <%end%>
+                                        <%if not (comp.inavailabilities.where(time_slot: slot)).blank? %>
+                                            <span class="inavaiable" >
+                                        <%elsif get_selected_time_slots%>
+                                            <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    
+                                        <%else%>
+                                            <span >   
+                                        <%end%>
+                                        
+                                            <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                                        </span>
+                                        </a>
                                     <%end%>
+                                    <style type="text/css">
+                                        .inavaiable{
+                                            pointer-events: none;
+                                            background: red !important;
+                                            border-color: red !important;
+                                            color: white!important;
+                                        }
+                                    </style>
 
 
                                     <!-- <span>08:00 am - 11:00 am</span>

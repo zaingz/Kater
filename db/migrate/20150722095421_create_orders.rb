@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration
       t.text :request_message
       t.boolean :completed
       t.references :user
+      t.references :address
       t.references :catering_company
 
 

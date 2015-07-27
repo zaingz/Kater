@@ -1,4 +1,19 @@
 module ApplicationHelper
+
+	def bootstrap_class_for flash_type
+	    case flash_type
+	      when "success"
+	        "alert-success"
+	      when "error"
+	        "alert-danger"
+	      when "alert"
+	        "alert-block"
+	      when "notice"
+	        "alert-info"
+	      else
+	        flash_type.to_s
+	    end
+	end
 	
 	def get_cart_food_items
 	    cart = cookies.fetch(:cart, '{}')
@@ -6,7 +21,30 @@ module ApplicationHelper
 	    food_items = cart.fetch("food_items", []) 
 
 	    #food_items.collect {|key,value| key["a"]}
+	    ids = (food_items.collect {|key,value| key["item_id"]}).compact
+	    if not ids.empty?
+			FoodItem.find ids
+			food_items
+		else
+			[]
+		end
+		rescue ActiveRecord::RecordNotFound
+			[]
+	end
 
+	def get_cart_food_items_record
+		cart = cookies.fetch(:cart, '{}')
+	    cart = JSON.parse(cart)
+	    food_items = cart.fetch("food_items", []) 
+
+	    ids = (food_items.collect {|key,value| key["item_id"]}).compact
+	    if not ids.empty?
+			FoodItem.find ids
+		else
+			[]
+		end
+		rescue ActiveRecord::RecordNotFound
+			[]
 	end
 
 	def get_food_item_add_ons item_id
@@ -14,18 +52,57 @@ module ApplicationHelper
 	    cart = JSON.parse(cart)
 	    food_items = cart.fetch("food_items", []) 
 
-		list_ids = food_items.collect {|k,v| k["add_on_id"] if k["item_id"]==item_id }
-			if list_ids.empty?
-					FoodItemAddOn.find list_ids
-			end
+		list_ids = food_items.collect {|k,v| k["add_on_id"] if k["item_id"]==item_id }	    
+
+		if not (list_ids.compact).empty?
+			FoodItemAddOn.find list_ids
+		end
 	    #food_items.collect {|key,value| key["a"]}
 
+	end
+
+	# key can be food_items or deals
+	def get_food_item_quanity key, item_id, index
+		cart = cookies.fetch(:cart, '{}')
+	    cart = JSON.parse(cart)
+	    if cart[key][index]["item_id"] == item_id
+	    	cart[key][index]["quantity"]
+	    end
 	end
 
 	def get_cart_deals
 	    cart = cookies.fetch(:cart, '{}')
 	    cart = JSON.parse(cart)
 	    deals = cart.fetch("deals", []) 
+	    ids = (deals.collect {|key,value| key["item_id"]}).compact
+	    
+	    if not ids.empty?
+			Deal.find ids
+			deals
+		else
+			[]			
+		end
+
+		rescue ActiveRecord::RecordNotFound
+			[]
+
+	end
+
+	def get_cart_deals_record
+	    cart = cookies.fetch(:cart, '{}')
+	    cart = JSON.parse(cart)
+	    deals = cart.fetch("deals", [])
+
+	    ids = (deals.collect {|key,value| key["item_id"]}).compact
+	    
+	    if not ids.empty?
+			Deal.find ids
+		else
+			[]			
+		end
+
+		rescue ActiveRecord::RecordNotFound
+			[]
 
 	end
 
