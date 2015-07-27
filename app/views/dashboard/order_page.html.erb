@@ -76,7 +76,9 @@
                     <div class="modal-body createpopup deals">
                       <h2><%=item.name%> | attached add ons</h2>
                       <div class="row">
+
                         <%attached_add_ons = get_food_item_add_ons(item.id.to_s)%>
+                        <% if attached_add_ons%>
                         <%attached_add_ons.each do |add_on|%>
                           <div class="listdeals">
                             <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
@@ -86,7 +88,7 @@
                             </div>
                           </div>
                         <%end%>
-                        
+                        <%end%>
                         <div class="listdeals text-center">
                           <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
                         </div>

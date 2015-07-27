@@ -31,7 +31,8 @@ class DealsController < ApplicationController
   def create
     @deal = Deal.new(deal_params)
     @deal.catering_company= current_user.catering_company
-    @deal.food_items = FoodItem.where params[:food_item_ids]
+   @deal.food_items = FoodItem.where(id: deal_params[:food_item_ids].compact())
+
     respond_to do |format|
       if @deal.save
         format.html { redirect_to :controller => 'dashboard', :action => 'manage_deals' }
@@ -75,6 +76,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:name, :description,  :price, :food_item_id )
+      params.require(:deal).permit(:name, :description,  :price, {:food_item_ids=>[]}, :pico_cache )
     end
 end

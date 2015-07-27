@@ -43,6 +43,55 @@
       </div>
       <!-- /.row -->
 
+      <button class="btn btn-default pull-right" style="margin-bottom: 20px" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Manage your time slots
+      </button>
+      <div class="clearfix"></div>
+      <div class="collapse" id="collapseExample">
+        <div class="">
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+
+                <th>#</th>
+                <th>Name</th>
+
+                <th>Start Time</th>
+                <th>End Time</th>
+
+                <th>Delete</th>
+              </tr>
+              </thead>
+
+
+
+              <tbody>
+              <% current_user.catering_company.time_slots.each_with_index do |deal, index| %>
+                  <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= deal.tittle %></span></td>
+                    <td><%= deal.start_time %></td>
+
+                    <td><%= deal.end_time %></td>
+
+                    <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+
+                  </tr>
+              <%end %>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
 
       <%= render "create_time_slots" %>
 

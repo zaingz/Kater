@@ -216,12 +216,10 @@
                 </div>
                 <div class="col-xs-9 text-right">
                   <div class="huge">
-                    <% if current_user.catering_company %>
-                      <%= current_user.catering_company.name %>
-                    <% end %>
-                    
+                   Offerings
+
                   </div>
-                  <div></div>
+                  <div><%= current_user.catering_company.food_items.count+current_user.catering_company.deals.count%></div>
                 </div>
               </div>
             </div>
@@ -249,11 +247,11 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-3">
-                  <i class="fa fa-shopping-cart fa-5x"></i>
+                  <i class="fa fa-star fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                  <div class="huge">124</div>
-                  <div>New Orders!</div>
+                  <div class="huge">Ratings</div>
+                  <div><%= current_user.catering_company.ratings.count%></div>
                 </div>
               </div>
             </div>

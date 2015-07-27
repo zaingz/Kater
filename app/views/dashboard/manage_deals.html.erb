@@ -34,7 +34,7 @@
             </h1>
             <ol class="breadcrumb">
               <li class="active">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Dashboard / Deals
               </li>
             </ol>
           </div>
@@ -46,50 +46,61 @@
         
         
           
-        <button class="btn btn-default pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-default pull-right" style="margin-bottom: 20px" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Create New Deal
         </button>
         <div class="clearfix"></div>
         <div class="collapse" id="collapseExample">
           <div class="">
-      
-            <%= render "/deals/form" %>
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Food Items</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+
+
+
+                <tbody>
+                <% @deals.each_with_index do |deal, index| %>
+                    <tr>
+                      <td><%= index+1 %></td>
+                      <td><%= image_tag(deal.pico_url(:standard), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= deal.name %></span></td>
+                      <td><%= deal.description %></td>
+
+                      <td><%= deal.price %></td>
+                      <td>
+                        <% if deal.food_items%>
+                            <% deal.food_items.each do |f|%>
+                                <span><%= f.name%></span>
+                            <%end%>
+                        <%end%>
+                      </td>
+                      <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_deal_path(deal.id) ) %></td>
+                      <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+
+                    </tr>
+                <%end %>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
         
         <hr>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                  
-                <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
 
-            
 
-            <tbody>
-              <% @deals.each_with_index do |deal, index| %>
-                <tr>
-                  <td><%= index+1 %></td>
-                  <td><%= deal.name %></td>
-                  <td><%= deal.description %></td>
-                  <td><%= deal.price %></td>
-                    
-                  <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_deal_path(deal.id) ) %></td>
-                  <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
-                  
-                </tr>
-              <%end %>
-            </tbody>
-          </table>
-        </div>
+      <%= render "/deals/form" %>
         
         <!---->
         

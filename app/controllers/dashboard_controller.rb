@@ -154,6 +154,27 @@ class DashboardController < ApplicationController
   end
 
   def cater_page
+    @comp = CateringCompany.find params[:id]
+    all_ambience = @comp.ratings.pluck(:ambience)
+    @ambience = all_ambience.sum / all_ambience.count
+
+    all_food = @comp.ratings.pluck(:food)
+    @food = all_food.sum/all_food.count
+
+    all_service = @comp.ratings.pluck(:service)
+    @service = all_service.sum/all_service.count
+
+    all_value = @comp.ratings.pluck(:value)
+    @value = all_value.sum/all_value.count
+
+    @overall_rating =(@ambience + @food +@service + @value)/4
+
+    total = @comp.ratings.count
+    @five = (@comp.ratings.where(:ambience=> 5,:food=>5, :service=>5, :value=>5 ).count/total)*100
+    @four =(@comp.ratings.where(:ambience=> 4,:food=>4, :service=>4, :value=>4 ).count/total)*100
+    @three= (@comp.ratings.where(:ambience=> 3,:food=>3, :service=>3, :value=>3 ).count/total)*100
+    @two = (@comp.ratings.where(:ambience=> 2,:food=>2, :service=>2, :value=>2 ).count/total)*100
+    @one = (@comp.ratings.where(:ambience=> 1,:food=>1, :service=>1, :value=>1 ).count/total)*100
 
   end
 

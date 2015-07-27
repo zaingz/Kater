@@ -36,7 +36,7 @@
             </h1>
             <ol class="breadcrumb">
               <li class="active">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Dashboard / Food Item
               </li>
             </ol>
           </div>
@@ -48,50 +48,54 @@
         
         
           
-        <button class="btn btn-default pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Create New Food Item
+        <button class="btn btn-default pull-right" style="margin-bottom: 20px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Manage items
         </button>
         <div class="clearfix"></div>
         <div class="collapse" id="collapseExample">
           <div class="">
-      
-            <%= render "/dashboard/create_food_item_form" %>
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+
+
+
+                <tbody>
+                <% @all_food_items.each_with_index do |item, index| %>
+                    <tr>
+                      <td><%= index+1 %></td>
+                      <td><%= image_tag(item.pico_url(:standard), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= item.name %></span></td>
+                      <td><%= item.description %></td>
+                      <td><%= item.price %></td>
+
+                      <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_food_item_path(item.id) ) %></td>
+                      <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_food_item", id: item.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+
+                    </tr>
+                <%end %>
+                </tbody>
+              </table>
+            </div>
             
           </div>
         </div>
         
         <hr>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
 
-            
+      <%= render "/dashboard/create_food_item_form" %>
 
-            <tbody>
-              <% @all_food_items.each_with_index do |item, index| %>
-                <tr>
-                  <td><%= index+1 %></td>
-                  <td><%= item.name %></td>
-                  <td><%= item.description %></td>
-                  <td><%= item.price %></td>
-                    
-                  <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_food_item_path(item.id) ) %></td>
-                  <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_food_item", id: item.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
-                  
-                </tr>
-              <%end %>
-            </tbody>
-          </table>
-        </div>
+
+
         
         <!---->
         

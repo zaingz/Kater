@@ -35,35 +35,31 @@
               <a href="#">
                 <img src="images/johnyLogo.png"  />
               </a>
-              <h2>Johny Rockets</h2>
+              <h2><%= @comp.name%></h2>
             </div>
             <div class="allstf col-md-6 col-xs-7">
               <ul class="clearfix">
+
+                <% if @comp.female_servers%>
                 <li>
                   All Female Servers
                 </li>
+                <% end%>
+                <% if @comp.arabic_speaking%>
                 <li>
                   Arabic Speaking Only
                 </li>
+                    <%end%>
               </ul>
             </div>
             <div class="fivstar col-md-3 col-xs-5">
               <ul class="clearfix">
+
+                <% @overall_rating.times do |k|%>
                 <li>
                   <i class="fa fa-star"></i>
                 </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
+               <% end%>
               </ul>
             </div>
           </div>
@@ -123,9 +119,9 @@
                 <div class="row">
                   <div class="col-md-2 col-sm-3">
                     <div class="img-thumbnail">
-                      <img  src="images/cater-img.jpg"  />
+                      <%=image_tag 'cater-img.jpg' %>
                     </div><br />
-                    <a href="#">Johnny Rockets</a>
+                    <a href="#"><%=@comp.name%></a>
                     <div class="ratings">
                       <i class="fa fa-star"></i>
                       <i class="fa fa-star"></i>
@@ -136,14 +132,21 @@
                   </div>
                   <div class="col-md-10 co-sm-9">
                     <div class="tags">
-                      <span>08:00 am - 11:00 am</span>
+                      <% @comp.available_time_slots.each do |slot| %>
+                          <a href=<%="/select/slot/time/#{slot.id}"%>>
+                                    <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
+                                        <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                                    </span>
+                          </a>
+                      <%end%>
+                      <!-- <span>08:00 am - 11:00 am</span>
                       <span>08:00 am - 11:00 am</span>
                       <span class="active">08:00 am - 11:00 am</span>
                       <span>08:00 am - 11:00 am</span>
                       <span class="closed">08:00 am - 11:00 am</span>
                       <span>08:00 am - 11:00 am</span>
                       <span>08:00 am - 11:00 am</span>
-                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span> -->
                     </div>
                     <div class="bottominfo">
                       <p>Note: Your serving time is <span>08:00 PM</span></p>
@@ -152,274 +155,197 @@
                   </div>
                 </div>
               </div>
-            </div>
+              <div id="Menu" class="Menu tab-pane">
+                <div class="myMenu">
+                  <div class="table-responsive menudtL">
 
-          </div>
+
+                    <% @comp.food_items.each_with_index do |f_item, index| %>
+                        <div class="mainmaenu clearfix">
 
 
-          <div id="Menu" class="Menu tab-pane">
-            <div class="myMenu">
-              <div class="table-responsive menudtL">
-                <div class="mainmaenu clearfix">
-                  <div class="clearfix">
-                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
-                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
-                      <img src="images/deals.png" />
-                    </div>
-                    <div class="menList col-md-9 col-sm-9 col-xs-8">
-                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
-                        <h3 class="hidden-xs">Pizza & Burgers</h3>
-                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
-                      </div>
-                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
-                        <h3>79.00 KD</h3>
-                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
-                      </div>
-                    </div>
+                          <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
+                          <div class="clearfix">
+                            <div class="menImg col-md-3 col-sm-3 col-xs-12">
+                              <h3 class="visible-xs"><%=f_item.name %></h3>
+                              <%=image_tag 'deals.png' %>
+                            </div>
+                            <div class="menList col-md-9 col-sm-9 col-xs-12">
+                              <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                                <h3 class="hidden-xs"><%=f_item.name %></h3>
+                                <p><%=f_item.description %> </p>
+                              </div>
+                              <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                                <h3><%=f_item.price %> KD</h3>
+
+                                <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                              </div>
+                            </div>
+                          </div>
+                          <!--Menu Options-->
+                          <div class="menuOptions">
+                            <div class="clearfix ChooseItem">
+                              <form id="<%=index %>" action="/add_item/" method="get" >
+                                <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
+                                <%if not f_item.food_item_add_ons.empty? %>
+                                    <h3>Please choose an add on</h3>
+                                    <div class="radOpt">
+                                      <%f_item.food_item_add_ons.each do |add_on| %>
+                                          <div class="radio">
+                                            <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                          </div>
+                                      <%end%>
+
+                                      <!-- <div class="radio">
+                                        <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                                      </div>
+                                      <div class="radio">
+                                        <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                                      </div>
+                                       <div class="radio">
+                                        <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                                      </div> -->
+                                    </div>
+                                <%end%>
+                                <button type="submit" class="">Add to Cart</button>
+                              </form>
+
+                            </div>
+                          </div>
+
+                          <!-- </form> -->
+                          <!--Menu option END-->
+                        </div>
+
+
+                    <%end%>
+
+
+                    <% @comp.deals.each_with_index do |f_item, index| %>
+                        <div class="mainmaenu clearfix">
+
+
+                          <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
+                          <div class="clearfix">
+                            <div class="menImg col-md-3 col-sm-3 col-xs-12">
+                              <h3 class="visible-xs"><%=f_item.name %></h3>
+                              <%=image_tag 'deals.png' %>
+                            </div>
+                            <div class="menList col-md-9 col-sm-9 col-xs-12">
+                              <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                                <h3 class="hidden-xs"><%=f_item.name %></h3>
+                                <p><%=f_item.description %> </p>
+                              </div>
+                              <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                                <h3><%=f_item.price %> KD</h3>
+
+                                <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                              </div>
+                            </div>
+                          </div>
+                          <!--Menu Options-->
+
+                          <div class="menuOptions">
+                            <div class="clearfix ChooseItem">
+                              <!-- <form id="<%=index %>" action="/add_item/" method="get" > -->
+                              <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
+                              <%if not f_item.food_items.empty? %>
+                                  <h3>This Deal contains:</h3>
+                                  <div class="radOpt">
+                                    <%f_item.food_items.each do |add_on| %>
+                                        <div class="radio">
+                                          <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                        </div>
+                                    <%end%>
+
+                                    <!-- <div class="radio">
+                                      <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                                    </div>
+                                    <div class="radio">
+                                      <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                                    </div>
+                                     <div class="radio">
+                                      <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                                    </div> -->
+                                  </div>
+                              <%end%>
+                              <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/" %>
+                              <!-- </form> -->
+
+                            </div>
+                          </div>
+
+                          <!-- </form> -->
+                          <!--Menu option END-->
+                        </div>
+
+                        <!--//-->
+                    <%end%>
+
+
+
+
+
                   </div>
-                  <!--Menu Options-->
-                  <div class="menuOptions">
-                    <div class="clearfix ChooseItem">
-                      <h3>Please choose an item from Pizzas</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="clearfix ChooseItem Burgers">
-                      <h3>Please choose an item from Burgers</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Menu option END-->
                 </div>
-                <!--//-->
-                <div class="mainmaenu clearfix">
-                  <div class="clearfix">
-                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
-                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
-                      <img src="images/deals.png" />
-                    </div>
-                    <div class="menList col-md-9 col-sm-9 col-xs-8">
-                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
-                        <h3 class="hidden-xs">Pizza & Burgers</h3>
-                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
-                      </div>
-                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
-                        <h3>79.00 KD</h3>
-                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Menu Options-->
-                  <div class="menuOptions">
-                    <div class="clearfix ChooseItem">
-                      <h3>Please choose an item from Pizzas</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="clearfix ChooseItem Burgers">
-                      <h3>Please choose an item from Burgers</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Menu option END-->
-                </div>
-                <!--//-->
-                <div class="mainmaenu clearfix">
-                  <div class="clearfix">
-                    <div class="menImg col-md-3 col-sm-3 col-xs-4">
-                      <h3 class="visible-xs">Pizza &amp; Burgers</h3>
-                      <img src="images/deals.png" />
-                    </div>
-                    <div class="menList col-md-9 col-sm-9 col-xs-8">
-                      <div class="me1 col-md-9 col-sm-9 col-xs-12">
-                        <h3 class="hidden-xs">Pizza & Burgers</h3>
-                        <p>Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, Pizzas, Burgers, Sides, and add-ons including salads, appetisers, pastas, and desserts, </p>
-                      </div>
-                      <div class="me2 col-md-3 col-sm-3 col-xs-12">
-                        <h3>79.00 KD</h3>
-                        <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Menu Options-->
-                  <div class="menuOptions">
-                    <div class="clearfix ChooseItem">
-                      <h3>Please choose an item from Pizzas</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Olivers (somato sauce, mozzarella, basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="clearfix ChooseItem Burgers">
-                      <h3>Please choose an item from Burgers</h3>
-                      <div class="radOpt">
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Charlestown Burger (cheddar, onions, pickles, mustard, ketchup, mayo, tomatoes and lettuce)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Todds Burger Special (cheddar, crispy onions, TE special sauce, lettuce and tomato)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Spicy Jalapeño Burger (cheddar, mayo, pickled jalapeno, ranch, jalapeño ketchup)</label>
-                        </div>
-                        <div class="radio">
-                          <label><input type="radio" name="optradio">Johnny Burger (fontina, portobello mushrooms, pommery mustard aioli, iceberg lettuce)</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--Menu option END-->
-                </div>
-                <!--//-->
-
               </div>
             </div>
           </div>
-
-          <div class="row" >
-            <div class="col-md-12 tabsContent">
-              <div id="accountInfo" class="accInfo tab-pane">
-                <div class="row innerpage">
-                  <div class="dtlTxt">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br /><br />
-
-                      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                  </div>
-                </div>
-              </div >
-            </div>
-          </div>
-
-          <div id="gallerY" class="wgallerY tab-pane">
-            <div class="addpic row">
-              <div class="imgs clearfix">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
+          <!-- </form> -->
+        </div>
 
 
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
+        <div class="row" >
+        <div class="col-md-12 tabsContent">
+          <div id="accountInfo" class="accInfo tab-pane">
+            <div class="row innerpage">
+              <div class="dtlTxt">
 
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
-
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <img src="images/deals-2.png" />
-                  <p>Pizza & Burgers</p>
-                </div>
-
+                <p><%= @comp.description %></p>
               </div>
             </div>
+          </div >
+        </div>
+      </div>
+
+      <div id="gallerY" class="wgallerY tab-pane">
+        <div class="addpic row">
+          <div class="imgs clearfix">
+           <!-- <div class="col-md-3 col-sm-3 col-xs-6">
+              <img src="images/deals-2.png" />
+              <p>Pizza & Burgers</p>
+            </div>-->
+
+            <%  @comp.food_items.each do |f|%>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+              <%= image_tag(f.pico_url(:standard)) %>
+              <p><%= f.name%></p>
+            </div>
+
+                <% end%>
+
           </div>
-          <div id="Reviews" class="adReviews tab-pane">
+        </div>
+      </div>
+
+
+      <div id="Reviews" class="adReviews tab-pane">
             <div class="row">
               <div class="pstRvwBx">
                 <div class="clearfix">
                   <div class="col-sm-8">
                     <div class="clearfix rvwPoints">
                       <div class="rvwPointsA">
-                        4.0
+                        <%= @overall_rating%>
                       </div>
                       <div class="rvwPointsB">
                         <h3>Overall Rating</h3>
                         <div class="ratingStars">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+
+                          <% @overall_rating.times do |x|%>
+                                <i class="fa fa-star"></i>
+                          <%end%>
                           <span>based on recent rating</span>
                         </div>
                       </div>
@@ -429,33 +355,33 @@
                       <ul class="clearfix pointsDfrienceList">
                         <li>
                           <h5>Food</h5>
-                          <p>4.0</p>
+                          <p><%=@food%></p>
                         </li>
                         <li>
                           <h5>Service</h5>
-                          <p>4.1</p>
+                          <p><%=@service%></p>
                         </li>
                         <li>
                           <h5>Ambience</h5>
-                          <p>3.9</p>
+                          <p><%=@ambience%></p>
                         </li>
                         <li>
                           <h5>Value</h5>
-                          <p>3.5</p>
+                          <p><%=@value%></p>
                         </li>
                       </ul>
                     </div>
                     <!--//-->
                     <div class="rvwBtm">
-                      <i class="fa fa-thumbs-o-up"></i>
-                      85% recommend it to the friends
+                     <!-- <i class="fa fa-thumbs-o-up"></i>
+                      85% recommend it to the friends-->
                     </div>
                   </div>
                   <div class="col-sm-4">
                     <ul class="list-unstyled">
                       <li class="clearfix">
                         <span>5</span>
-                        <div class="rvwBar"><div style="width:80%"></div></div>
+                        <div class="rvwBar"><div style="width:<%= @five%>"></div></div>
                       </li>
                       <li class="clearfix">
                         <span>4</span>
@@ -548,48 +474,52 @@
                   </div>
                 </form>
               </div>
-              <!--//-->
+              <!--//-->  <% @comp.ratings.each do |r|%>
               <div class="rvwShowBx clearfix">
+
+
+                <% overall_rating= (r.ambience+r.service+r.value+r.food)/4%>
                 <div class="col-sm-3">
                   <div class="starRating">
+
+                    <% overall_rating.times do |l|%>
                     <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+                   <%end%>
                   </div>
                   <ul class="list-unstyled">
                     <li>
-                      <strong>5</strong> Food
+                      <strong><%= r.food%></strong> Food
                     </li>
                     <li>
-                      <strong>2</strong> Service
+                      <strong><%= r.service%></strong> Service
                     </li>
                     <li>
-                      <strong>3</strong> Ambience
+                      <strong><%= r.ambience%></strong> Ambience
                     </li>
                     <li>
-                      <strong>4</strong> Value
+                      <strong><%= r.value%></strong> Value
                     </li>
                   </ul>
                 </div>
                 <div class="col-sm-9">
-                  <h3>Service and Food was Fine. The did Try</h3>
+                  <h3><%= r.tittle%></h3>
                   <h6 class="rvwName">
-                    <span>Fiaz Ahmad</span>
-                    Dined 5 days ago
+                    <span><%= r.user.first_name %> <%= r.user.last_name %></span>
+                    Dined <%= time_ago_in_words(r.created_at) %>
                   </h6>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                   <%= r.description%>
                   </p>
                 </div>
               </div>
               <!---->
+             <%end%>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+
   </form>
 </div>
 

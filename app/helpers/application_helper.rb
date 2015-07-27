@@ -14,9 +14,10 @@ module ApplicationHelper
 	    cart = JSON.parse(cart)
 	    food_items = cart.fetch("food_items", []) 
 
-		list_ids = food_items.collect {|k,v| k["add_on_id"] if k["item_id"]==item_id }	    
-
-		FoodItemAddOn.find list_ids
+		list_ids = food_items.collect {|k,v| k["add_on_id"] if k["item_id"]==item_id }
+			if list_ids.empty?
+					FoodItemAddOn.find list_ids
+			end
 	    #food_items.collect {|key,value| key["a"]}
 
 	end
