@@ -27,7 +27,7 @@ class TimeSlotsController < ApplicationController
   # POST /time_slots.json
   def create
     @time_slot = TimeSlot.new(time_slot_params)
-
+    @time_slot.catering_company = current_user.catering_company
     respond_to do |format|
       if @time_slot.save
         format.html { redirect_to :controller => 'dashboard', :action => 'manage_time_slots' }
@@ -58,7 +58,7 @@ class TimeSlotsController < ApplicationController
   def destroy
     @time_slot.destroy
     respond_to do |format|
-      format.html { redirect_to time_slots_url, notice: 'Time slot was successfully destroyed.' }
+      format.html { redirect_to :controller => 'dashboard', :action => 'manage_time_slots' }
       format.json { head :no_content }
     end
   end

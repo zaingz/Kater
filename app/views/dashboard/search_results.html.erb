@@ -161,14 +161,14 @@
                                         <%if (comp.inavailabilities.where(time_slot: slot)).blank?%>
                                             <a href=<%="/select/slot/time/#{slot.id}"%>>
                                         <%else%>
-                                            </a >
+                                            <a >
                                         <%end%>
                                         <%if not (comp.inavailabilities.where(time_slot: slot)).blank? %>
                                             <span class="inavaiable" >
                                         <%elsif get_selected_time_slots%>
                                             <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    
                                         <%else%>
-                                            </span >
+                                            <span >
                                         <%end%>
                                         
                                             <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
@@ -195,16 +195,16 @@
                                     <span>08:00 am - 11:00 am</span> -->
                                 </div>
                                 <div class="bottominfo">
-                                  <% sloty = comp.time_slots.first%>
-                                  <% if sloty%>
+                                  <% if get_selected_time_slots %>
                                     <p>Note: Your serving time is <span>
 
-
-                                       <%= "#{sloty.start_time.strftime('%I:%M %p')}" %>
-                                    </span></p>
-                                    
-                                    <% end%>
-                                    <%=link_to "order now", {controller: 'dashboard', action: 'place_order', id: comp.id}, { class: "btn btn-warning" } %> 
+                                        
+                                          <%= "#{get_selected_time_slots.start_time.strftime('%I:%M %p')}" %>
+                                        
+                                         
+                                      </span></p>
+                                  <%end%>
+                                <%=link_to "order now", {controller: 'dashboard', action: 'place_order', id: comp.id}, { class: "btn btn-warning" } %> 
                                     
                                 </div>  
                             </div>

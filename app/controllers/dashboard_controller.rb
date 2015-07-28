@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-  before_action :authenticate_user!, except: [:search_results,:place_order]
+  before_action :authenticate_user!, except: [:search_results,:place_order, :select_time_slot]
   before_action :authorize_as_super_admin, only: [:super_admin]
 
   def super_admin
@@ -267,13 +267,13 @@ class DashboardController < ApplicationController
 
         cookies[:cart] = "{}"
         flash[:success] = "Order has been created succesfully"
-        redirect_to root_path
+        
       end
     else
       flash[:error] = "please select available slot"  
     end
     
-    redirect_to :back
+    redirect_to root_path
     
   end
 

@@ -184,7 +184,7 @@
               <span id='<%="f___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
-              <a href="#">x</a>
+              <a onclick='removeItem("food_items",<%="#{item.id}"%>,<%="#{index}"%>  )' >x</a>
             </div>
           </div>
           <%end%>
@@ -308,7 +308,7 @@
               <span id='<%="d___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
-              <a href="#">x</a>
+              <a onclick='removeItem("deals",<%="#{item.id}"%>,<%="#{index}"%>  )'>x</a>
             </div>
           </div>
           <%end%>
@@ -356,7 +356,7 @@
                   </div>
                 </div>
                 <div class="cartbuttons clearfix text-center">
-                  <button  class="btn btn-close-two" onclick="goBack()">Add More</button>
+                  <a  class="btn btn-close-two" onclick="goBack()">Add More</a>
                   <!-- <a href="/order/final/checkout/" class="btn btn-close">order now</a> -->
                   <button class="btn btn-close" type="submit">order now</button>
 
@@ -567,6 +567,7 @@
             document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
         }
         window.history.back();
+        return false;
     }
 </script>
 
@@ -575,5 +576,6 @@
     function goBack() {
 
         window.history.back();
+        return false;
     }
 </script>

@@ -24,7 +24,7 @@
     </div>
 
   -->
-  <%= render 'manger_sidebar'%>
+  <%= render '/dashboard/manger_sidebar'%>
 
   <div style="margin-top: 95px;" id="page-wrapper">
     <div class="container-fluid">
@@ -76,7 +76,7 @@
 
                     <td><%= deal.end_time %></td>
 
-                    <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+                    <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "time_slots", action: "destroy", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
 
                   </tr>
               <%end %>

@@ -57,6 +57,20 @@
 
         $.cookie("cart", JSON.stringify(cart), { path: '/' });
       }
+
+      function removeItem(key, item_id, item_index)
+      {
+        cart = JSON.parse($.cookie()["cart"]);
+        cart[key].forEach(function(entry, index) {
+            if(entry["item_id"] == item_id && item_index == index){
+              cart[key].splice(index, 1);
+            }
+        }); 
+
+        $.cookie("cart", JSON.stringify(cart), { path: '/' });
+
+        window.location.reload();
+      }
     
   </script>
 
@@ -165,5 +179,129 @@
   <%= yield %>
 
 
+
+  <div id="myModal" class="modal fade">
+                
+        <div class="modal-dialog">
+    
+            <div class="modal-content"> 
+                <div class="modal-body createpopup">
+    
+                 <ul class="nav nav-tabs" role="tablist" id="myTab">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Login</a></li>
+                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li> 
+                </ul>
+                
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home">
+                    
+                    <!--  -->
+                    <!-- <form class="clearfix" action="<%= new_user_session_path %>" method="post" > -->
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: 'clearfix' }) do |f| %>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[email]"  type="text" class="form-control input-sm" placeholder="User Name" />                                                         
+                            </div>
+                        </div>      
+                      <div class="col-md-6">
+                          <div class="controllink"><a href="#">Forgot username ?</a></div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[password]" type="password" class="form-control input-sm" placeholder="Password" />
+                          
+                            </div>
+                        </div>              
+                      <div class="col-md-6">
+                        
+                          <div class="controllink"><a href="#">Forgot password ?</a></div>
+                        </div>   
+                      <div class="col-md-6 search-btn">
+                        
+                          <input type="submit" value="LOGIN" class="btn btn-warning" />
+                        </div>
+                    <% end %>
+                    <!-- </form> -->
+                    <!--  -->
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="profile">
+                    
+                    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html=> { class: 'clearfix' }) do |f| %>
+                    <!-- <form class="clearfix"> -->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[first_name]" type="text" class="form-control input-sm" placeholder="First Name" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[last_name]" type="text" class="form-control input-sm" placeholder="Last Name" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[email]" type="text" class="form-control input-sm" placeholder="Email" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[mobile_number1]" type="text" class="form-control input-sm" placeholder="Mobile Number" />
+                            </div>
+                        </div>  
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[password]" type="password" class="form-control input-sm" placeholder="password" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[password_confirmation]" type="password" class="form-control input-sm" placeholder="Password Confirmation" />
+                            </div>
+                        </div>            
+                      <div class="col-md-12">
+                          <div class="form-group">
+                            <input name="user[address]" type="text" class="form-control input-sm" placeholder="Street Address" />
+
+
+
+
+
+                            </div>
+                        </div> 
+
+                             
+                      <!-- <div class="col-md-12">
+                          <div class="form-group">
+                          <input type="text" class="form-control input-sm" placeholder="Street Address (optional)" />
+                            </div>
+                        </div> -->
+                        <div class="col-md-12">
+                          <div class="form-group">
+                          <%= f.input :country %>
+                            <!-- <select class="form-control" name="Area" style="color:#a2a2a2;">                                 
+                  <option>Area</option>
+                                  <option>Dasmān</option>
+                                  <option>Sharq</option>
+                                  <option>Dasma</option>
+                  <option>More areas will be added here...</option>
+                                </select>
+                            </div> -->
+                        </div>      
+                      <div class="col-md-12 search-btn">
+                          <button type="submit" class="btn btn-warning" href="catererpage.html">CREATE MY ACCOUNT</button>
+            </div>
+                    <!-- </form> -->
+                    <% end %>
+                  </div> 
+                </div>
+ 
+                </div>
+     
+            </div>
+    
+        </div>
+    
+    </div>
 </body>
 </html>

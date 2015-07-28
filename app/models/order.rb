@@ -7,18 +7,31 @@ class Order < ActiveRecord::Base
 
 
   def total
-    food_item_p = self.order_items.map do |items|
+    
 
-      items.food_items.pluck(:price)
+    total = 0
+
+    self.order_items.each do |item|
+       item.oder_item_foods.each do |x|
+        t = 0
+        x.food_item_add_ons.each do |p|
+          t += p.price                    
         end
+        total += (x.food_item.price+t) * x.quanitiy
+       end    
+    end
 
-    deal_p = self.order_items.map do |items|
-
-      items.deals.pluck(:price)
+    
+    self.order_items.each do |item|      
+       item.oder_item_deals.each do |x|        
+        total += (x.deal.price) * x.quanitiy
+       end   
     end
 
 
-    return food_item_p.first.sum + deal_p.first.sum
+
+
+    return total
   end
 
 end

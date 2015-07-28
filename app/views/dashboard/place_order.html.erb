@@ -88,14 +88,14 @@
                                     <%if (@comp.inavailabilities.where(time_slot: slot)).blank?%>
                                         <a href=<%="/select/slot/time/#{slot.id}"%>>
                                     <%else%>
-                                        </a >
+                                        <a >
                                     <%end%>
                                     <%if not (@comp.inavailabilities.where(time_slot: slot)).blank? %>
                                         <span class="inavaiable" >
                                     <%elsif get_selected_time_slots%>
                                         <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    
                                     <%else%>
-                                        </span >
+                                        <span >
                                     <%end%>
                                     
                                         <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
@@ -122,15 +122,17 @@
                                 <span>08:00 am - 11:00 am</span> -->
                             </div>
                             <div class="bottominfo">
-                              <% sloty = @comp.time_slots.first%>
-                              <% if sloty%>
-                                  <p>Note: Your serving time is <span>
+                                  <% if get_selected_time_slots %>
+                                    <p>Note: Your serving time is <span>
 
+                                        
+                                          <%= "#{get_selected_time_slots.start_time.strftime('%I:%M %p')}" %>
+                                        
+                                         
+                                      </span></p>
+                                  <%end%>
 
-                                       <%= "#{sloty.start_time.strftime('%I:%M %p')}" %>
-                                    </span></p>
-
-                              <% end%>
+                              
                                 <a href="#" class="btn btn-warning">order now</a>
                             </div>
                         </div>

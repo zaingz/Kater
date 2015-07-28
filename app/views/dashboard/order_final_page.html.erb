@@ -184,7 +184,7 @@
               <span id='<%="f___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
-              <a href="#">x</a>
+              <a onclick='removeItem("food_items",<%="#{item.id}"%>,<%="#{index}"%>  )'>x</a>
             </div>
           </div>
           <%end%>
@@ -307,7 +307,7 @@
               <span id='<%="d___#{item.id}_#{index}_span"%>'></span>
             </div>
             <div class="span6">
-              <a href="#">x</a>
+              <a onclick='removeItem("deals",<%="#{item.id}"%>,<%="#{index}"%>  )'>x</a>
             </div>
           </div>
           <%end%>
