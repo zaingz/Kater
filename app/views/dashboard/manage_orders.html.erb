@@ -21,6 +21,19 @@
   <%= render 'manger_sidebar'%>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div style="margin-top: 95px;" id="page-wrapper">
     <div class="container-fluid">
       <!-- Page Heading -->
@@ -37,6 +50,12 @@
         </div>
       </div>
       <!-- /.row -->
+
+
+
+
+
+
 
       <div class="table-responsive">
         <table class="table table-bordered">
@@ -71,13 +90,13 @@
                     <td><%= order.total%></td>
                     <td>
 
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%= "#myModal"+index.to_s%>   >
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal"
+                              data-target=<%= "#myModal"+index.to_s%>   >
                         View <%= order.order_items.count%> items
                       </button>
-
-                      <!--Modal-->
                       <!-- Modal -->
-                      <div class="modal fade" id=<%= "#myModal"+index.to_s%> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal fade" id=<%= "myModal"+index.to_s%>      tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -96,34 +115,66 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Add on</th>
+
 
                                   </tr>
                                   </thead>
 
-<!--Todo: Start here-->
+
+                                  <tbody>
+
+                                  <% order.order_items do |o| %>
+                                      <tr>
+                                      <% o.oder_item_foods do |f_items| %>
+
+
+                                        <td><%= image_tag(f_items.food_item.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.food_item.name %></span></td>
+                                        <td><%= f_items.food_item.price %></td>
+
+                                        <td><%= f_items.quanitiy %></td>
+
+                                        <%end %>
+                                      </tr>
+
+                                      <%end%>
+
+                                  </tbody>
+                                </table>
+                              </div>
+
+
+                              Deals :
+                              <div class="table-responsive">
+                                <table class="table table-bordered">
+                                  <thead>
+                                  <tr>
+
+
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+
+
+                                  </tr>
+                                  </thead>
+
 
                                   <tbody>
                                   <% order.order_items do |items| %>
-                                      <% items.food_items do |f_items| %>
-                                      <tr>
 
-                                        <td><%= image_tag(f_items.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.name %></span></td>
-                                        <td><%= f_items.price %></td>
+                                          <tr>
+                                            <% items.deals do |f_items| %>
+                                            <td><%= image_tag(f_items.food_item.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.food_item.name %></span></td>
+                                            <td><%= f_items.food_item.price %></td>
 
-                                        <td><%= item.quanti %></td>
-                                        <td>
-                                          <% if deal.food_items%>
-                                              <% deal.food_items.each do |f|%>
-                                                  <span><%= f.name%></span>
-                                              <%end%>
-                                          <%end%>
-                                        </td>
-                                        <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_deal_path(deal.id) ) %></td>
-                                        <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+                                            <td><%= f_items.quanitiy %></td>
+                                            <td>
+                                              Test
+                                            </td>
+                                            <%end %>
+                                          </tr>
 
-                                      </tr>
-                                  <%end %>
+                                  <%end%>
                                   </tbody>
                                 </table>
                               </div>

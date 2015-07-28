@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a94a39f-bd60-4a98-bd6b-e8959848f5a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/noty.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/_cart.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/_cart.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/_create_food_item_form.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/_create_food_item_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/_manger_sidebar.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/_manger_sidebar.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/deals_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/deals_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/order.rb" afterPath="$PROJECT_DIR$/app/models/order.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/order_final_page.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/order_final_page.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/order_item.rb" afterPath="$PROJECT_DIR$/app/models/order_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/order_page.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/order_page.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/place_order.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/place_order.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/search_results.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/search_results.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kater.iws" />
@@ -35,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/kater@Development__kater.coverage" NAME="Development: kater Coverage Results" MODIFIED="1438081510549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="kater" />
+    <SUITE FILE_PATH="coverage/kater@Development__kater.coverage" NAME="Development: kater Coverage Results" MODIFIED="1438088074469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="kater" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -55,168 +38,9 @@
       <file leaf-file-name="manage_orders.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7440633">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order_item.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/order_item.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.8205805">
+              <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="order_food_item_add_on.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/order_food_item_add_on.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oder_item_food.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/oder_item_food.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oder_item_deal.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/oder_item_deal.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RailsDependency/#kater" pinned="false" current-in-tab="false">
-        <entry file="uml://RailsDependency/#kater">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>RailsDependency</ID>
-              <OriginalElement>#kater</OriginalElement>
-              <nodes>
-                <node x="1686.0" y="573.633152173913">Inavailability</node>
-                <node x="1245.0" y="511.383152173913">TimeSlot</node>
-                <node x="742.5" y="0.0">Address</node>
-                <node x="1738.5" y="177.018115942029">OrderItem</node>
-                <node x="649.0" y="308.84329710144925">CateringCompany</node>
-                <node x="2979.0" y="348.4121376811594">FoodItemAddOn</node>
-                <node x="2508.0" y="293.4121376811594">FoodItem</node>
-                <node x="2149.0" y="193.375">OderItemDeal</node>
-                <node x="2067.0" y="57.375">OderItemFood</node>
-                <node x="1215.0" y="672.383152173913">Rating</node>
-                <node x="1291.5" y="165.518115942029">Order</node>
-                <node x="2057.0" y="288.375">Deal</node>
-                <node x="2628.0" y="90.875">OrderFoodItemAddOn</node>
-                <node x="0.0" y="164.09329710144925">User</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="CateringCompany" target="FoodItem">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="CateringCompany" target="Order">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="User" target="Order">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="User" target="Rating">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="CateringCompany" target="Rating">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="CateringCompany" target="Deal">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="Order" target="OrderItem">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="OderItemFood" target="OrderFoodItemAddOn">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="OrderItem" target="OderItemDeal">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="Deal" target="FoodItem">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="OrderItem" target="OderItemFood">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="CateringCompany" target="TimeSlot">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="OrderItem" target="Deal">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="TimeSlot" target="Inavailability">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="Address" target="Order">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="FoodItem" target="FoodItemAddOn">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="User" target="Address">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="OrderItem" target="FoodItem">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="User" target="CateringCompany">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-                <edge source="CateringCompany" target="Inavailability">
-                  <point x="0.0" y="0.0" />
-                  <point x="0.0" y="0.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.3365625000000003" x="2149.5651157353286" y="231.56511573532845" />
-              <SelectedNodes>
-                <node>OderItemFood</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Association fields</Category>
-                <Category>Migration fields</Category>
-              </Categories>
             </state>
           </provider>
         </entry>
@@ -225,27 +49,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="245" column="26" selection-start-line="245" selection-start-column="17" selection-end-line="245" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_company.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/dashboard/create_company.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.5">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage_deals.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_deals.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.653847">
-              <caret line="94" column="18" selection-start-line="55" selection-start-column="11" selection-end-line="94" selection-end-column="18" />
+              <caret line="261" column="0" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -303,12 +107,12 @@
         <option value="$PROJECT_DIR$/app/controllers/deals_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/noty.min.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/_manger_sidebar.html.erb" />
         <option value="$PROJECT_DIR$/app/models/order.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/order_item.rb" />
+        <option value="$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
       </list>
     </option>
@@ -474,7 +278,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="routes&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/config/routes.rb&#10;seeds&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/db/seeds.rb&#10;rou&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/config/routes.rb&#10;user&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/views/dashboard/user_account_page.html.erb&#10;dash&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/controllers/dashboard_controller.rb&#10;Ca&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/models/catering_company.rb&#10;seed&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/db/seeds.rb&#10;gem&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/Gemfile&#10;asset&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/initializers/assets.rb&#10;applica&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/application.rb&#10;route&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/routes.rb&#10;data&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/database.yml&#10;outes&#9;FILE&#9;file://C:/Users/Zain.Zain/RubymineProjects/kater/config/routes.rb&#10;routes.rb&#9;FILE&#9;file://C:/Users/Zain.Zain/RubymineProjects/kater/config/routes.rb" />
+    <property name="SearchEverywhereHistoryKey" value="da&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/controllers/dashboard_controller.rb&#10;routes&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/config/routes.rb&#10;seeds&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/db/seeds.rb&#10;rou&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/config/routes.rb&#10;user&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/views/dashboard/user_account_page.html.erb&#10;dash&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/controllers/dashboard_controller.rb&#10;Ca&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/app/models/catering_company.rb&#10;seed&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/db/seeds.rb&#10;gem&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/Kater/Gemfile&#10;asset&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/initializers/assets.rb&#10;applica&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/application.rb&#10;route&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/routes.rb&#10;data&#9;FILE&#9;file://C:/Users/Zain.Zain/Desktop/pusher'/Kater/config/database.yml&#10;outes&#9;FILE&#9;file://C:/Users/Zain.Zain/RubymineProjects/kater/config/routes.rb&#10;routes.rb&#9;FILE&#9;file://C:/Users/Zain.Zain/RubymineProjects/kater/config/routes.rb" />
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
@@ -676,7 +480,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.49394855" order="11" side_tool="false" content_ui="tabs" />
@@ -1028,14 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79310346">
-          <caret line="73" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/search_results.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28911564">
@@ -1046,7 +842,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/create_company.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.5">
+        <state vertical-scroll-proportion="-0.3773087">
           <caret line="26" column="31" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="31" />
           <folding />
         </state>
@@ -1054,7 +850,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_deals.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.653847">
+        <state vertical-scroll-proportion="1.4168866">
           <caret line="94" column="18" selection-start-line="55" selection-start-column="11" selection-end-line="94" selection-end-column="18" />
           <folding />
         </state>
@@ -1164,7 +960,7 @@
               <point x="0.0" y="0.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.3365625000000003" x="2149.5651157353286" y="231.56511573532845" />
+          <settings layout="Hierarchic Group" zoom="1.3365625000000003" x="2296.5840542436285" y="193.40752864157116" />
           <SelectedNodes>
             <node>OderItemFood</node>
           </SelectedNodes>
@@ -1172,14 +968,6 @@
             <Category>Association fields</Category>
             <Category>Migration fields</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="245" column="26" selection-start-line="245" selection-start-column="17" selection-end-line="245" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +989,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/order_item.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.41975307">
           <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding />
         </state>
@@ -1215,13 +1003,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/dashboard/super_admin_manage_orders.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75989443">
+          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="261" column="0" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7440633">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.8205805">
+          <caret line="136" column="43" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>

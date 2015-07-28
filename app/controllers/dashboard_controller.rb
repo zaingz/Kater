@@ -263,7 +263,8 @@ class DashboardController < ApplicationController
         Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: Date.current)
 
         cookies[:cart] = "{}"
-        flash[:success] = "Order has been created succesfullt"
+        flash[:success] = "Order has been created succesfully"
+        redirect_to root_path
       end
     else
       flash[:error] = "please select available slot"  
