@@ -93,7 +93,7 @@
 
                       <button type="button" class="btn btn-primary" data-toggle="modal"
                               data-target=<%= "#myModal"+index.to_s%>   >
-                        View <%= order.order_items.count%> items
+                        View items
                       </button>
                       <!-- Modal -->
                       <div class="modal fade" id=<%= "myModal"+index.to_s%>      tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -125,7 +125,7 @@
 
                                   <% order.order_items do |o| %>
                                       <tr>
-                                      <% o.oder_item_foods do |f_items| %>
+                                      <% o.oder_items do |f_items| %>
 
 
                                         <td><%= image_tag(f_items.food_item.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.food_item.name %></span></td>
@@ -185,7 +185,6 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                           </div>
                         </div>

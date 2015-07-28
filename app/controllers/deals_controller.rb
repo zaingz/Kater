@@ -77,6 +77,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:name, :description,  :price, {:food_item_ids=>[]}, :pico_cache )
+      params.require(:deal).permit(:name, :description,  :price,:pico, {:food_item_ids=>[]}, :pico_cache )
     end
 end

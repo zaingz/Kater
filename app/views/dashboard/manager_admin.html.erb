@@ -219,7 +219,9 @@
                    Offerings
 
                   </div>
+                  <% if current_user.catering_company%>
                   <div><%= current_user.catering_company.food_items.count+current_user.catering_company.deals.count%></div>
+                      <%end%>
                 </div>
               </div>
             </div>
@@ -251,7 +253,9 @@
                 </div>
                 <div class="col-xs-9 text-right">
                   <div class="huge">Ratings</div>
+                  <% if current_user.catering_company%>
                   <div><%= current_user.catering_company.ratings.count%></div>
+                      <%end%>
                 </div>
               </div>
             </div>

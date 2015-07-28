@@ -54,12 +54,13 @@
             </div>
             <div class="fivstar col-md-3 col-xs-5">
               <ul class="clearfix">
-
+            <% if @overall_rating!=nil %>
                 <% @overall_rating.times do |k|%>
                 <li>
                   <i class="fa fa-star"></i>
                 </li>
                <% end%>
+                    <%end%>
               </ul>
             </div>
           </div>
@@ -342,9 +343,10 @@
                       <div class="rvwPointsB">
                         <h3>Overall Rating</h3>
                         <div class="ratingStars">
-
+                          <% if @overall_rating!=nil %>
                           <% @overall_rating.times do |x|%>
                                 <i class="fa fa-star"></i>
+                          <%end%>
                           <%end%>
                           <span>based on recent rating</span>
                         </div>

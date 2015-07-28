@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'dashboard/super_admin'
 
-  get 'dashboard/manager_admin'
+  get 'dashboard/manager_admin' => 'dashboard#manager_admin'
 
   root 'home#index'
 

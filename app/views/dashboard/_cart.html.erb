@@ -1,13 +1,13 @@
 <a href="#" class="mycartbtn visible-xs btn btn-success">My Cart</a>
 <div class="myCartWgt sidBarWgt" id="cartbox">
-    <h3 class="h3Hdng">My Cart</h3>                        
+    <h3 class="h3Hdng">My Cart</h3>
     <div class="box">
-        
+
 
         <h3 class="h3Hdng">
             <%cart = cookies.fetch(:cart, "{}") %>
             <%cart = JSON.parse(cart) %>
-            <%if cart.has_key?("slot_id") %>                
+            <%if cart.has_key?("slot_id") %>
                 <%selected_time_slot = get_selected_time_slots%>
                 <% if selected_time_slot %>
                 <%="#{selected_time_slot.start_time.strftime('%I:%M %p')} - #{selected_time_slot.end_time.strftime('%I:%M %p')}" %>
@@ -17,7 +17,7 @@
     </div>
     <div class="table-responsive">
         <table class="table">
-            
+
             <tr>
                 <th>Items</th>
                 <th></th>
@@ -26,7 +26,7 @@
             </tr>
             <% total = 0 %>
             <% get_cart_food_items.each do |item| %>
-                <tr>                    
+                <tr>
                     <% food_item = FoodItem.find(item["item_id"]) %>
                     <td><%=food_item.name %></td>
                     <td></td>
@@ -35,7 +35,7 @@
                 </tr>
 
                 <%if item['add_on_id'] %>
-                <tr>                    
+                <tr>
                     <% food_item_add_on = FoodItemAddOn.find(item['add_on_id']) %>
                     <td><%=food_item_add_on.name %></td>
                     <td></td>
@@ -46,16 +46,16 @@
             <%end%>
 
             <% get_cart_deals.each do |item| %>
-                <tr>                    
+                <tr>
                     <% food_item = Deal.find(item['item_id']) %>
                     <td><%=food_item.name %></td>
                     <td></td>
                     <td><%=food_item.price %> KD</td>
                     <% total += food_item.price %>
                 </tr>
-                
+
             <%end%>
-            
+
             <!-- <tr>
                 <td>Deal2</td>
                 <td>2</td>
@@ -76,7 +76,7 @@
             </tr>
         </table>
 
-        <a type="button" class="btnMyCart" value="place order" href="http://localhost:3000/order/checkout/">place order</a>
+        <a type="button" class="btnMyCart" value="place order" href="/order/checkout/">place order</a>
 
 
 
