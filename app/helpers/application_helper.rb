@@ -122,4 +122,28 @@ module ApplicationHelper
 	#     cart = JSON.parse(cart)
 	# 	cart.fetch('total', 0)
 	# end
+
+  def overall_rating comp
+		all_ambience = comp.ratings.pluck(:ambience)
+
+		begin
+		ambience = all_ambience.sum / all_ambience.count
+
+		all_food = comp.ratings.pluck(:food)
+		food = all_food.sum/all_food.count
+
+		all_service = comp.ratings.pluck(:service)
+		service = all_service.sum/all_service.count
+
+		all_value = comp.ratings.pluck(:value)
+		value = all_value.sum/all_value.count
+
+		 overall_rating =(ambience + food +service + value)/4
+		rescue
+			overall_rating =0
+		ensure
+			return overall_rating
+		end
+		end
+
 end

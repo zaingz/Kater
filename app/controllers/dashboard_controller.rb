@@ -55,8 +55,15 @@ class DashboardController < ApplicationController
   end
 
   def super_admin_manage_orders
-  	# here we will fetch all orders
+  	@orders = Order.all
   end
+
+
+
+  def manage_orders
+    @orders = Order.all
+  end
+
 
   def super_admin_manage_user
     @user = User.new
@@ -91,7 +98,7 @@ class DashboardController < ApplicationController
 
 
   def search_results
-    p search_params
+
     @companies = CateringCompany.all
   end
 
@@ -271,9 +278,11 @@ class DashboardController < ApplicationController
       params.permit(:selected_address, address: [:full_name, :email, :mobile_number1, :mobile_number2, :street_address, :street_address_opt, :city])
     end
 
+=begin
     def search_params
       params.require(:search).permit(:date, :area, :caterers, :price_min, :price_max, :female_servers, :arabic_speaking)
     end
+=end
 
 
 end

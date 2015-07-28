@@ -41,7 +41,8 @@ Rails.application.routes.draw do
 
   get '/admin/dashboard/shopkeeper/manage_time_slots/' => 'dashboard#manage_time_slots'
   
-  post '/serach/results/' => 'dashboard#search_results'
+  get '/serach/results/' => 'dashboard#search_results'
+
   get '/order/checkout/' => 'dashboard#order_page'
   get '/place/order/:id' => 'dashboard#place_order'
   get '/add_item/' => 'dashboard#add_item_to_cart'

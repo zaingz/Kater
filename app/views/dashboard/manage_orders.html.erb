@@ -1,0 +1,167 @@
+<div id="wrapper">
+
+  <!-- <div class="collapse navbar-collapse navbar-ex1-collapse">
+     <ul style="position: fixed;" class="nav navbar-nav side-nav">
+       <li class="active">
+         <a href="/admin/dashboard/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+       </li>
+       <li>
+         <a href="/admin/dashboard/manage_users"><i class="fa fa-fw fa-bar-chart-o"></i> Manage User</a>
+       </li>
+       <li>
+         <a href="/admin/dashboard/manage_company"><i class="fa fa-fw fa-table"></i>Manage Company</a>
+       </li>
+       <li>
+         <a href="/admin/dashboard/manage_orders"><i class="fa fa-fw fa-edit"></i> Manage Orders</a>
+       </li>
+
+
+     </ul>
+   </div>-->
+  <%= render 'manger_sidebar'%>
+
+
+  <div style="margin-top: 95px;" id="page-wrapper">
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">
+            Dashboard <small>Admin Panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li class="active">
+              <i class="fa fa-dashboard"></i> Dashboard / Orders
+            </li>
+          </ol>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Completed</th>
+            <th>User</th>
+            <th>Total</th>
+            <th>Items</th>
+            <th>Created at</th>
+
+
+          </tr>
+          </thead>
+
+
+
+          <tbody>
+          <% if  !@orders.empty?%>
+              <% @orders.each do |order, index| %>
+                  <tr>
+
+
+                    <td><%=order.id %></td>
+
+
+                    <td><%= order.completed %></td>
+                    <td><%= order.user.email%></td>
+
+                    <td><%= order.total%></td>
+                    <td>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%= "#myModal"+index.to_s%>   >
+                        View <%= order.order_items.count%> items
+                      </button>
+
+                      <!--Modal-->
+                      <!-- Modal -->
+                      <div class="modal fade" id=<%= "#myModal"+index.to_s%> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="myModalLabel"><%= order.request_message%></h4>
+                            </div>
+                            <div class="modal-body">
+
+                              Food Items:
+                              <div class="table-responsive">
+                                <table class="table table-bordered">
+                                  <thead>
+                                  <tr>
+
+
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Add on</th>
+
+                                  </tr>
+                                  </thead>
+
+<!--Todo: Start here-->
+
+                                  <tbody>
+                                  <% order.order_items do |items| %>
+                                      <% items.food_items do |f_items| %>
+                                      <tr>
+
+                                        <td><%= image_tag(f_items.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.name %></span></td>
+                                        <td><%= f_items.price %></td>
+
+                                        <td><%= item.quanti %></td>
+                                        <td>
+                                          <% if deal.food_items%>
+                                              <% deal.food_items.each do |f|%>
+                                                  <span><%= f.name%></span>
+                                              <%end%>
+                                          <%end%>
+                                        </td>
+                                        <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_deal_path(deal.id) ) %></td>
+                                        <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_deal", id: deal.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+
+                                      </tr>
+                                  <%end %>
+                                  </tbody>
+                                </table>
+                              </div>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </td>
+                    <td><%= time_ago_in_words order.created_at%> ago</td>
+
+
+                  </tr>
+              <%end %>
+          <%end %>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>

@@ -48,6 +48,7 @@ class DealsController < ApplicationController
   # PATCH/PUT /deals/1.json
   def update
     respond_to do |format|
+      @deal.food_items = FoodItem.where(id: deal_params[:food_item_ids].compact())
       if @deal.update(deal_params)
         format.html {  redirect_to :controller => 'dashboard', :action => 'manage_deals' }
         format.json { render :show, status: :ok, location: @deal }

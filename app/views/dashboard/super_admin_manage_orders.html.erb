@@ -31,12 +31,54 @@
             </h1>
             <ol class="breadcrumb">
               <li class="active">
-                <i class="fa fa-dashboard"></i> Dashboard
+                <i class="fa fa-dashboard"></i> Dashboard / Orders
               </li>
             </ol>
           </div>
         </div>
         <!-- /.row -->
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+
+            <th>ID</th>
+            <th>Company</th>
+            <th>Completed</th>
+            <th>User</th>
+            <th>Total</th>
+            <th>Created at</th>
+
+          </tr>
+          </thead>
+
+
+
+          <tbody>
+          <% if  !@orders.empty?%>
+          <% @orders.each do |order, index| %>
+              <tr>
+
+
+                <td><%=order.id %></td>
+
+                <td><%=order.catering_company.name %></td>
+                <td><%= order.completed %></td>
+                <td><%= order.user.email%></td>
+
+                <td><%= order.total%></td>
+                <td><%= time_ago_in_words order.created_at%> ago</td>
+
+
+              </tr>
+          <%end %>
+          <%end %>
+          </tbody>
+        </table>
+      </div>
+
+
 
     </div>
   </div>

@@ -66,8 +66,8 @@
             
                 
             <div class="span1">
-              <img src="images/johnyLogo.png" class="pull-left"/>
-              
+
+              <%=image_tag(item.catering_company.pico_url(:standard),:class=>'pull-left') %>
 
               <h2><a href='#<%= "food_item_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
               <div id='<%= "food_item_#{index}" %>' class="modal fade">
@@ -83,7 +83,7 @@
                         <% if attached_add_ons%>
                         <%attached_add_ons.each do |add_on|%>
                           <div class="listdeals">
-                            <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
+                            <div class="col-md-2"> <%=image_tag(item.catering_company.pico_url(:standard)) %></div>
                             <div class="col-md-8">
                               <%=add_on.name%>
                               <!-- <span>Serve in the box</span> -->
@@ -199,7 +199,7 @@
             
                 
             <div class="span1">
-              <img src="images/johnyLogo.png" class="pull-left"/>
+              <%=image_tag(item.catering_company.pico_url(:standard), :class => 'pull-left') %>
               
 
               <h2><a href='#<%= "deal_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
@@ -213,7 +213,7 @@
                       <div class="row">
                         <%item.food_items.each do |f_item|%>
                           <div class="listdeals">
-                            <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
+                            <div class="col-md-2"> <%=image_tag(item.catering_company.pico_url(:standard)) %></div>
                             <div class="col-md-8">
                               <%=f_item.name%>
                               <!-- <span>Serve in the box</span> -->
@@ -344,14 +344,23 @@
                     </table>
                   </div>
                   <div class="col-md-6">
-                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request"><%=JSON.parse(cookies["cart"])["special_request"]%></textarea>
+                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request">
+
+
+
+                      <%= JSON.parse(cookies["cart"])["special_request"] %>
+
+
+
+                    </textarea>
                   </div>
                 </div>
                 <div class="cartbuttons clearfix text-center">
-                  <a href="#" class="btn btn-close-two">Add More</a>
+                  <button  class="btn btn-close-two" onclick="goBack()">Add More</button>
                   <!-- <a href="/order/final/checkout/" class="btn btn-close">order now</a> -->
                   <button class="btn btn-close" type="submit">order now</button>
-                  <a href="#" class="btn btn-close-two">Clear all</a>
+
+                  <button  type="button" class="btn btn-close-two"  value="clear cart" onclick="deleteAllCookies('cart')">Clear Cart</button>
                 </div>
               </div>
             </div>
@@ -542,4 +551,29 @@
         }
     });
 
+</script>
+
+<script type="text/javascript">
+    function deleteAllCookies(name) {
+        // This function will attempt to remove a cookie from all paths.
+        var pathBits = location.pathname.split('/');
+        var pathCurrent = ' path=';
+
+        // do a simple pathless delete first.
+        document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+
+        for (var i = 0; i < pathBits.length; i++) {
+            pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+            document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+        }
+        window.history.back();
+    }
+</script>
+
+
+<script type="text/javascript">
+    function goBack() {
+
+        window.history.back();
+    }
 </script>
