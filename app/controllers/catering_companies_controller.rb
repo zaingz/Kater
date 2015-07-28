@@ -47,7 +47,7 @@ class CateringCompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @catering_company.update(catering_company_params)
-        format.html { redirect_to @catering_company, notice: 'Catering company was successfully updated.' }
+        format.html { redirect_to :controller => 'dashboard', :action => 'manager_admin', :notice=>'Updated succesfully' }
         format.json { render :show, status: :ok, location: @catering_company }
       else
         format.html { render :edit }
