@@ -19,7 +19,7 @@
     <%= f.input :price %>
 
     <%= f.hidden_field :pico_cache %>
-    <%= f.input :pico, as: :file %>
+    <%= f.input :pico , as: :file, :label => "Picture" %>
 
     <%= f.association :food_items, collection: current_user.catering_company.food_items, input_html: { class: 'multiselectuser'}%>
     
