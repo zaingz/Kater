@@ -66,7 +66,7 @@
             
                 
             <div class="span1">
-              <%=image_tag(item.catering_company.pico_url(:standard),:class=>'pull-left') %>
+              <%=image_tag(item.catering_company.pico_url(:thumbnail),:class=>'pull-left') %>
               
 
               <h2><a href='#<%= "food_item_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
@@ -83,7 +83,7 @@
                         <% if attached_add_ons%>
                         <%attached_add_ons.each do |add_on|%>
                           <div class="listdeals">
-                            <div class="col-md-2">  <%=image_tag(item.catering_company.pico_url(:standard)) %></div>
+                            <div class="col-md-2">  <%=image_tag(item.catering_company.pico_url(:thumbnail)) %></div>
                             <div class="col-md-8">
                               <%=add_on.name%>
                               <!-- <span>Serve in the box</span> -->
@@ -199,7 +199,7 @@
             
                 
             <div class="span1">
-              <%=image_tag(item.catering_company.pico_url(:standard),:class=>'pull-left') %>
+              <%=image_tag(item.catering_company.pico_url(:thumbnail),:class=>'pull-left') %>
 
               <h2><a href='#<%= "deal_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
               <div id='<%= "deal_#{index}" %>' class="modal fade">
@@ -212,7 +212,7 @@
                       <div class="row">
                         <%item.food_items.each do |f_item|%>
                           <div class="listdeals">
-                            <div class="col-md-2">  <%=image_tag(item.catering_company.pico_url(:standard)) %></div>
+                            <div class="col-md-2">  <%=image_tag(item.catering_company.pico_url(:thumbnail)) %></div>
                             <div class="col-md-8">
                               <%=f_item.name%>
                               <!-- <span>Serve in the box</span> -->

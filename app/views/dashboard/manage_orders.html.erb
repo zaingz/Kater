@@ -68,6 +68,8 @@
             <th>Total</th>
             <th>Items</th>
             <th>Created at</th>
+            <th>Address</th>
+
 
 
           </tr>
@@ -85,6 +87,9 @@
 
 
                     <td><%= order.completed %></td>
+
+
+
                     <td><%= order.user.email%></td>
 
                     <td><%= order.total%></td>
@@ -143,9 +148,9 @@
                                           | <%= aa.name %> | 
                                         <%end%>
                                         </td>
-                                        <%end %>
-                                      </tr>
 
+                                      </tr>
+                                        <%end %>
                                       <%end%>
 
                                   </tbody>
@@ -206,9 +211,16 @@
 
 
                     </td>
+
                     <td><%= time_ago_in_words order.created_at%> ago</td>
 
-
+                    <td><p>Street Address 1: <%=order.address.street_address%></p>
+                      <% if order.address.street_address_opt%>
+                      <p>Street Address 2: <%=order.address.street_address_opt%></p>
+                      <%end%>
+                      <p>City: <%=order.address.city%></p>
+                      <p>Mob: <%=order.address.mobile_number1%></p>
+                    </td>
                   </tr>
               <%end %>
           <%end %>

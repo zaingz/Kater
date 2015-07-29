@@ -20,9 +20,9 @@
       <%= f.input :arabic_speaking %>
       <%= f.input :contact_number %>
       <%= f.input :address %>
-      <%= f.input :city %>
-      <%= f.input :state %>
-      <%= f.input :country %>
+      <%= f.input :city , as: :select, :collection => KUWAIT_CITIES %>
+      <%=  f.input :country, :as => :hidden, :input_html => { :value => "Kuwait" }%>
+
       <%= f.hidden_field :pico_cache %>
       <%= f.input :pico, as: :file, :label => "Picture" %>
 
