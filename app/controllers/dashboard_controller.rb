@@ -21,9 +21,14 @@ class DashboardController < ApplicationController
   end
   
   def create_food_item
+      if current_user.catering_company
     @all_food_items = current_user.catering_company.food_items
     @food_item = FoodItem.new
     @food_item.food_item_add_ons.build
+      else
+        redirect_to :back, :notice => 'No Company is created yet'
+      end
+
     
   end
   
