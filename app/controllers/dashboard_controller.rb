@@ -76,8 +76,10 @@ class DashboardController < ApplicationController
   end
   
   def manage_deals
-    @deals = current_user.catering_company.deals
-    @deal = Deal.new
+    if current_user.catering_company
+      @deals = current_user.catering_company.deals
+      @deal = Deal.new
+    end
   end
   
   def delete_deal
