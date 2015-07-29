@@ -8,13 +8,6 @@
         <div class="sideBar">
           <%= render 'dashboard/cart'%>
 
-
-
-
-
-
-
-
           <div class="cancelPolicy sidBarWgt">
             <h3>Cancelation Policy</h3>
             <p>Lorem ipsum dolor sit amet, eu has tota velit, et ius aliquip albucius. Percipit fabellas et vis.</p>
@@ -305,24 +298,26 @@
                           <th>Order Status</th>
                           <th>&nbsp;</th>
                         </tr>
+
+                        <%current_user.orders.each_with_index do |order, index| %>
                         <!--Order 1 Content Start-->
                         <tr class="order1">
                           <td>
-                            0000011
+                            <%=order.id %>
                           </td>
                           <td>
-                            25/04/2015
+                            <%=order.created_at.strftime("%D") %>
                           </td>
                           <td>
                             <h6 class="restName">
-                              Jhoney Rockets Deshi Bhai
+                              <%= order.catering_company.name %>
                             </h6>
                           </td>
                           <td>
-                            9990.000
+                            <%= order.total%>
                           </td>
                           <td>
-                            Complete
+                            <%= order.completed %>
                           </td>
                           <td>
                             <a href="javascript:void(0)" class="viewOrder">View Order</a>
@@ -330,7 +325,7 @@
                         </tr>
                         <tr class="ordrTitleShow order1">
                           <td colspan="2">Cash on Delivery</td>
-                          <td colspan="2">0000011</td>
+                          <td colspan="2"><%=order.id %></td>
                           <td colspan="2"><a href="javascript:void(0)" class="hideOrder">Hide Order</a></td>
                         </tr>
                         <tr class="orderDetail order1">
@@ -338,12 +333,12 @@
                             <table class="table table-bordered table-striped">
                               <tr>
                                 <th colspan="2">
-                                  <img src="images/johnyLogo.png" /> Johny Rockets
+                                  <%= image_tag(order.catering_company.pico_url(:standard)) %> <%= order.catering_company.name %>
                                 </th>
                                 <th colspan="2" class="ordTimeDate text-right">
-                                  <span>12 april 2015</span>
+                                  <span><%=order.created_at.strftime("%D") %></span>
                                   <span class="dviderLine">|</span>
-                                  <span>6:00 PM</span>
+                                  <span><%=order.created_at.strftime("%T") %></span>
                                 </th>
                               </tr>
                               <tr>
@@ -352,67 +347,91 @@
                                 <td>Price</td>
                                 <td>Sub Total</td>
                               </tr>
-                              <tr>
-                                <td><a href="#mydeal" data-toggle="modal">Deal 1</a>
-                                  <div id="mydeal" class="modal fade">
+                              <% order.order_items.each do |o| %>
+                                <% o.oder_item_foods.each_with_index do |f_items, index_f| %>
+                                  <tr>
+                                    <td><a href="#myfood<%="#{index_f}#{order.id}"%>" data-toggle="modal"><%= f_items.food_item.name %></a>
+                                      <div id="myfood<%="#{index_f}#{order.id}"%>" class="modal fade">
 
-                                    <div class="modal-dialog">
+                                        <div class="modal-dialog">
 
-                                      <div class="modal-content">
-                                        <div class="modal-body createpopup deals">
-                                          <h2>Deal 1</h2>
-                                          <div class="row">
-                                            <div class="listdeals">
-                                              <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                                              <div class="col-md-8">
-                                                chicken club sandwich
-                                                <span>Serve in the box</span>
+                                          <div class="modal-content">
+                                            <div class="modal-body createpopup deals">
+                                              <h2><%= f_items.food_item.name %></h2>
+                                              <div class="row">
+                                                <% f_items.food_item_add_ons.each do |aa|%>
+                                                  <div class="listdeals">
+                                                    <!-- <div class="col-md-2"><img src="images/johnyLogo.png" /></div> -->
+                                                    <div class="col-md-8">
+                                                      <%= aa.name %>
+                                                      <span></span> 
+                                                    </div>
+                                                  </div>
+                                                <%end%>
+                                                
+                                                <div class="listdeals text-center">
+                                                  <a href="#" class="btn btn-close"  data-dismiss="modal">Close</a>
+                                                </div>
                                               </div>
-                                            </div>
-                                            <div class="listdeals">
-                                              <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                                              <div class="col-md-8">
-                                                Houstan
-                                                <span></span>
-                                              </div>
-                                            </div>
-                                            <div class="listdeals">
-                                              <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                                              <div class="col-md-8">
-                                                Chili cheeese
-                                                <span></span>
-                                              </div>
-                                            </div>
-                                            <div class="listdeals">
-                                              <div class="col-md-2"><img src="images/johnyLogo.png" /></div>
-                                              <div class="col-md-8">
-                                                Delux shake
-                                                <span>Serve in the glass</span>
-                                              </div>
-                                            </div>
-                                            <div class="listdeals text-center">
-                                              <a href="#" class="btn btn-close"  data-dismiss="modal">Close</a>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>10</td>
-                                <td>999.000</td>
-                                <td>9990.000</td>
-                              </tr>
-                              <tr>
-                                <td><a href="#">Deal 2</a></td>
-                                <td>10</td>
-                                <td>999.000</td>
-                                <td>9990.000</td>
-                              </tr>
+                                    </td>
+                                    <td><%= f_items.quanitiy %></td>
+                                    <td><%= f_items.food_item.price %></td>
+                                    <%total_add_on = 0%>
+                                    <% f_items.food_item_add_ons.each do |aa|%>
+                                      <%total_add_on += aa.price%>
+                                    <%end%>
+                                    <td><%= (f_items.food_item.price+total_add_on)*f_items.quanitiy %></td>
+                                  </tr>
+                                <%end%>
+
+                                <% o.oder_item_deals.each_with_index do |f_items, index_d| %>
+                                  <tr>
+                                    <td><a href="#mydeal<%="#{index_d}#{order.id}"%>" data-toggle="modal"><%= f_items.deal.name %></a>
+                                      <div id="mydeal<%="#{index_d}#{order.id}"%>" class="modal fade">
+
+                                        <div class="modal-dialog">
+
+                                          <div class="modal-content">
+                                            <div class="modal-body createpopup deals">
+                                              <h2><%= f_items.deal.name %></h2>
+                                              <div class="row">
+                                                <% f_items.deal.food_items.each do |aa|%>
+                                                  <div class="listdeals">
+                                                    <div class="col-md-2"><%= image_tag(aa.pico_url(:thumbnail)) %></div>
+                                                    <div class="col-md-8">
+                                                      <%= aa.name %>
+                                                      <span></span> 
+                                                    </div>
+                                                  </div>
+                                                <%end%>
+                                                
+                                                <div class="listdeals text-center">
+                                                  <a href="#" class="btn btn-close"  data-dismiss="modal">Close</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td><%= f_items.quanitiy %></td>
+                                    <td><%= f_items.deal.price %></td>
+                                    <td><%= f_items.deal.price*f_items.quanitiy %></td>
+                                    
+                                  </tr>
+                                <%end%>
+                              <%end%>
+
+
+                              
                               <tfoot>
                               <tr class="ordrInstructions">
                                 <td colspan="4">
-                                  <h5>Special Request for this order comes here</h5>
+                                  <h5><%=order.request_message%></h5>
                                   <div class="ordInstList">
                                     <span>All Female Servers | Arabic Speaking Only</span>
                                   </div>
@@ -423,20 +442,20 @@
                                   Sub Total
                                 </td>
                                 <td colspan="2" class="text-right">
-                                  39960.000
+                                  <%=order.total %>
                                 </td>
                               </tr>
-                              <tr class="discount">
+                              <!-- <tr class="discount">
                                 <td colspan="2">
                                   Discount
                                 </td>
                                 <td colspan="2" class="text-right">
                                   20%
                                 </td>
-                              </tr>
+                              </tr> -->
                               <tr class="grandTotal">
                                 <td colspan="2">Grand Total</td>
-                                <td colspan="2" class="text-right">31968.000 KD</td>
+                                <td colspan="2" class="text-right"><%=order.total %></td>
                               </tr>
                               <tr>
                                 <td colspan="4">
@@ -444,19 +463,20 @@
                                   <div class="row delivrAddress addressInfo">
                                     <h3 class="customTitle clearfix">Delivery Address</h3>
                                     <div class="dlvrData col-sm-12">
-                                      <h4>Fiaz Ahmad</h4>
-                                      <p>Kater 605, Old Ministry of Education Building, Marqab, Kuwait.</p>
+                                      <h4><%=order.address.full_name %></h4>
+                                      <p><%=order.address.street_address %></p>
+                                      <p><%=order.address.street_address_opt %></p>
                                       <div class="row">
                                         <div class="col-sm-6 col-md-4">
                                           <h5>Telephone:</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
+                                          <p><%=order.address.mobile_number1 %></p>
+                                          <p><%=order.address.mobile_number2 %></p>
                                         </div>
-                                        <div class="col-sm-6 col-md-8">
+                                        <!-- <div class="col-sm-6 col-md-8">
                                           <h5>Fax</h5>
                                           <p>+965.9729 0717</p>
                                           <p>+965.6588 3596</p>
-                                        </div>
+                                        </div> -->
                                       </div>
                                     </div>
                                   </div>
@@ -464,19 +484,20 @@
                                   <div class="row BillingAddress addressInfo">
                                     <h3 class="customTitle clearfix">Billing Address</h3>
                                     <div class="dlvrData col-sm-12">
-                                      <h4>Fiaz Ahmad</h4>
-                                      <p>Kater 605, Old Ministry of Education Building, Marqab, Kuwait.</p>
+                                      <h4><%=order.address.full_name %></h4>
+                                      <p><%=order.address.street_address %></p>
+                                      <p><%=order.address.street_address_opt %></p>
                                       <div class="row">
                                         <div class="col-sm-6 col-md-4">
                                           <h5>Telephone:</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
+                                          <p><%=order.address.mobile_number1 %></p>
+                                          <p><%=order.address.mobile_number2 %></p>
                                         </div>
-                                        <div class="col-sm-6 col-md-8">
+                                        <!-- <div class="col-sm-6 col-md-8">
                                           <h5>Fax</h5>
                                           <p>+965.9729 0717</p>
                                           <p>+965.6588 3596</p>
-                                        </div>
+                                        </div> -->
                                       </div>
                                     </div>
                                   </div>
@@ -487,145 +508,11 @@
                             </table>
                           </td>
                         </tr>
-                        <!--Order 1 Contents END-->
-                        <!--Order 2 Content Start-->
-                        <tr class="order1">
-                          <td>
-                            0000012
-                          </td>
-                          <td>
-                            25/04/2015
-                          </td>
-                          <td>
-                            <h6 class="restName">
-                              Jhoney Rockets Deshi Bhai
-                            </h6>
-                          </td>
-                          <td>
-                            9990.000
-                          </td>
-                          <td>
-                            Complete
-                          </td>
-                          <td>
-                            <a href="javascript:void(0)" class="viewOrder">View Order</a>
-                          </td>
-                        </tr>
-                        <tr class="ordrTitleShow order1">
-                          <td colspan="2">Cash on Delivery</td>
-                          <td colspan="2">0000012</td>
-                          <td colspan="2"><a href="javascript:void(0)" class="hideOrder">Hide Order</a></td>
-                        </tr>
-                        <tr class="orderDetail order1">
-                          <td colspan="6">
-                            <table class="table table-bordered table-striped">
-                              <tr>
-                                <th colspan="2">
-                                  <img src="images/johnyLogo.png" /> Johny Rockets
-                                </th>
-                                <th colspan="2" class="ordTimeDate text-right">
-                                  <span>12 april 2015</span>
-                                  <span class="dviderLine">|</span>
-                                  <span>6:00 PM</span>
-                                </th>
-                              </tr>
-                              <tr>
-                                <td>Item Order</td>
-                                <td>Quantity</td>
-                                <td>Price</td>
-                                <td>Sub Total</td>
-                              </tr>
-                              <tr>
-                                <td>Deal 1</td>
-                                <td>10</td>
-                                <td>999.000</td>
-                                <td>9990.000</td>
-                              </tr>
-                              <tr>
-                                <td>Deal 2</td>
-                                <td>10</td>
-                                <td>999.000</td>
-                                <td>9990.000</td>
-                              </tr>
-                              <tfoot>
-                              <tr class="ordrInstructions">
-                                <td colspan="4">
-                                  <h5>Special Request for this order comes here</h5>
-                                  <div class="ordInstList">
-                                    <span>All Female Servers | Arabic Speaking Only</span>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr class="subTotl">
-                                <td colspan="2">
-                                  Sub Total
-                                </td>
-                                <td colspan="2" class="text-right">
-                                  39960.000
-                                </td>
-                              </tr>
-                              <tr class="discount">
-                                <td colspan="2">
-                                  Discount
-                                </td>
-                                <td colspan="2" class="text-right">
-                                  20%
-                                </td>
-                              </tr>
-                              <tr class="grandTotal">
-                                <td colspan="2">Grand Total</td>
-                                <td colspan="2" class="text-right">31968.000 KD</td>
-                              </tr>
-                              <tr>
-                                <td colspan="4">
-                                  <!--//-->
-                                  <div class="row delivrAddress addressInfo">
-                                    <h3 class="customTitle clearfix">Delivery Address</h3>
-                                    <div class="dlvrData col-sm-12">
-                                      <h4>Fiaz Ahmad</h4>
-                                      <p>Kater 605, Old Ministry of Education Building, Marqab, Kuwait.</p>
-                                      <div class="row">
-                                        <div class="col-sm-6 col-md-4">
-                                          <h5>Telephone:</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
-                                        </div>
-                                        <div class="col-sm-6 col-md-8">
-                                          <h5>Fax</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <!--//-->
-                                  <div class="row BillingAddress addressInfo">
-                                    <h3 class="customTitle clearfix">Billing Address</h3>
-                                    <div class="dlvrData col-sm-12">
-                                      <h4>Fiaz Ahmad</h4>
-                                      <p>Kater 605, Old Ministry of Education Building, Marqab, Kuwait.</p>
-                                      <div class="row">
-                                        <div class="col-sm-6 col-md-4">
-                                          <h5>Telephone:</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
-                                        </div>
-                                        <div class="col-sm-6 col-md-8">
-                                          <h5>Fax</h5>
-                                          <p>+965.9729 0717</p>
-                                          <p>+965.6588 3596</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <!--//-->
-                                </td>
-                              </tr>
-                              </tfoot>
-                            </table>
-                          </td>
-                        </tr>
-                        <!--Order 2 Contents END-->
+                        
+                        <%end%>
+
+
+                        
                       </table>
                     </div>
                   </div>

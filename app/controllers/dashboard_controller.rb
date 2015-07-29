@@ -113,7 +113,7 @@ class DashboardController < ApplicationController
 
   def place_order
     @comp = CateringCompany.find params[:id]
-    first_time_slot = @comp.time_slots.first
+    first_time_slot = @comp.available_time_slots.first
     if first_time_slot
       cart = cookies.fetch(:cart, "{}")
       cart = JSON.parse(cart)
@@ -282,6 +282,16 @@ class DashboardController < ApplicationController
     
     redirect_to root_path
     
+  end
+
+  def complete_order
+    order = Order.find params[:id]
+    if current_user.catering_company == order.catering_company
+      order.completed = true
+      order.save
+    end
+    flash[:notice] = "Order #{order.id} has been delivered"
+    redirect_to :back
   end
 
   private 

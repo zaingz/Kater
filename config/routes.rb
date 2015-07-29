@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
   post '/order/place/final/' => 'dashboard#place_order_final'
 
+  get '/order/complete/:id' => 'dashboard#complete_order', as: :complete_order
+
 
 
   delete '/admin/dashboard/shopkeeper/deal/delete/:id' => 'dashboard#delete_deal'

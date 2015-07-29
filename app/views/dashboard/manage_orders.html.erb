@@ -85,8 +85,14 @@
 
                     <td><%=order.id %></td>
 
-
-                    <td><%= order.completed %></td>
+                    <td>
+                      <%= order.completed %><br>
+                      <% if not order.completed %>
+                        <%= link_to "Deliver", complete_order_path(order.id), class: "btn btn-success" %>
+                      <%end%>
+                    </td>
+                    
+                    
 
 
 
