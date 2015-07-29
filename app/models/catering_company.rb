@@ -8,7 +8,7 @@ class CateringCompany < ActiveRecord::Base
   has_many :time_slots
   belongs_to :user
 
-  validates_presence_of :name, :description,  :number_of_employes,  :contact_number,
+  validates_presence_of :name, :description,  :number_of_employes,  :contact_number
 
   validates_uniqueness_of :name
 
