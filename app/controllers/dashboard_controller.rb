@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-  before_action :authenticate_user!, except: [:search_results,:place_order, :select_time_slot]
+  before_action :authenticate_user!, except: [:search_results,:place_order, :select_time_slot,:cater_page]
   before_action :authorize_as_super_admin, only: [:super_admin]
 
   def super_admin
