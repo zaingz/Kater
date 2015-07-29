@@ -9,8 +9,8 @@ class CateringCompany < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name, :description,  :number_of_employes,  :contact_number,
-                        :address, :city, :state, :country
-  validates_uniqueness_of :name, :contact_number
+
+  validates_uniqueness_of :name
 
   def available_time_slots
     temp = self.inavailabilities.pluck(:time_slot_id)
