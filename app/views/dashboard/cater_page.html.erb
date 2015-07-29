@@ -33,7 +33,7 @@
           <div class="topcntn clearfix">
             <div class="logosec col-md-3 col-xs-12">
               <a href="#">
-                <img src="images/johnyLogo.png"  />
+                <%= image_tag(@comp.pico_url(:thumbnail)) %>
               </a>
               <h2><%= @comp.name%></h2>
             </div>
@@ -120,26 +120,54 @@
                 <div class="row">
                   <div class="col-md-2 col-sm-3">
                     <div class="img-thumbnail">
-                      <%=image_tag 'cater-img.jpg' %>
+                      <%= image_tag(@comp.pico_url(:standard)) %>
                     </div><br />
                     <a href="#"><%=@comp.name%></a>
                     <div class="ratings">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
+                      <ul class="clearfix">
+                        <% if @overall_rating!=nil %>
+                            <% @overall_rating.times do |k|%>
+                                <li>
+                                  <i class="fa fa-star"></i>
+                                </li>
+                            <% end%>
+                        <%end%>
                     </div>
                   </div>
                   <div class="col-md-10 co-sm-9">
                     <div class="tags">
-                      <% @comp.available_time_slots.each do |slot| %>
-                          <a href=<%="/select/slot/time/#{slot.id}"%>>
-                                    <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
-                                        <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
-                                    </span>
+
+
+
+
+                      <% @comp.time_slots.each do |slot| %>
+                          <%if (@comp.inavailabilities.where(time_slot: slot)).blank?%>
+                              <a href=<%="/select/slot/time/#{slot.id}"%>>
+                          <%else%>
+                              <a >
+                          <%end%>
+                          <%if not (@comp.inavailabilities.where(time_slot: slot)).blank? %>
+                                            <span class="inavaiable" >
+                          <%elsif get_selected_time_slots%>
+                                            <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
+                          <%else%>
+                                            <span >
+                          <%end%>
+
+                          <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                          </span>
                           </a>
                       <%end%>
+                      <style type="text/css">
+                          .inavaiable{
+                              pointer-events: none;
+                              background: red !important;
+                              border-color: red !important;
+                              color: white!important;
+                          }
+                      </style>
+
+
                       <!-- <span>08:00 am - 11:00 am</span>
                       <span>08:00 am - 11:00 am</span>
                       <span class="active">08:00 am - 11:00 am</span>
@@ -150,8 +178,17 @@
                       <span>08:00 am - 11:00 am</span> -->
                     </div>
                     <div class="bottominfo">
-                      <p>Note: Your serving time is <span>08:00 PM</span></p>
-                      <a href="#" class="btn btn-warning">order now</a>
+                      <% if get_selected_time_slots %>
+                          <p>Note: Your serving time is <span>
+
+
+                                          <%= "#{get_selected_time_slots.start_time.strftime('%I:%M %p')}" %>
+
+
+                                      </span></p>
+                      <%end%>
+                      <%=link_to "order now", {controller: 'dashboard', action: 'place_order', id: @comp.id}, { class: "btn btn-warning" } %>
+
                     </div>
                   </div>
                 </div>
