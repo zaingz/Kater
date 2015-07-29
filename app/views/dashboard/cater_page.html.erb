@@ -206,7 +206,7 @@
                           <div class="clearfix">
                             <div class="menImg col-md-3 col-sm-3 col-xs-12">
                               <h3 class="visible-xs"><%=f_item.name %></h3>
-                              <%=image_tag 'deals.png' %>
+                              <%=image_tag f_item.pico_url(:standard) %>
                             </div>
                             <div class="menList col-md-9 col-sm-9 col-xs-12">
                               <div class="me1 col-md-9 col-sm-9 col-xs-12">
@@ -267,7 +267,7 @@
                           <div class="clearfix">
                             <div class="menImg col-md-3 col-sm-3 col-xs-12">
                               <h3 class="visible-xs"><%=f_item.name %></h3>
-                              <%=image_tag 'deals.png' %>
+                              <%=image_tag f_item.pico_url(:standard) %>
                             </div>
                             <div class="menList col-md-9 col-sm-9 col-xs-12">
                               <div class="me1 col-md-9 col-sm-9 col-xs-12">
@@ -357,7 +357,7 @@
             <%  @comp.food_items.each do |f|%>
 
             <div class="col-md-3 col-sm-3 col-xs-6">
-              <%= image_tag(f.pico_url(:standard)) %>
+              <%= image_tag(f.pico_url()) %>
               <p><%= f.name%></p>
             </div>
 
@@ -375,7 +375,11 @@
                   <div class="col-sm-8">
                     <div class="clearfix rvwPoints">
                       <div class="rvwPointsA">
+                        <% if @overall_rating!=nil%>
                         <%= @overall_rating%>
+                            <%else%>
+                        N/A
+                            <%end%>
                       </div>
                       <div class="rvwPointsB">
                         <h3>Overall Rating</h3>
@@ -384,6 +388,7 @@
                           <% @overall_rating.times do |x|%>
                                 <i class="fa fa-star"></i>
                           <%end%>
+
                           <%end%>
                           <span>based on recent rating</span>
                         </div>
