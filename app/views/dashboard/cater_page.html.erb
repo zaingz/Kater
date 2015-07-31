@@ -51,6 +51,11 @@
                 </li>
                     <%end%>
               </ul>
+
+
+
+
+
             </div>
             <div class="fivstar col-md-3 col-xs-5">
               <ul class="clearfix">
@@ -97,6 +102,9 @@
 
         <div class="contentbdox">
 
+
+
+
           <div id="Schedule" class="Schedule tab-pane">
             <div class="addreview">
               <div class="contentbdox">
@@ -123,16 +131,24 @@
                       <%= image_tag(@comp.pico_url(:standard)) %>
                     </div><br />
                     <a href="#"><%=@comp.name%></a>
+
+
                     <div class="ratings">
-                      <ul class="clearfix">
-                        <% if @overall_rating!=nil %>
-                            <% @overall_rating.times do |k|%>
-                                <li>
-                                  <i class="fa fa-star"></i>
-                                </li>
-                            <% end%>
-                        <%end%>
+                      <% if @overall_rating!=nil %>
+                          <% @overall_rating.times do |k|%>
+                      <i class="fa fa-star"></i>
+                          <% end%>
+                      <% end%>
                     </div>
+
+
+
+
+
+
+
+
+
                   </div>
                   <div class="col-md-10 co-sm-9">
                     <div class="tags">
@@ -165,6 +181,7 @@
                               border-color: red !important;
                               color: white!important;
                           }
+                              .hide_star{visibility: hidden}
                       </style>
 
 
@@ -425,23 +442,23 @@
                     <ul class="list-unstyled">
                       <li class="clearfix">
                         <span>5</span>
-                        <div class="rvwBar"><div style="width:<%= @five%>"></div></div>
+                        <div class="rvwBar"><div style="width:<%= @five ;%>"></div></div>
                       </li>
                       <li class="clearfix">
                         <span>4</span>
-                        <div class="rvwBar"><div style="width:60%"></div></div>
+                        <div class="rvwBar"><div style="width:<%= @four ;%>"></div></div>
                       </li>
                       <li class="clearfix">
                         <span>3</span>
-                        <div class="rvwBar"><div style="width:50%"></div></div>
+                        <div class="rvwBar"><div  style="width:<%= @three ;%>"></div></div>
                       </li>
                       <li class="clearfix">
                         <span>2</span>
-                        <div class="rvwBar"><div style="width:40%"></div></div>
+                        <div class="rvwBar"><div  style="width:<%= @two ;%>"></div></div>
                       </li>
                       <li class="clearfix">
                         <span>1</span>
-                        <div class="rvwBar"><div style="width:100%"></div></div>
+                        <div class="rvwBar"><div style="width:<%= @one ;%>"></div></div>
                       </li>
                     </ul>
                     <a href="#" class="pstRvwBtn">Post A Review</a>
@@ -450,73 +467,80 @@
               </div>
               <!--//-->
               <div class="postRvwForm customForm clearfix">
-                <form class="clearfix">
+
+                <%= form_for @review do |f| %>
+
+                    <% if @review.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@review.errors.count, "error") %> prohibited the review from being saved:</h2>
+
+                          <ul>
+                            <% @review.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+
+                <div class="clearfix">
                   <div class="col-sm-12">
                     <h4>Post a Review</h4>
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" placeholder="First Name" />
+                    <%= f.text_field :tittle, :placeholder => "Tittle" %>
                   </div>
-                  <div class="col-sm-6">
-                    <input type="text" placeholder="Last Name" />
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="text" placeholder="Email" />
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="text" placeholder="Mobile Number" />
-                  </div>
+
+
                   <div class="col-sm-12">
-                    <textarea placeholder="Street Address"></textarea>
+                    <%= f.text_area :description, :placeholder => "Summary" %>
                   </div>
                   <div class="clearfix">
                     <ul class="clearfix pointsDfrienceList">
                       <li class="col-sm-4 col-xs-6">
                         <h5>Food</h5>
-                        <div class="ratingStars">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+                        <div id="hint_food">
+
                         </div>
+
+
+                        <%= f.text_field :food, :id=> 'hint_food_select' , :class=>'hide_star'%>
+                       <!-- <input  type="hidden" id="hint_food_select" type="text" />-->
+
                       </li>
                       <li class="col-sm-4 col-xs-6">
                         <h5>Service</h5>
-                        <div class="ratingStars">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+                        <div id="hint_service">
                         </div>
+
+                        <%= f.text_field :service, :id=> 'hint_service_select' , :class=>'hide_star' %>
+
                       </li>
                       <li class="col-sm-4 col-xs-6">
                         <h5>Ambience</h5>
-                        <div class="ratingStars">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+                        <div id="hint_ambience">
+
                         </div>
+
+                        <%= f.text_field :ambience, :id=> 'hint_ambience_select' , :class=>'hide_star' %>
+
+
                       </li>
                       <li class="col-sm-4 col-xs-6">
                         <h5>Value</h5>
-                        <div class="ratingStars">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+                        <div id="hint_value">
+
                         </div>
+                        <%= f.text_field :value, :id=> 'hint_value_select' , :class=>'hide_star' %>
+
                       </li>
+                      <%= f.hidden_field :catering_company_id, :value => @comp.id %>
                     </ul>
                   </div>
                   <div class="col-sm-12 text-center postFrmBtmBtn">
                     <input type="submit" value="Submit Review" class="postRvwBtn" />
                   </div>
-                </form>
+                </div>
+                    <%end%>
               </div>
               <!--//-->  <% @comp.ratings.each do |r|%>
               <div class="rvwShowBx clearfix">
@@ -705,5 +729,32 @@
 
     $(window).scroll(function() {
         $elementz.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+
+    $('#hint_food').raty({
+
+        target : '#hint_food_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+
+    });
+    $('#hint_service').raty({
+        target : '#hint_service_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+    });
+    $('#hint_value').raty({
+        target : '#hint_value_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+    });
+    $('#hint_ambience').raty({
+        target : '#hint_ambience_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
     });
 </script>

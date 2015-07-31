@@ -23,4 +23,9 @@ class CateringCompany < ActiveRecord::Base
   
   mount_uploader :pico, PicoUploader
 
+  before_save :trim_city
+
+  def trim_city
+    self.city = self.city.strip
+  end
 end

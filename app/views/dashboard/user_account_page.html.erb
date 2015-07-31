@@ -183,7 +183,7 @@
 
                       <% if @address.errors.any? %>
                         <div id="error_explanation">
-                          <h2><%= pluralize(@address.errors.count, "error") %> prohibited this food_item from being saved:</h2>
+                          <h2><%= pluralize(@address.errors.count, "error") %> prohibited the address from being saved:</h2>
 
                           <ul>
                           <% @address.errors.full_messages.each do |message| %>
@@ -229,6 +229,7 @@
                           <option>Dasma</option>
                           <option>More areas will be added here...</option>
                         </select> -->
+                        <%= hidden_field_tag :email, current_user.email %>
                       </div>
                       <div class="col-sm-12 text-right">
                         <input class="btn btn-primary" type="submit" value="Save Changes" />

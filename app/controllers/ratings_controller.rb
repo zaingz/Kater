@@ -25,10 +25,12 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(rating_params)
+    @rating.user = current_user
+
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
+        format.html { redirect_to :back }
         format.json { render :show, status: :created, location: @rating }
       else
         format.html { render :new }
@@ -72,3 +74,4 @@ class RatingsController < ApplicationController
       params.require(:rating).permit(:ambience, :description,  :food, :service, :tittle, :value, :catering_company_id, :user_id)
     end
 end
+#TODO: set catering company

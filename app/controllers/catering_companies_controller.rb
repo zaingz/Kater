@@ -75,7 +75,7 @@ class CateringCompaniesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def catering_company_params
       params.require(:catering_company).permit(:name, :description,  :number_of_employes,:female_servers,
-                                               :arabic_speaking,  :contact_number,
+                                               :arabic_speaking,  :contact_number,:sitting_capacity,
                                                :address, :city, :state, :country, :pico)
     end
 end

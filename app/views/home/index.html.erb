@@ -38,7 +38,16 @@
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Catering Company</label>
                                 <select name="search[caterers]" class="form-control">
-                                	<option>Selected caterer</option> 
+
+                                    <%CateringCompany.all.each do |x|%>
+                                	<option><%= x.name%></option>
+                                    <%end%>
+
+                                  <% if CateringCompany.all.empty?%>
+                                      <option selected="selected">
+
+                                      </option>
+                                  <%end%>
                                 </select>
                             </div>             	
                         </div>
@@ -50,14 +59,14 @@
                                 <div class="form-group">
                                     <label class="control-label">Price (KD)</label>
                                     <div class="slider">
-                                        <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1000">
+                                        <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1">
                                             <div class="bar"></div>
                                             <div class="leftGrip"></div>
                                             <div class="rightGrip"></div>
                                         </div>
                                         <div class="formgroup"> 
-                                            <input name="search[price_min]" type="text" class="leftLabel form-control" value="" />  
-                                            <input name="search[price_max]" type="text" class="rightLabel form-control" value="" />
+                                            <input name="search[price_min]" type="text" class="leftLabel form-control" value="0" />
+                                            <input name="search[price_max]" type="text" class="rightLabel form-control" value="0" />
                                         </div>
                                     </div>
                                 </div>
@@ -65,16 +74,16 @@
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label class="control-label">Price (KD)</label>
+                                    <label class="control-label">People</label>
                                     <div class="slider">
-                                        <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1000">
+                                        <div class="nstSlider" data-range_min="0" data-range_max="100" data-cur_min="0" data-cur_max="1">
                                             <div class="bar"></div>
                                             <div class="leftGrip"></div>
                                             <div class="rightGrip"></div>
                                         </div>
-                                        <div class="formgroup"> 
-                                            <input type="text" class="leftLabel form-control" value="" />  
-                                            <input type="text" class="rightLabel form-control" value="" />
+                                        <div class="formgroup">
+                                          <input name="search[people_min]" type="text" class="leftLabel form-control" value="0" />
+                                          <input name="search[people_max]" type="text" class="rightLabel form-control" value="0" />
                                         </div>
                                     </div>
                                 </div>
@@ -83,13 +92,13 @@
                                 <div class="form-group advncecheck">
                                     <div class="checkbox">
                                       <label>
-                                        <input name="search[female_servers]" type="checkbox" value="">
+                                        <input name="search[female_servers]" type="checkbox" value="true">
                                         All Female Servers
                                       </label>
                                     </div>
                                     <div class="checkbox">
                                       <label>
-                                        <input name="search[arabic_speaking]" type="checkbox" value="">
+                                        <input name="search[arabic_speaking]" type="checkbox" value="true">
                                         Arabic Speaking
                                       </label>
                                     </div>

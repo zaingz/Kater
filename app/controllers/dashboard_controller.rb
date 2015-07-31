@@ -106,7 +106,27 @@ class DashboardController < ApplicationController
 
   def search_results
 
-    @companies = CateringCompany.all
+    date = params[:search][:date]
+    area = params[:search][:area]
+    name = params[:search][:caterers]
+    price_min = params[:search][:price_min]
+    price_max = params[:search][:price_max]
+    people_min = params[:search][:people_min]
+    people_max = params[:search][:people_max]
+   if people_max == "1"
+
+     people_max = "10000"
+
+   end
+    female_servers = params[:search][:female_servers]? true:false
+    arabic = params[:search][:arabic_speaking]? true:false
+
+
+
+    p params.inspect
+    @companies =CateringCompany.where(name: name, sitting_capacity: people_min..people_max,
+                                      :city => area,
+                                      female_servers: female_servers, arabic_speaking: arabic)
   end
 
 
@@ -171,6 +191,7 @@ class DashboardController < ApplicationController
 
   def cater_page
 
+    @review = Rating.new
     @comp = CateringCompany.find params[:id]
     begin
     all_ambience = @comp.ratings.pluck(:ambience)
