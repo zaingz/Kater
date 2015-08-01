@@ -127,6 +127,8 @@ class DashboardController < ApplicationController
     @companies =CateringCompany.where(name: name, sitting_capacity: people_min..people_max,
                                       :city => area,
                                       female_servers: female_servers, arabic_speaking: arabic)
+
+    @companies = CateringCompany.all
   end
 
 

@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a94a39f-bd60-4a98-bd6b-e8959848f5a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/cancel-off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/cancel-on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/raty.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/raty.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/raty.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/star-half.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/star-off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/star-on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/jquery.raty.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.raty.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/fonts/raty.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/_create_company.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/_create_company.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/catering_companies_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/catering_companies_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/catering_company.rb" afterPath="$PROJECT_DIR$/app/models/catering_company.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ratings_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/ratings_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/search_results.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/search_results.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/user_account_page.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/user_account_page.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" afterPath="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kater.iws" />
@@ -39,7 +18,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/kater@Development__kater.coverage" NAME="Development: kater Coverage Results" MODIFIED="1438356672203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="kater" />
+    <SUITE FILE_PATH="coverage/kater@Development__kater.coverage" NAME="Development: kater Coverage Results" MODIFIED="1438444472639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="kater" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -56,18 +35,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cater_page.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cater_page.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08857143">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="548" column="26" selection-start-line="548" selection-start-column="19" selection-end-line="548" selection-end-column="26" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,7 +59,17 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="203" column="33" selection-start-line="203" selection-start-column="33" selection-end-line="203" selection-end-column="33" />
+              <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_orders.html.erb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5755968">
+              <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -125,7 +108,7 @@
       <file leaf-file-name="user_account_page.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/dashboard/user_account_page.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
+            <state vertical-scroll-proportion="0.0">
               <caret line="231" column="74" selection-start-line="231" selection-start-column="24" selection-end-line="231" selection-end-column="74" />
               <folding />
             </state>
@@ -178,7 +161,6 @@
         <option value="$PROJECT_DIR$/app/views/dashboard/place_order.html.erb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/order_page.html.erb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/order_final_page.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/_cart.html.erb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/manage_time_slots.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
@@ -188,9 +170,10 @@
         <option value="$PROJECT_DIR$/app/models/catering_company.rb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/search_results.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/ratings_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb" />
       </list>
     </option>
   </component>
@@ -238,8 +221,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -530,6 +511,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -738,27 +721,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4969651" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.4848255" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32866043" sideWeight="0.4848255" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33021808" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.108497724" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31089258" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2912254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32554516" sideWeight="0.47875568" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.47875568" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.5212443" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271028" sideWeight="0.4969651" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -777,9 +760,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35508347" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.4817906" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554516" sideWeight="0.4817906" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -956,7 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="143" column="10" selection-start-line="143" selection-start-column="4" selection-end-line="143" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,7 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33273703">
           <caret line="418" column="18" selection-start-line="418" selection-start-column="14" selection-end-line="418" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,18 +1011,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.307692">
-          <caret line="152" column="48" selection-start-line="152" selection-start-column="48" selection-end-line="152" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/place_order.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="150" column="61" selection-start-line="150" selection-start-column="56" selection-end-line="150" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,7 +1093,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8320988">
           <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,7 +1150,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/dashboard/user_account_page.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
+        <state vertical-scroll-proportion="0.0">
           <caret line="231" column="74" selection-start-line="231" selection-start-column="24" selection-end-line="231" selection-end-column="74" />
           <folding />
         </state>
@@ -1192,25 +1164,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="203" column="33" selection-start-line="203" selection-start-column="33" selection-end-line="203" selection-end-column="33" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="548" column="26" selection-start-line="548" selection-start-column="19" selection-end-line="548" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dashboard/cater_page.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/dashboard_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08857143">
-          <caret line="548" column="26" selection-start-line="548" selection-start-column="19" selection-end-line="548" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#1;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/dashboard/manage_orders.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5755968">
+          <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

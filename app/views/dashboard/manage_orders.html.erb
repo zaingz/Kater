@@ -63,7 +63,7 @@
           <tr>
 
             <th>ID</th>
-            <th>Completed</th>
+            <th>Status</th>
             <th>User</th>
             <th>Total</th>
             <th>Items</th>
@@ -86,9 +86,11 @@
                     <td><%=order.id %></td>
 
                     <td>
-                      <%= order.completed %><br>
+
                       <% if not order.completed %>
                         <%= link_to "Deliver", complete_order_path(order.id), class: "btn btn-success" %>
+                          <%else%>
+                          <span>Delivered</span>
                       <%end%>
                     </td>
                     
@@ -174,6 +176,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Food Items</th>
 
 
                                   </tr>
@@ -193,6 +196,11 @@
                                         <td><%= f_items.deal.price %></td>
 
                                         <td><%= f_items.quanitiy %></td>
+                                            <td><% f_items.deal.food_items.each do |i| %>
+                                                  <%=i.name%>
+
+                                              <%end%>
+                                                  </td>
 
                                         
                                         <%end %>
