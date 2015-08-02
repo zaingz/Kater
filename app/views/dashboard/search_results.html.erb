@@ -8,30 +8,37 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="#" class="findbtn visible-xs btn btn-success">Find Caterers</a>
+              <form action="/serach/results/" method="get">
                 <div class="filterbox">
                     <h3>Find Caterers</h3>
                     <div class="form-group">
                         <label class="control-label">Date</label>
-                        <input type="text" class="form-control input-sm" />
+                      <input name="search[date]" type="text" class="form-control input-sm datepicker" placeholder="2015-04-26">
                         <i class="fa fa-calendar"></i>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Area</label>
-                        <select class="form-control input-sm">
-                            <option>Select Area</option>
-                            <option>Select Area</option>
-                            <option>Select Area</option>
-                            <option>Select Area</option>
-                        </select>
+                      <select name="search[area]" class="form-control input-sm">
+                        <% KUWAIT_CITIES.each do |c|%>
+                            <option><%= c%></option>
+                        <%end%>
+
+                      </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Catering Company</label>
-                        <select class="form-control input-sm">
-                            <option>Select Caterer</option>
-                            <option>Select Caterer</option>
-                            <option>Select Caterer</option>
-                            <option>Select Caterer</option>
-                        </select>
+                          <select name="search[caterers]" class="form-control input-sm">
+
+                            <%CateringCompany.all.each do |x|%>
+                                <option><%= x.name%></option>
+                            <%end%>
+
+                            <% if CateringCompany.all.empty?%>
+                                <option selected="selected">
+
+                                </option>
+                            <%end%>
+                          </select>
                     </div>
                     <div class="form-group">
                         <a href="#" class="advcebtn">Advanced Options <i class="fa fa-angle-right"></i> <i class="fa fa-angle-down"></i></a>
@@ -40,43 +47,41 @@
                         <div class="form-group">
                             <label class="control-label">Price (KD)</label>
                             <div class="slider">
-                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="20" data-cur_max="80">
+                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1">
                                     <div class="bar"></div>
                                     <div class="leftGrip"></div>
                                     <div class="rightGrip"></div>
                                 </div>
-                                <div class="formgroup"> 
-                                    <input type="text" class="leftLabel form-control" value="" />  
-                                    <input type="text" class="rightLabel form-control" value="" />  
-                                    <input type="submit" class="btn btn-search" value="Search" /> 
+                                <div class="formgroup">
+                                  <input name="search[price_min]" type="text" class="leftLabel form-control" value="0" />
+                                  <input name="search[price_max]" type="text" class="rightLabel form-control" value="0" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Capacity (persons)</label>
                             <div class="slider">
-                                <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="20" data-cur_max="80">
+                                <div class="nstSlider" data-range_min="0" data-range_max="100" data-cur_min="0" data-cur_max="1">
                                     <div class="bar"></div>
                                     <div class="leftGrip"></div>
                                     <div class="rightGrip"></div>
                                 </div>
                                 <div class="formgroup">
-                                    <input type="text" class="leftLabel form-control" value="" />
-                                    <input type="text" class="rightLabel form-control" value="" />
-                                    <input type="submit" class="btn btn-search" value="Search" />
+                                  <input name="search[people_min]" type="text" class="leftLabel form-control" value="0" />
+                                  <input name="search[people_max]" type="text" class="rightLabel form-control" value="0" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" value="">
+                                <input name="search[female_servers]" type="checkbox" value="true">
                                 All Female Servers
                               </label>
                             </div>
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox" value="">
+                                <input name="search[arabic_speaking]" type="checkbox" value="true">
                                 Arabic Speaking
                               </label>
                             </div>
@@ -86,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+                </form>
                 <div class="addbanners hidden-xs hidden-sm">
                     <a href="#"><%=image_tag('rightbanner.jpg') %></a>
                 </div>
@@ -122,11 +128,12 @@
                             </div>
                             <div class="col-md-7 col-sm-8 col-xs-12 hidden-xs">
                                 <div class="dates">
-                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>April Thursday 16   &nbsp;|&nbsp;</span>   
-                                    <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
-                                    <span>April saturday 18</span>
-                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                    <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
+                                    <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>   -->
+
+                                    <span><b><%=get_date.strftime("%v") %></b>   </span>
+                                    <!--<span>April saturday 18</span>-->
+                                    <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
@@ -135,6 +142,9 @@
                 </div>
 
                 <% @companies.each do |comp| %>
+
+                    <% if (comp.food_items_with_in_range @price_min, @price_max).count>0 %>
+
                     <div class="productbox"> 
                             <div class="row">
                             <div class="col-md-2 col-sm-3">
@@ -164,7 +174,7 @@
                                         <%else%>
                                             <a >
                                         <%end%>
-                                        <%if not (comp.inavailabilities.where(time_slot: slot)).blank? %>
+                                        <%if not (comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
                                             <span class="inavaiable" >
                                         <%elsif get_selected_time_slots%>
                                             <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    
@@ -211,6 +221,7 @@
                             </div>
                         </div>
                     </div>
+                      <%end%>
                 <%end%>
                 <div class="row search-btn">
                     <a href="#" class="btn btn-warning btn-lg">Load More</a>
@@ -288,7 +299,9 @@
               nextSelector: '#slider-next',
               prevSelector: '#slider-prev',
         });
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
         
         $(".findbtn").click( function (){
             $(".filterbox").toggle();

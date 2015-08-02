@@ -56,11 +56,11 @@
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-12 hidden-xs">
                                 <div class="dates">
-                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>April Thursday 16   &nbsp;|&nbsp;</span>
-                                    <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
-                                    <span>April Saturday 18</span>
-                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                    <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
+                                    <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>-->
+                                    <span><b><%= get_date.strftime("%v")%></b></span>
+                                    <!--<span>April Saturday 18</span>-->
+                                    <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
                             </div>
                             <div class="col-md-1 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
@@ -90,7 +90,7 @@
                                     <%else%>
                                         <a >
                                     <%end%>
-                                    <%if not (@comp.inavailabilities.where(time_slot: slot)).blank? %>
+                                    <%if not (@comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
                                         <span class="inavaiable" >
                                     <%elsif get_selected_time_slots%>
                                         <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    

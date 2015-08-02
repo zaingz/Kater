@@ -35,7 +35,7 @@
       <div class="contentbdox">
         <% slot = get_selected_time_slots%>
         <%if slot%>
-        <div class="abovedate"><%=Date.current.strftime("%B %d %A") %>  |   <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></div>
+        <div class="abovedate"><%= get_date.strftime("%B %d %A") %>  |   <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></div>
         <%end%>
         <div class="row ">
           <div class="datetwo clearfix">

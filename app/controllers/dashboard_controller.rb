@@ -105,42 +105,76 @@ class DashboardController < ApplicationController
 
 
   def search_results
-=begin
 
-    date = params[:search][:date]
+  begin
+    date = params[:search][:date] || Date.current
     area = params[:search][:area]
     name = params[:search][:caterers]
-    price_min = params[:search][:price_min]
-    price_max = params[:search][:price_max]
+    @price_min = params[:search][:price_min]
+    @price_max = params[:search][:price_max]
     people_min = params[:search][:people_min]
     people_max = params[:search][:people_max]
+=begin
    if people_max == "1"
 
      people_max = "10000"
 
    end
+=end
     female_servers = params[:search][:female_servers]? true:false
     arabic = params[:search][:arabic_speaking]? true:false
 
 
 
     p params.inspect
-    @companies =CateringCompany.where(name: name, sitting_capacity: people_min..people_max,
-                                      :city => area,
-                                      female_servers: female_servers, arabic_speaking: arabic)
-=end
+    @companies =CateringCompany.where("sitting_capacity >= ? OR  sitting_capacity <= ?",people_min.to_i,
+                                      people_max.to_i)
 
-    @companies = CateringCompany.all
+    if female_servers and arabic
+    @companies = @companies.where(name: name,
+                     :city => area,
+                     female_servers: female_servers, arabic_speaking: arabic)
+    elsif female_servers
+    @companies = @companies.where(name: name,
+                                  :city => area,
+                                  female_servers: female_servers)
+    elsif arabic
+      @companies = @companies.where(name: name,
+                                    :city => area,
+                                   arabic_speaking: arabic)
+    else
+      @companies = @companies.where(name: name,
+                                    :city => area)
+    end
+
+
+
+
+    #@companies
+
+  rescue
+
+
+  ensure
+    @companies||= CateringCompany.all
+  end
+
+    cart = cookies.fetch(:cart, '{}')
+    cart = JSON.parse(cart)
+    cart["date"] = date
+    cookies[:cart] = JSON.generate(cart)
+
   end
 
 
 
   def place_order
     @comp = CateringCompany.find params[:id]
-    first_time_slot = @comp.available_time_slots.first
+    cart = cookies.fetch(:cart, "{}")
+    cart = JSON.parse(cart)
+    first_time_slot = @comp.available_time_slots(cart["date"].to_date).first
     if first_time_slot
-      cart = cookies.fetch(:cart, "{}")
-      cart = JSON.parse(cart)
+
 
       cart["slot_id"] = cart.fetch("slot_id", first_time_slot.id )
       cookies[:cart] = JSON.generate(cart)  
@@ -295,7 +329,11 @@ class DashboardController < ApplicationController
         o.save
         o_item.save
 
-        Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: Date.current)
+        cart = cookies.fetch(:cart, '{}')
+        cart = JSON.parse(cart)
+        date = cart[:date]
+
+        Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: date||Date.current)
 
         cookies[:cart] = "{}"
         flash[:success] = "Order has been created succesfully"

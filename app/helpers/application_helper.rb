@@ -61,6 +61,14 @@ module ApplicationHelper
 
 	end
 
+  def get_date
+		cart = cookies.fetch(:cart, '{}')
+		cart = JSON.parse(cart)
+
+
+		cart["date"].to_date || Date.current
+	end
+
 	# key can be food_items or deals
 	def get_food_item_quanity key, item_id, index
 		cart = cookies.fetch(:cart, '{}')

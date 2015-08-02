@@ -27,8 +27,6 @@
                                 <select name="search[area]" class="form-control">
                                   <% KUWAIT_CITIES.each do |c|%>
                                     <option><%= c%></option>
-                                	<option><%= c%></option>
-                                	<option><%= c%></option>
                                       <%end%>
 
                                 </select>
@@ -42,6 +40,18 @@
                                     <%CateringCompany.all.each do |x|%>
                                 	<option><%= x.name%></option>
                                     <%end%>
+
+                                  <% if CateringCompany.all.empty?%>
+                                      <option selected="selected">
+
+                                      </option>
+                                  <%end%>
+                                </select>
+                              <select name="search[caterers]" class="form-control">
+
+                                  <%CateringCompany.all.each do |x|%>
+                                      <option><%= x.name%></option>
+                                  <%end%>
 
                                   <% if CateringCompany.all.empty?%>
                                       <option selected="selected">
