@@ -26,21 +26,48 @@
   
   <div class="row">
     <div class="col col-md-6">
-      <h2 class="text-muted">Create Add On #1</h2>
-      <%= f.simple_fields_for(:food_item_add_ons) do |x| %>
       
       
-        
-        <div class="form-inputs">
-          <%= x.input :name %>
-          <%= x.input :price %>    
+
+      <%=fields_for("add_ons[]", FoodItemAddOn.new) do |f|%>
+
+
+        <% if not @food_item.food_item_add_ons.empty? %>
+          <h2 class="text-muted">Add Ons</h2>
+          <%@food_item.food_item_add_ons.each do |a| %>
+
+            <%=f.hidden_field :id, value: a.id %>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Name</label>
+              <%=f.text_field :name, value:a.name , class: "form-control"%>
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Price</label>
+              <%=f.text_field :price, value:a.price, class: "form-control"%>
+              
+            </div>
+          <%end%>
+        <%end%>
+
+        <h2 class="text-muted">Create Add On #1</h2>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <%=f.text_field :name, class: "form-control"%>
           
-      
         </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Price</label>
+          <%=f.text_field :price, class: "form-control"%>
+          
+        </div>
+
         
-        <hr>
         
-      <% end %>
+      <%end%>
+
+      
     </div>
   </div>
 

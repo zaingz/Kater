@@ -5,6 +5,8 @@ class FoodItem < ActiveRecord::Base
 	has_and_belongs_to_many :deals
 	belongs_to :order_item
 
+	attr_accessor :add_ons
+
 	validates_presence_of :name, :description, :price, :catering_company
 
 	accepts_nested_attributes_for :food_item_add_ons

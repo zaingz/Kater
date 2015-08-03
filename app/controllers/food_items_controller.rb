@@ -17,7 +17,6 @@ class FoodItemsController < ApplicationController
   # GET /food_items/new
   def new
     @food_item = FoodItem.new
-    @food_item.food_item_add_ons.build
   end
 
   # GET /food_items/1/edit
@@ -32,12 +31,17 @@ class FoodItemsController < ApplicationController
     @food_item = FoodItem.new(food_item_params)
     
     @food_item.catering_company = current_user.catering_company
+
     #@food_item.food_item_add_ons << FoodItemAddOn.create(params[:food_item][:food_item_add_on])
 
     respond_to do |format|
       if @food_item.save
+        
+        
+        @food_item.food_item_add_ons << FoodItemAddOn.create(food_item_add_ons)
         format.html { redirect_to :controller => 'dashboard', :action => 'create_food_item' }
         format.json { render :show, status: :created, location: @food_item }
+        flash[:notice] = "Food Item Created successfully"
       else
         format.html { render :new }
         format.json { render json: @food_item.errors, status: :unprocessable_entity }
@@ -50,6 +54,15 @@ class FoodItemsController < ApplicationController
   def update
     respond_to do |format|
       if @food_item.update(food_item_params)
+        food_item_add_ons.each do |f|  
+          if f[:id]   
+            add_on = FoodItemAddOn.find(f[:id])
+            add_on.update(name: f[:name], price: f[:price])
+          else
+            @food_item.food_item_add_ons << FoodItemAddOn.create(f)
+          end
+        end
+        flash[:notice] = "successfully edited #{@food_item.name}"
         format.html { redirect_to :controller => 'dashboard', :action => 'create_food_item' }
         format.json { render :show, status: :ok, location: @food_item }
       else
@@ -78,6 +91,10 @@ class FoodItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def food_item_params
-      params.require(:food_item).permit(:name, :description,:pico,  :price, food_item_add_ons_attributes: [:name, :price] )
+      params.require(:food_item).permit(:name, :description,:pico,  :price )
+    end
+
+    def food_item_add_ons
+      params.permit(add_ons: [:id, :name, :price])[:add_ons]
     end
 
