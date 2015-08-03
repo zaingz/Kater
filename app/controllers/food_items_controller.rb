@@ -21,7 +21,7 @@ class FoodItemsController < ApplicationController
   end
 
   # GET /food_items/1/edit
-
+  def edit
     @all_food_items = current_user.catering_company.food_items
     render "/dashboard/create_food_item"
   end
@@ -67,6 +67,7 @@ class FoodItemsController < ApplicationController
       format.html { redirect_to food_items_url, notice: 'Food item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
   end
 
   private

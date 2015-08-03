@@ -239,7 +239,7 @@
                                           <div class="radOpt">
                                             <%f_item.food_items.each do |add_on| %>
                                                 <div class="radio">
-                                                  <label><%image_tag add_on.pico_url(:thumbnail), :class => 'img-thumbnail'%><%=add_on.name%></label>
+                                                  <label><%=image_tag add_on.pico_url(:thumbnail), :class => 'img-thumbnail just_margin'%><%=add_on.name%></label>
                                                 </div>
                                             <%end%>
 
@@ -344,6 +344,9 @@
         padding: 1px;
         margin:10px;
     }
+        .just_margin{
+            margin-right: 5px;
+        }
 
 </style>
     <script type="text/javascript">

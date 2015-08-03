@@ -110,17 +110,31 @@
               <div class="contentbdox">
                 <div class="celenderbox">
                   <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12"><big>Select the date</big></div>
-                    <div class="col-md-7 col-sm-8 col-xs-12">
-                      <div class="dates">
-                        <a class="text-left" href="#"><i class="fa fa-angle-left"></i></a>
-                        <span>April Thursday 16   &nbsp;|&nbsp;</span>
-                        <span><b>April Friday 17</b>   &nbsp;|&nbsp;</span>
-                        <span>April saturday</span>
-                        <a class="text-right" data-date-format="mm/dd/yyyy" href="#"><i class="fa fa-angle-right"></i></a>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                      <big class="hidden-xs">Selected date</big>
+                      <div class="dates visible-xs">
+                        <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                        <span>April</span>
+                        <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                      </div>
+                      <div class="dates visible-xs">
+                        <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                        <span>Thur 16</span>
+                        <span>Fri 15</span>
+                        <span>Sat 14</span>
+                        <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
                       </div>
                     </div>
-                    <div class="col-md-2 col-sm-1 col-xs-12"><a class="chngecal" href="javascript:void(0);"><i class="fa fa-calendar"></i></a></div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 hidden-xs">
+                      <div class="dates">
+                        <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
+                        <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>-->
+                        <span><b><%= get_date.strftime("%B %d %A")%></b></span>
+                        <!--<span>April Saturday 18</span>-->
+                        <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
                   </div>
                 </div>
               </div>
@@ -154,20 +168,18 @@
                     <div class="tags">
 
 
-
-
                       <% @comp.time_slots.each do |slot| %>
                           <%if (@comp.inavailabilities.where(time_slot: slot)).blank?%>
                               <a href=<%="/select/slot/time/#{slot.id}"%>>
                           <%else%>
                               <a >
                           <%end%>
-                          <%if not (@comp.inavailabilities.where(time_slot: slot)).blank? %>
-                                            <span class="inavaiable" >
+                          <%if not (@comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
+                                        <span class="inavaiable" >
                           <%elsif get_selected_time_slots%>
-                                            <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
+                                        <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
                           <%else%>
-                                            <span >
+                                        <span >
                           <%end%>
 
                           <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
@@ -181,7 +193,6 @@
                               border-color: red !important;
                               color: white!important;
                           }
-                              .hide_star{visibility: hidden}
                       </style>
 
 
@@ -204,8 +215,9 @@
 
                                       </span></p>
                       <%end%>
-                      <%=link_to "order now", {controller: 'dashboard', action: 'place_order', id: @comp.id}, { class: "btn btn-warning" } %>
 
+
+                      <a href="#" class="btn btn-warning">order now</a>
                     </div>
                   </div>
                 </div>
@@ -243,7 +255,7 @@
                               <form id="<%=index %>" action="/add_item/" method="get" >
                                 <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                                 <%if not f_item.food_item_add_ons.empty? %>
-                                    <h3>Please choose an add on</h3>
+                                    <h3 class="text-center">Please choose an add on</h3>
                                     <div class="radOpt">
                                       <%f_item.food_item_add_ons.each do |add_on| %>
                                           <div class="radio">
@@ -262,7 +274,9 @@
                                       </div> -->
                                     </div>
                                 <%end%>
-                                <button type="submit" class="">Add to Cart</button>
+                                <div class="add_cart text-center">
+                                  <button type="submit" class="me2SlctBtn ">Add to Cart</button>
+                                </div>
                               </form>
 
                             </div>
@@ -284,7 +298,7 @@
                           <div class="clearfix">
                             <div class="menImg col-md-3 col-sm-3 col-xs-12">
                               <h3 class="visible-xs"><%=f_item.name %></h3>
-                              <%=image_tag f_item.pico_url(:standard) %>
+                              <%=image_tag(f_item.pico_url()) %>
                             </div>
                             <div class="menList col-md-9 col-sm-9 col-xs-12">
                               <div class="me1 col-md-9 col-sm-9 col-xs-12">
@@ -305,11 +319,11 @@
                               <!-- <form id="<%=index %>" action="/add_item/" method="get" > -->
                               <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                               <%if not f_item.food_items.empty? %>
-                                  <h3>This Deal contains:</h3>
+                                  <h3>This Deal contains</h3>
                                   <div class="radOpt">
                                     <%f_item.food_items.each do |add_on| %>
                                         <div class="radio">
-                                          <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                          <label><%=image_tag add_on.pico_url(:thumbnail), :class => 'img-thumbnail just_margin'%><%=add_on.name%></label>
                                         </div>
                                     <%end%>
 
@@ -324,8 +338,10 @@
                                     </div> -->
                                   </div>
                               <%end%>
-                              <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/" %>
-                              <!-- </form> -->
+                              <div class="add_cart text-center">
+                                <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/", :class => 'me2SlctBtn' %>
+                                <!-- </form> -->
+                              </div>
 
                             </div>
                           </div>
@@ -412,6 +428,19 @@
                       </div>
                     </div>
                     <!--//-->
+
+                    <style>
+
+                        .add_cart{
+
+                            padding: 1px;
+                            margin:10px;
+                        }
+                        .just_margin{
+                            margin-right: 5px;
+                        }
+
+                    </style>
                     <div class="pointsDfrience">
                       <ul class="clearfix pointsDfrienceList">
                         <li>
