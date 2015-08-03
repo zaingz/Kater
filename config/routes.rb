@@ -20,6 +20,15 @@ Rails.application.routes.draw do
 
   get 'home/create_new_user' => 'home#create_new_user'
   get 'home/edit_user/:id' => 'home#edit_user'
+
+
+  get '/about/' => 'home#about'
+  get '/policy/' => 'home#policy'
+  get '/terms/' => 'home#terms'
+  get '/contact/' => 'home#contact'
+
+
+
   post 'home/save_new_user' => 'home#save_new_user'
 
 
@@ -42,6 +51,8 @@ Rails.application.routes.draw do
   get '/admin/dashboard/shopkeeper/manage_time_slots/' => 'dashboard#manage_time_slots'
   
   get '/serach/results/' => 'dashboard#search_results'
+
+  get '/serach/sm/' => 'dashboard#search_small'
 
   get '/order/checkout/' => 'dashboard#order_page'
   get '/place/order/:id' => 'dashboard#place_order'

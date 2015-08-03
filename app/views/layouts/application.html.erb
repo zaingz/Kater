@@ -156,9 +156,10 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span><i class="fa fa-search"></i> Search</span> </a>
                       <ul class="dropdown-menu" role="menu">
                           <li>
-                            <form class="navbar-form navbar-left" role="search">
+                            <form action="/serach/sm/" method="get"  class="navbar-form navbar-left">
+                              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
                                 <div class="form-group">
-                                <input class="form-control" placeholder="Search" type="text">
+                                <input name="search[name]" class="form-control" placeholder="Search" type="text">
                                 </div>
                                 <button type="submit" class="btn btn-default btn-block submitBtn">Submit</button>
                             </form>

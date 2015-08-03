@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
-    before_filter :login_required, :except => [:index]
+    before_filter :login_required, :except => [:index,:about,:terms,:policy, :contact]
 	before_action :authorize_as_admin, :only => [:dashboard]
 
   	def index
-			@cities = CateringCompany.all.pluck(:city)
-			@cities & @cities
+
+
 		if current_user
 			if current_user.level==1
 				redirect_to :controller => 'dashboard', :action => 'super_admin'
@@ -43,6 +43,23 @@ class HomeController < ApplicationController
 			render 'dashboard_shop_keeper'
 		end
 	end
+
+
+		def about
+
+		end
+
+		def policy
+
+		end
+
+		def terms
+
+		end
+
+		def contact
+
+		end
 
 private
   	def user_params

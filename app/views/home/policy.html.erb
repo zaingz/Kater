@@ -1,0 +1,101 @@
+<%# encoding: utf-8 %>
+<div class="container-fluid" id="innerpage">
+  <div class="row">
+    <div class="innerbanner bx-wrapper">
+      <ul class="bxslider">
+        <li><img src="images/inner-banner.jpg" class="img-responsive" /></li>
+        <li><img src="images/inner-banner.jpg" class="img-responsive" /></li>
+      </ul>
+      <div class="pageouter">
+        <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Privacy Policy</h1>
+      <div class="contentbox">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <h2>Some Heading</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <h2>Some Heading</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="footertop">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Useful Links</h3>
+        <div class="links">
+          <a href="/about">About Kater</a>
+          <a href="/policy">Privacy Policy</a>
+          <a href="/terms">Terms & Conditions</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="text" class="form-control" placeholder="Your email address" />
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Follow Along</h3>
+        <div class="followalong">
+          <a href="#"><i class="fa fa-facebook-f"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footerbottom">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-7">
+        <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+        <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>
+      </div>
+      <div class="col-md-6 col-sm-5">
+        <div class="payicons">
+          <img src="images/pay-icon-1.jpg" />
+          <img src="images/pay-icon-2.jpg" />
+          <img src="images/pay-icon-3.jpg" />
+          <img src="images/pay-icon-4.jpg" />
+          <img src="images/pay-icon-5.jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true	 ,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+        });
+    });
+    var $document = $(document),
+            $element = $('#header'),
+            elementsidebar = 'headerfixed'
+
+    $(window).scroll(function() {
+        $element.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+</script>
