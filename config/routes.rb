@@ -53,6 +53,8 @@ Rails.application.routes.draw do
 
   get '/catering/company/:id' => 'dashboard#cater_page'
 
+  get '/caters/all' => 'dashboard#cater_all'
+
   get '/select/slot/time/:id' => 'dashboard#select_time_slot'
 
   get '/order/final/checkout' => 'dashboard#order_final_page'

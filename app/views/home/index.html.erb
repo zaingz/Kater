@@ -35,18 +35,7 @@
                     	<div class="col-md-3">
                         	<div class="form-group">
                                 <label for="exampleInputEmail1">Catering Company</label>
-                                <select name="search[caterers]" class="form-control">
 
-                                    <%CateringCompany.all.each do |x|%>
-                                	<option><%= x.name%></option>
-                                    <%end%>
-
-                                  <% if CateringCompany.all.empty?%>
-                                      <option selected="selected">
-
-                                      </option>
-                                  <%end%>
-                                </select>
                               <select name="search[caterers]" class="form-control">
 
                                   <%CateringCompany.all.each do |x|%>

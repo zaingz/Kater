@@ -40,7 +40,7 @@
                     <div class="celenderbox">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
-                                <big class="hidden-xs">Select the date</big>
+                                <big class="hidden-xs">Selected date</big>
                                 <div class="dates visible-xs">
                                     <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
                                     <span>April</span>
@@ -58,7 +58,7 @@
                                 <div class="dates">
                                     <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
                                     <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>-->
-                                    <span><b><%= get_date.strftime("%v")%></b></span>
+                                    <span><b><%= get_date.strftime("%B %d %A")%></b></span>
                                     <!--<span>April Saturday 18</span>-->
                                     <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
@@ -171,7 +171,7 @@
                                                     <form id="<%=index %>" action="/add_item/" method="get" >
                                                     <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                                                     <%if not f_item.food_item_add_ons.empty? %>
-                                                        <h3>Please choose an add on</h3>
+                                                        <h3 class="text-center">Please choose an add on</h3>
                                                         <div class="radOpt">
                                                             <%f_item.food_item_add_ons.each do |add_on| %>
                                                                  <div class="radio">
@@ -190,8 +190,10 @@
                                                             </div> -->
                                                          </div>
                                                      <%end%>
-                                                     <button type="submit" class="me2SlctBtn pull-right" class="">Add to Cart</button>
-                                                     </form>
+                                                      <div class="add_cart text-center">
+                                                     <button type="submit" class="me2SlctBtn ">Add to Cart</button>
+                                                      </div>
+                                                    </form>
 
                                                 </div>
                                             </div>
@@ -233,11 +235,11 @@
                                     <!-- <form id="<%=index %>" action="/add_item/" method="get" > -->
                                       <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
                                       <%if not f_item.food_items.empty? %>
-                                          <h3>This Deal contains:</h3>
+                                          <h3>This Deal contains</h3>
                                           <div class="radOpt">
                                             <%f_item.food_items.each do |add_on| %>
                                                 <div class="radio">
-                                                  <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                                  <label><%image_tag add_on.pico_url(:thumbnail), :class => 'img-thumbnail'%><%=add_on.name%></label>
                                                 </div>
                                             <%end%>
 
@@ -252,8 +254,10 @@
                                             </div> -->
                                           </div>
                                       <%end%>
+                                    <div class="add_cart text-center">
                                       <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/", :class => 'me2SlctBtn' %>
                                     <!-- </form> -->
+                                      </div>
 
                                   </div>
                                 </div>
@@ -333,7 +337,15 @@
             </div>
         </div>
     </div>
+<style>
 
+    .add_cart{
+
+        padding: 1px;
+        margin:10px;
+    }
+
+</style>
     <script type="text/javascript">
         var $document = $(document),
         $element = $('.myCartWgt'),

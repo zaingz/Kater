@@ -112,26 +112,18 @@
                     <div class="celenderbox">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
-                                <big class="hidden-xs">Select the date</big>
+                                <big class="hidden-xs">Seleced date</big>
                                 <div class="dates visible-xs">
-                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>April</span>
-                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
-                                </div>
-                                <div class="dates visible-xs">
-                                    <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
-                                    <span>Thur 16</span>   
-                                    <span><b>Fri 15</b></span>
-                                    <span>Sat 14</span>
-                                    <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
-                                </div>
+                                  <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
+                                    </div>
+
                             </div>
                             <div class="col-md-7 col-sm-8 col-xs-12 hidden-xs">
                                 <div class="dates">
                                     <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
                                     <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>   -->
 
-                                    <span><b><%=get_date.strftime("%v") %></b>   </span>
+                                    <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
                                     <!--<span>April saturday 18</span>-->
                                     <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>

@@ -318,7 +318,11 @@
                             <%= order.total%>
                           </td>
                           <td>
-                            <%= order.completed %>
+                            <%if order.completed %>
+                                Delivered
+                                <%else%>
+                                Pending
+                                <%end%>
                           </td>
                           <td>
                             <a href="javascript:void(0)" class="viewOrder">View Order</a>

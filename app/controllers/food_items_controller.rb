@@ -21,8 +21,7 @@ class FoodItemsController < ApplicationController
   end
 
   # GET /food_items/1/edit
-  def edit
-    
+
     @all_food_items = current_user.catering_company.food_items
     render "/dashboard/create_food_item"
   end
@@ -80,4 +79,4 @@ class FoodItemsController < ApplicationController
     def food_item_params
       params.require(:food_item).permit(:name, :description,:pico,  :price, food_item_add_ons_attributes: [:name, :price] )
     end
-end
+

@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-  before_action :authenticate_user!, except: [:search_results,:place_order, :select_time_slot,:cater_page]
+  before_action :authenticate_user!, except: [:search_results,:place_order, :select_time_slot,:cater_page,:cater_all]
   before_action :authorize_as_super_admin, only: [:super_admin]
 
   def super_admin
@@ -183,6 +183,19 @@ class DashboardController < ApplicationController
     end
 
   end
+
+   def cater_all
+     @companies = CateringCompany.all
+
+     cart = cookies.fetch(:cart, '{}')
+     cart = JSON.parse(cart)
+     cart["date"] = Date.current
+     cookies[:cart] = JSON.generate(cart)
+     @price_min = 0
+     @price_max = 1
+
+     render 'search_results'
+   end
 
   def add_item_to_cart
     cart = cookies.fetch(:cart, '{}')
