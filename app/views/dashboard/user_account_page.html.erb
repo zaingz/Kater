@@ -93,6 +93,7 @@
                       <div class="clearfix">
                         <!-- <div class=" col-sm-6"> -->
                           <!-- <label>Birthday</label> -->
+                        <div class=" col-sm-6">
                           <%= f.label :birthdate %>
                           <%= f.text_field :birthdate, class: 'form-control datepicker' %>
                           <script type="text/javascript">
@@ -101,7 +102,7 @@
                                 format: 'yyyy-mm-dd'
                               });
                           </script>
-                          
+                        </div>
                         <!-- </div> -->
                         <!-- <div class=" col-sm-6">
                           <label><input type="checkbox">
@@ -114,23 +115,26 @@
                       <div class=" col-sm-6">
                         <%= f.label :occupation %>
                         <%= f.text_field :occupation %>
-                        <div class="row">
-                          <div class="col-sm-6 col-md-4">
-                            <%= f.label :gender %>
-                            <%= f.select :gender, [ 'Male', 'Female', 'Other' ],selected: current_user.gender , prompt: 'Select One' %>
-                            
-                          </div>
+
                           <!-- <div class="col-sm-6 col-md-8">
                             <label><%= f.text_field :occupation %> Female </label>
                           </div> -->
-                        </div>
+
                       </div>
+
+
+                        <div class="col-sm-6">
+                          <%= f.label :gender %>
+                          <%= f.select :gender, [ 'Male', 'Female', 'Other' ],selected: current_user.gender , prompt: 'Select One' %>
+
+                        </div>
                       <!-- <div class="col-sm-6 text-right margtop">
                         <input type="submit" value="Save Changes" />
                       </div> -->
-                      
+
                     <!-- </form> -->
                   </div>
+                    </div>
                   <div class="row customForm">
                     <!-- <h3 class="customTitle clearfix">Change Password</h3> -->
                     <!-- <form class="clearfix"> -->
