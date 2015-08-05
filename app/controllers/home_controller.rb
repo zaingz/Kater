@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-    before_filter :login_required, :except => [:index,:about,:terms,:policy, :contact]
+    before_filter :login_required, :except => [:index,:about,:terms,:policy, :contact,:lang]
 	before_action :authorize_as_admin, :only => [:dashboard]
 
   	def index
@@ -59,6 +59,16 @@ class HomeController < ApplicationController
 
 		def contact
 
+		end
+
+		def lang
+
+			if I18n.locale.to_s == 'en'
+				I18n.locale = 'ar'
+			else
+				I18n.locale = 'en'
+			end
+			redirect_to :back
 		end
 
 private

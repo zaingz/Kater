@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/terms/' => 'home#terms'
   get '/contact/' => 'home#contact'
 
-
+  get '/lang/' => 'home#lang'
 
   post 'home/save_new_user' => 'home#save_new_user'
 

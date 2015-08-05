@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kater</title>
+  <title>Kater </title>
   <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -19,7 +19,20 @@
   
   <%= stylesheet_link_tag  'font-awesome.css', media: 'all' %>
   <%= stylesheet_link_tag  'bootstrap.css', media: 'all' %>
-  <%= stylesheet_link_tag  'style.css', media: 'all' %>
+
+
+  <!--Arabic todo-->
+
+
+
+
+  <% if  I18n.locale.to_s == 'en' %>
+      <%= stylesheet_link_tag  'style' %>
+  <% else %>
+      <%= stylesheet_link_tag  'style_ar' %>
+  <% end %>
+
+
   <%= stylesheet_link_tag  'jquery.nstSlider.css', media: 'all' %>
   <%= stylesheet_link_tag  'datepicker.css', media: 'all' %>
   <%= stylesheet_link_tag  'jcarousel.responsive.css', media: 'all' %>
@@ -128,7 +141,11 @@
             <%if !current_user %>
               <a href="#myModal" data-toggle="modal">Login</a>
               |
-              <a href="arabic/index.html" lang="ar" dir="rtl">العربیہ</a>
+                <%if I18n.locale.to_s == 'en'%>
+                    <a href="/lang" lang="ar" dir="rtl">العربیہ</a>
+                <%else%>
+                    <a href="/lang" lang="ar" >English</a>
+                <%end%>
               <!-- Modal HTML --> 
             <%else%>
                 <%= link_to(current_user.email, user_account_page_path) %>

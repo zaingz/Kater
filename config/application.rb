@@ -34,12 +34,9 @@ module Kater
     config.assets.initialize_on_precompile = false
     config.assets.enabled = false
 
+    config.i18n.default_locale = :en
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = [:en, :ar]
 
-
-
-
-
-
-    
   end
 end
