@@ -64,9 +64,9 @@ class HomeController < ApplicationController
 		def lang
 
 			if I18n.locale.to_s == 'en'
-				I18n.locale = 'ar'
+				Rails.application.config.lang = 'ar'
 			else
-				I18n.locale = 'en'
+				Rails.application.config.lang = 'en'
 			end
 			redirect_to :back
 		end

@@ -38,5 +38,7 @@ module Kater
     config.i18n.enforce_available_locales = false
     config.i18n.available_locales = [:en, :ar]
 
+    config.lang = 'en'
+
   end
 end
