@@ -158,11 +158,12 @@ class DashboardController < ApplicationController
   ensure
     @companies||= CateringCompany.all
   end
-
-    cart = cookies.fetch(:cart, '{}')
-    cart = JSON.parse(cart)
-    cart["date"] = date
-    cookies[:cart] = JSON.generate(cart)
+    if date
+      cart = cookies.fetch(:cart, '{}')
+      cart = JSON.parse(cart)
+      cart["date"] = date
+      cookies[:cart] = JSON.generate(cart)
+    end
 
   end
 

@@ -86,6 +86,20 @@
 
         window.location.reload();
       }
+
+      
+
+      function set_date(val)
+      {
+        cart = JSON.parse($.cookie()["cart"]);
+        cart["date"] = val
+
+        $.removeCookie('date', { path: '/' });        
+
+        $.cookie("cart", JSON.stringify(cart), {  path: '/' });
+
+        window.location = window.location.origin + window.location.pathname
+      }
     
   </script>
 

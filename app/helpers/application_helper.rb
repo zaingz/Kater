@@ -61,11 +61,13 @@ module ApplicationHelper
 
 	end
 
-  def get_date
+  	def get_date
 		cart = cookies.fetch(:cart, '{}')
 		cart = JSON.parse(cart)
 
-
+		puts "$$$$$$$$$$$$$$"
+		puts cart
+		puts "$$$$$$$$$$$$$$"
 		cart["date"].to_date || Date.current
 	end
 

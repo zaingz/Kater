@@ -63,7 +63,8 @@
                                     <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
                             </div>
-                            <div class="col-md-1 col-sm-1 col-xs-12"><a href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
+                            <input id="datepicker" type="hidden"  />
+                            <div class="col-md-1 col-sm-1 col-xs-12"><a id="open_datepicker" href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
                         </div>
                     </div>
                 </div>
@@ -407,6 +408,17 @@
 
             $(".mycartbtn").click( function (){
                 $(".myCartWgt").toggle();
+            });
+
+            $("#datepicker").on("hide", function(event) {   
+               set_date( $("#datepicker").val() );                 
+            });
+            $('#datepicker').datepicker({
+                format: "yyyy-mm-dd",             
+            });
+
+            $('#open_datepicker').on('click', function(){
+                $('#datepicker').datepicker('show');
             });
         });
 
