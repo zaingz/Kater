@@ -1,7 +1,8 @@
 <!-- <h1>This is index Here we will have our landing page :)</h1> -->
 
 
-
+  <% if  I18n.locale.to_s == 'en' %>
+ 
 
     <!--  -->
     <!--  -->
@@ -13,6 +14,7 @@
                     <!--  -->
                     <form action="/serach/results/" method="get">
                     <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                	
                 	<div class="homesearch row">
                     	<div class="col-md-3">
                         	<div class="form-group">
@@ -237,3 +239,259 @@ $('.nstSlider').nstSlider({
 	});
 </script>
  </div>
+
+
+<%else%>
+ <!-- Arabic Starts from here -->
+
+
+
+<!-- <h1>This is index Here we will have our landing page :)</h1> -->
+
+
+
+
+    <!--  -->
+    <!--  -->
+    <div id="homebody">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <big>اكتشاف متعهدات</big>
+
+                <form action="/serach/results/" method="get">
+                    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                    
+                    <div class="homesearch row">
+                    <div class="col-md-3 advancelink">
+                            <a href="#">خيارات متقدّمة <i class="fa fa-caret-down"></i></a>
+                        </div>  
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">تاريخ</label>
+                                <input type="text" class="form-control datepicker" placeholder="2015-04-26"> 
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">منطقة</label>
+                                  <select name="search[area]" class="form-control">
+                                  <% KUWAIT_CITIES.each do |c|%>
+                                    <option><%= c%></option>
+                                      <%end%>
+
+                                </select>
+                            </div>              
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">كترينغ كمبني</label>
+                                <select name="search[caterers]" class="form-control">
+
+                                  <%CateringCompany.all.each do |x|%>
+                                      <option><%= x.name%></option>
+                                  <%end%>
+
+                                  <% if CateringCompany.all.empty?%>
+                                      <option selected="selected">
+
+                                      </option>
+                                  <%end%>
+                                </select>
+                            </div>              
+                        </div>
+                        <div class="advncebox">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label">( KD ) السعر </label>
+                                    <div class="slider">
+                                        <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1">
+                                            <div class="bar"></div>
+                                            <div class="leftGrip"></div>
+                                            <div class="rightGrip"></div>
+                                        </div>
+                                        <div class="formgroup"> 
+                                            <input name="search[price_min]" type="text" class="leftLabel form-control" value="0" />
+                                            <input name="search[price_max]" type="text" class="rightLabel form-control" value="0" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="control-label"> قدرة </label>
+                                    <div class="slider">
+                                        <div class="nstSlider" data-range_min="0" data-range_max="100" data-cur_min="0" data-cur_max="1">
+                                            <div class="bar"></div>
+                                            <div class="leftGrip"></div>
+                                            <div class="rightGrip"></div>
+                                        </div>
+                                        <div class="formgroup">
+                                          <input name="search[people_min]" type="text" class="leftLabel form-control" value="0" />
+                                          <input name="search[people_max]" type="text" class="rightLabel form-control" value="0" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group advncecheck">
+                                    <div class="checkbox">
+                                      <label>
+                                        <input name="search[female_servers]" type="checkbox" value="true">
+                                         كلّ نادلات أنثويّة
+                                      </label>
+                                    </div>
+                                    <div class="checkbox">
+                                      <label>
+                                        <input name="search[arabic_speaking]" type="checkbox" value="true">
+                                         أربيك يتكلّم
+                                      </label>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-12 search-btn">
+                 
+             <!-- <a class="btn btn-warning btn-lg" href="/serach/results/" >بحر</a> -->
+                            <button class="btn btn-warning btn-lg" type="submit">بحر</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="brandouter">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                      <div class="jcarousel-wrapper">
+                        <div class="jcarousel">
+                            <ul>
+
+                                <li><%= image_tag("brand-1.jpg") %></li>
+                                <li><%= image_tag("brand-2.jpg") %></li>
+                                <li><%= image_tag("brand-3.jpg") %></li>
+                                <li><%= image_tag("brand-4.jpg") %></li>
+                                <li><%= image_tag("brand-5.jpg") %></li>
+                                <li><%= image_tag("brand-6.jpg") %></li>
+                                <li><%= image_tag("brand-7.jpg") %></li>
+                                <li><%= image_tag("brand-8.jpg") %></li>
+                                <li><%= image_tag("brand-9.jpg") %></li> 
+                                <li><%= image_tag("brand-7.jpg") %></li>
+                                <li><%= image_tag("brand-8.jpg") %></li>
+                            </ul>
+                        </div>        
+                        <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                        <a href="#" class="jcarousel-control-next">&rsaquo;</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>خطوات مفيدة</h3>
+                    <div class="links">
+                        <a href="/about">حول كتر</a>     
+                        <a href="/policy">بريفسي بوليسي</a>        
+                        <a href="/terms">عبارات & شروط</a>       
+                        <a href="/contact">اتّصل بنا </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>الرسالة الإخباريّة</h3>
+                    <div class="newsletter">
+                        <input type="text" class="form-control" placeholder="Your email address" />
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3>تبعت جانبا</h3>
+                    <div class="followalong">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footerbottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-7">
+                    <p>© كتر 605, 6ث أرضية, قديمة تربية وزارة بناية, ميرقب, كويت.</p>
+                    <p>تل: +965 2239 5022   |   فاكس: +965 2239 5022   |      <a href="#">إينفوكتر.كم.كو</a></p>                    
+                </div>
+                <div class="col-md-6 col-sm-5">
+                    <div class="payicons">
+                        <%= image_tag("pay-icon-1.jpg") %>
+                        <%= image_tag("pay-icon-2.jpg") %>
+                        <%= image_tag("pay-icon-3.jpg") %>
+                        <%= image_tag("pay-icon-4.jpg") %>
+                        <%= image_tag("pay-icon-5.jpg") %>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+  $(function () {
+    $('#myTab a:first').tab('show');
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    });
+    $('.carousel').carousel({
+        item: 3 
+    }); 
+    
+    $(".advancelink").click( function(){
+        $(".advncebox").toggle();       
+    })
+
+$('.nstSlider').nstSlider({
+        "left_grip_selector": ".leftGrip",
+        "right_grip_selector": ".rightGrip",
+        "value_bar_selector": ".bar",
+        "value_changed_callback": function(cause, leftValue, rightValue) {
+            $(this).parent().find('.leftLabel').val(leftValue);
+            $(this).parent().find('.rightLabel').val(rightValue);
+        }
+    });
+    
+
+  });   
+    
+    var $document = $(document),
+    $element = $('#header'),
+    elementsidebar = 'headerfixed' 
+    
+    $(window).scroll(function() {
+      $element.toggleClass(elementsidebar, $document.scrollTop() >= 50); 
+    });
+</script>
+ </div>
+
+
+
+
+
+
+
+
+
+
+<%end%>
+

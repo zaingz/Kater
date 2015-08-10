@@ -2,7 +2,7 @@
     <!--  -->
     
 
-
+ <% if  I18n.locale.to_s == 'en' %>
 
     <div class="container-fluid" id="innerpage" style="padding-top:1px;">
         <div class="row">
@@ -112,7 +112,7 @@
                     <div class="celenderbox">
                         <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
-                                <big class="hidden-xs">Seleced date</big>
+                                <big class="hidden-xs">Select date</big>
                                 <div class="dates visible-xs">
                                   <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
                                 </div>
@@ -219,6 +219,8 @@
                       <%end%>
                 <%end%>
                 <div class="row search-btn">
+
+
                  <!--   <a href="#" class="btn btn-warning btn-lg">Load More</a>-->
                 </div>
             </div>
@@ -338,3 +340,359 @@
 </script>
 
 
+<!--  Arabic Starts here -->
+
+
+<%else%>
+
+
+
+
+
+
+
+    
+    <!--  -->
+    
+
+
+
+    <div class="container-fluid" id="innerpage" style="padding-top:1px;">
+        <div class="row">
+            <div class="col-md-3 pull-right">
+                 <a href="#" class="findbtn visible-xs btn btn-success">Find Caterers</a>
+              <form action="/serach/results/" method="get">
+                <div class="filterbox">
+                    <h3>اكتشاف متعهدات</h3>
+                    <div class="form-group">
+                        <label class="control-label">تاريخ</label>
+                         <input name="search[date]" type="text" class="form-control input-sm datepicker" placeholder="2015-04-26">
+                  <!--      <i class="pull-left fa fa-calendar"></i> -->
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">منطقة</label>
+                        
+                      <select name="search[area]" class="form-control input-sm">
+                        <% KUWAIT_CITIES.each do |c|%>
+                            <option><%= c%></option>
+                        <%end%>
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">كترينغ كمبني</label>
+                           <select name="search[caterers]" class="form-control input-sm">
+
+                            <%CateringCompany.all.each do |x|%>
+                                <option><%= x.name%></option>
+                            <%end%>
+
+                            <% if CateringCompany.all.empty?%>
+                                <option selected="selected">
+
+                                </option>
+                            <%end%>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <a rel="nofollow" href="#" class="advcebtn">خيارات متقدّمة <i class="fa fa-angle-left"></i> <i class="fa fa-angle-down"></i></a>
+                    </div>
+                    
+                    <div class="hideadvance">
+                    <div class="form-group">
+                        <label class="control-label">سعر (كد)</label>
+                        <div class="slider">
+                            <div class="nstSlider" data-range_min="0" data-range_max="1000" data-cur_min="0" data-cur_max="1">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup">
+                                  <input name="search[price_min]" type="text" class="leftLabel form-control" value="0" />
+                                  <input name="search[price_max]" type="text" class="rightLabel form-control" value="0" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Capacity (persons)</label>
+                            <div class="slider">
+                                <div class="nstSlider" data-range_min="0" data-range_max="100" data-cur_min="0" data-cur_max="1">
+                                    <div class="bar"></div>
+                                    <div class="leftGrip"></div>
+                                    <div class="rightGrip"></div>
+                                </div>
+                                <div class="formgroup">
+                                  <input name="search[people_min]" type="text" class="leftLabel form-control" value="0" />
+                                  <input name="search[people_max]" type="text" class="rightLabel form-control" value="0" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                              <label>
+                                <input name="search[female_servers]" type="checkbox" value="true">
+                                All Female Servers
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input name="search[arabic_speaking]" type="checkbox" value="true">
+                                Arabic Speaking
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
+                        </div>
+                  
+                    </div>
+                </div>
+                </form>
+                <div class="addbanners hidden-xs hidden-sm">
+                    <a href="#"><%=image_tag('rightbanner.jpg') %></a>
+                </div>
+            </div>
+            <div class="col-md-9">              
+                 <div class="innerbannertwo bx-wrapper">
+                    <ul class="bxslider">
+
+                        <li><%=image_tag('inner-banner-two.jpg') %></li>
+                        <li><%=image_tag('inner-banner-two.jpg') %></li>
+                    </ul>
+                                    
+                <div class="pageouter">
+                  <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+                </div>
+                 </div> 
+                <div class="contentbdox">
+                    <div class="celenderbox">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                               <!--  <big class="hidden-xs">Select date</big> -->
+                                <div class="dates visible-xs">
+                                  <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-7 col-sm-8 col-xs-12 hidden-xs">
+                                <div class="dates">
+                                    <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
+                                    <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>   -->
+
+                                    <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
+                                    <!--<span>April saturday 18</span>-->
+                                    <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
+                                </div>
+                            </div>
+                            
+                            <input id="datepicker" type="hidden"  />
+                            <div class="col-md-2 col-sm-1 col-xs-12"><a  style="left :-790px;" id="open_datepicker" href="javascript:void(0);" class="chngecal date"><i class="fa fa-calendar"></i></a></div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <% @companies.each do |comp| %>
+
+                    <% if (comp.food_items_with_in_range @price_min, @price_max).count>0 %>
+
+                    <div class="productbox"> 
+                            <div class="row">
+                            <div class="col-md-2 col-sm-3">
+                                <div class="img-thumbnail">
+                                    <%=image_tag(comp.pico_url(:standard)) %>
+
+                                </div><br />
+                              <a href="<%= '/catering/company/'+comp.id.to_s%>"><%=comp.name %></a>
+
+                                <div class="ratings">
+
+                                  <% overall_rating(comp).times do |s|%>
+                                    <i class="fa fa-star"></i>
+                                  <%end%>
+
+                                </div>
+                            </div>
+                            <div class="col-md-10 co-sm-9">
+                                <div class="tags">
+                                  
+                                    
+
+
+                                    <% comp.time_slots.each do |slot| %>
+                                        <%if (comp.inavailabilities.where(time_slot: slot)).blank?%>
+                                            <a href=<%="/select/slot/time/#{slot.id}"%>>
+                                        <%else%>
+                                            <a >
+                                        <%end%>
+                                        <%if not (comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
+                                            <span class="inavaiable" >
+                                        <%elsif get_selected_time_slots%>
+                                            <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >                                    
+                                        <%else%>
+                                            <span >
+                                        <%end%>
+                                        
+                                            <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                                        </span>
+                                        </a>
+                                    <%end%>
+                                    <style type="text/css">
+                                        .inavaiable{
+                                            pointer-events: none;
+                                            background: red !important;
+                                            border-color: red !important;
+                                            color: white!important;
+                                        }
+                                    </style>
+
+
+                                    <!-- <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span class="active">08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span class="closed">08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span>
+                                    <span>08:00 am - 11:00 am</span> -->
+                                </div>
+                                <div class="bottominfo">
+                                  <% if get_selected_time_slots %>
+                                    <p>بطاقة: ك حصة وقت <span>
+
+                                        
+                                          <%= "#{get_selected_time_slots.start_time.strftime('%I:%M %p')}" %>
+                                        
+                                         
+                                      </span> بعد الظّهر</p>
+                                  <%end%>
+                                <%=link_to "أمر الآن", {controller: 'dashboard', action: 'place_order', id: comp.id}, { class: "btn btn-warning" } %> 
+                                    
+                                </div>  
+                            </div>
+                                
+                        </div>
+                    </div>
+                      <%end%>
+                <%end%>
+                <div class="row search-btn">
+                 <!--   <a href="#" class="btn btn-warning btn-lg">Load More</a>-->
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+  
+    <div id="footertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>خطوات مفيدة</h3>
+                    <div class="links">
+                        <a href="/about">حول كتر</a>     
+                        <a href="/policy">بريفسي بوليسي</a>        
+                        <a href="/terms">عبارات & شروط</a>       
+                        <a href="/contact">اتّصل بنا </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>الرسالة الإخباريّة</h3>
+                    <div class="newsletter">
+                        <input type="text" class="form-control" placeholder="Your email address" />
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3>تبعت جانبا</h3>
+                    <div class="followalong">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footerbottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-7">
+                    <p>© كتر 605, 6ث أرضية, قديمة تربية وزارة بناية, ميرقب, كويت.</p>
+                    <p>تل: +965 2239 5022   |   فاكس: +965 2239 5022   |      <a href="#">إينفوكتر.كم.كو</a></p>                    
+                </div>
+                <div class="col-md-6 col-sm-5">
+                    <div class="payicons">
+                        <%= image_tag("pay-icon-1.jpg") %>
+                        <%= image_tag("pay-icon-2.jpg") %>
+                        <%= image_tag("pay-icon-3.jpg") %>
+                        <%= image_tag("pay-icon-4.jpg") %>
+                        <%= image_tag("pay-icon-5.jpg") %>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+    $('.nstSlider').nstSlider({
+        "left_grip_selector": ".leftGrip",
+        "right_grip_selector": ".rightGrip",
+        "value_bar_selector": ".bar",
+        "value_changed_callback": function(cause, leftValue, rightValue) {
+            $(this).parent().find('.leftLabel').val(leftValue);
+            $(this).parent().find('.rightLabel').val(rightValue);
+        }
+    });
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true   ,
+              nextSelector: '#slider-next',
+              prevSelector: '#slider-prev',
+        });
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+
+        // $('#datepicker').datepicker();
+        // $("#datepicker").on("changeDate", function(event) {
+        //     $("#my_hidden_input").val(
+        //         $("#datepicker").datepicker('getFormattedDate')
+        //      )
+        // });
+        
+        $("#datepicker").on("hide", function(event) {   
+           set_date( $("#datepicker").val() );                 
+        });
+        $('#datepicker').datepicker({
+            format: "yyyy-mm-dd",             
+        });
+
+        $('#open_datepicker').on('click', function(){
+            $('#datepicker').datepicker('show');
+        });
+
+        
+        
+        $(".findbtn").click( function (){
+            $(".filterbox").toggle();
+        });
+        
+        $(".advcebtn").click( function (){
+            $(".hideadvance").toggle();
+            $(this).toggleClass('arrown');
+        });
+        
+    });  
+    var $document = $(document),
+    $element = $('#header'),
+    elementsidebar = 'headerfixed' 
+    
+    $(window).scroll(function() {
+      $element.toggleClass(elementsidebar, $document.scrollTop() >= 50); 
+    });
+</script>
+
+<%end%>

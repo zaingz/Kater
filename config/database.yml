@@ -2,8 +2,7 @@
 default: &default
    adapter: postgresql
    encoding: unicode
-   username: postgres
-   password: kamehameha
+   username: zain
    hostname: 127.0.0.1
    pool: 5
 

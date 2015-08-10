@@ -42,6 +42,7 @@ gem 'country_select', '~> 2.2.0'
 gem 'faker'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'puma'
 
 
 gem 'rails_12factor', group: :production
