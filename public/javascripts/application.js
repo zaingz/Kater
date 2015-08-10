@@ -18,3 +18,4 @@
 
 
 
+$('#s_request').reset();

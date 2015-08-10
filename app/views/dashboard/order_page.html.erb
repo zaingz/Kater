@@ -1,4 +1,7 @@
 <%# encoding: utf-8 %>
+
+
+ <% if  I18n.locale.to_s == 'en' %>
 <div class="container-fluid" id="innerpage">
   <div class="row">
     <div class="col-md-3">
@@ -344,7 +347,7 @@
                     </table>
                   </div>
                   <div class="col-md-6">
-                    <textarea name="special_request" rows="5" class="form-control" placeholder="Special Request">
+                    <textarea id="s_request" name="special_request" rows="2" class="form-control" placeholder="Special Request">
 
 
                       <% if cookies["cart"] %>
@@ -582,3 +585,622 @@
         return false;
     }
 </script>
+
+<%else%>
+<!-- 
+Arabic Starts here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid" id="innerpage">
+  <div class="row">
+    <div class="col-md-3 pull-right">
+      <div class="sideBar">
+        <%= render "cart" %>
+        <div class="cancelPolicy sidBarWgt">
+          <h3>Cancelation Policy</h3>
+          <p>Lorem ipsum dolor sit amet, eu has tota velit, et ius aliquip albucius. Percipit fabellas et vis.</p>
+        </div>
+        <div class="minOrderPolicy sidBarWgt">
+          <h3>Minimum Order Policy</h3>
+          <p>Lorem ipsum dolor sit amet, eu has tota velit, et ius aliquip albucius. Percipit fabellas et vis.</p>
+        </div>
+        <div class="sideBarImg text-center hidden-xs hidden-sm">
+          <%=image_tag 'rightbanner.jpg' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="innerbannertwo bx-wrapper">
+        <ul class="bxslider">
+          <li><%=image_tag 'inner-banner-two.jpg' %></li>
+          <li><%=image_tag 'inner-banner-two.jpg' %></li>
+        </ul>
+        <div class="pageouter">
+          <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+        </div>
+      </div>
+
+
+      <div class="mainContentTop tabsContent">
+        <h2 class="h2Hdng">عربتي</h2>
+      </div>
+      <div class="contentbdox">
+        <% slot = get_selected_time_slots%>
+        <% if slot %>
+        <div class="abovedate"><%=Date.current.strftime("%B %d %A") %>  |   <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %></div>
+        <%end %>
+        <div class="row ">
+          <div class="datetwo clearfix">
+            <div class="span1">
+              رستثرنت اسم
+            </div>
+            <div class="span2">
+            منتوج اسم
+            </div>
+            <div class="span3">
+             كمية
+            </div>
+            <div class="span4">
+            أونيت بريس
+            </div>
+            <div class="span5">
+             مجموعة فرعيّة
+            </div>
+            <div class="span6">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <%total = 0%>
+          <%@food_items.each_with_index do |item, index|%>
+          <div class="celenderdate">
+            
+                
+            <div class="span1">
+
+              <%=image_tag(item.catering_company.pico_url(:thumbnail),:class=>'pull-left') %>
+
+              <h2><a href='#<%= "food_item_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
+              <div id='<%= "food_item_#{index}" %>' class="modal fade">
+
+                <div class="modal-dialog">
+
+                  <div class="modal-content">
+                    <div class="modal-body createpopup deals">
+                      <h2><%=item.name%> | attached add ons</h2>
+                      <div class="row">
+
+                        <%attached_add_ons = get_food_item_add_ons(item.id.to_s)%>
+                        <% if attached_add_ons%>
+                        <%attached_add_ons.each do |add_on|%>
+                          <div class="listdeals">
+                            <div class="col-md-2"> <%=image_tag(item.catering_company.pico_url(:thumbnail)) %></div>
+                            <div class="col-md-8">
+                              <%=add_on.name%>
+                              <!-- <span>Serve in the box</span> -->
+                            </div>
+                          </div>
+                        <%end%>
+                        <%end%>
+                        <div class="listdeals text-center">
+                          <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="span2">
+              <%=item.name%>
+            </div>
+            <div class="span3">
+              <div class="input-group">
+                                  <span class="input-group-btn">
+                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field='quant[<%="f_#{item.id}_#{index}" %>]'>
+                                        <i class="fa fa-angle-left"></i>
+                                      </button>
+                                  </span>
+                <input id='<%= "f___#{item.id}_#{index}" %>' type="text" name="quant[<%="f_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('food_items', item.id.to_s, index)%>" min="1" max="10">
+                                  <span class="input-group-btn">
+                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="f_#{item.id}_#{index}" %>]">
+                                        <i class="fa fa-angle-right"></i>
+                                      </button>
+                                  </span>
+
+              </div>
+              <script type="text/javascript">
+                $(function(){
+                
+                <%add_on_price=0%>
+                <%add_ons=(get_food_item_add_ons(item.id.to_s))%>
+                
+                <% if add_ons %>
+                  <% add_ons.each do |add_on| %>
+                    <%add_on_price += add_on.price%>
+                  <%end%>
+                <%end%>
+                $('#<%="f___#{item.id}_#{index}_span"%>').html(parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())*<%=item.price+add_on_price%>);
+
+                
+                var prev_val=parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val());
+                $('#sub_total').html( 
+                  parseInt($('#sub_total').html())
+                  +parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price+add_on_price%>);
+                $('#grand_total').html(
+                  parseInt($('#grand_total').html())
+                  +parseInt($( '#<%= "f___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price+add_on_price%>);
+
+                $( '#<%= "f___#{item.id}_#{index}" %>' ).change(function(e) {
+                  updateQuantity("food_items", <%="#{item.id}".to_i %>, <%="#{index}".to_i %>, $(this).val())
+                  if($(this).val() < prev_val)
+                  {
+                    $('#<%="f___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price+add_on_price%>
+                    );
+                    var total = parseInt($('#sub_total').html())
+                      - <%=item.price+add_on_price%>;
+
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  else{
+                    $('#<%="f___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price+add_on_price%>
+                    );
+                    var total = parseInt($('#sub_total').html())
+                      + <%=item.price+add_on_price%>;
+
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  prev_val = $(this).val();
+                  
+                });
+              });
+              </script>
+            </div>
+            <div class="span4">
+              <%=item.price%>
+              <%total += item.price%>
+            </div>
+            <div class="span5">
+              <span id='<%="f___#{item.id}_#{index}_span"%>'></span>
+            </div>
+            <div class="span6">
+              <a onclick='removeItem("food_items",<%="#{item.id}"%>,<%="#{index}"%>  )' >x</a>
+            </div>
+          </div>
+          <%end%>
+
+          <!--  -->
+          <!--  -->
+          <!-- Deals -->
+
+
+          <%@deals.each_with_index do |item, index|%>
+          <div class="celenderdate">
+            
+                
+            <div class="span1">
+              <%=image_tag(item.catering_company.pico_url(:thumbnail), :class => 'pull-left') %>
+              
+
+              <h2><a href='#<%= "deal_#{index}" %>' data-toggle="modal"><%=item.catering_company.name %></a></h2>
+              <div id='<%= "deal_#{index}" %>' class="modal fade">
+
+                <div class="modal-dialog">
+
+                  <div class="modal-content">
+                    <div class="modal-body createpopup deals">
+                      <h2><%=item.name%> Food Items</h2>
+                      <div class="row">
+                        <%item.food_items.each do |f_item|%>
+                          <div class="listdeals">
+                            <div class="col-md-2"> <%=image_tag(item.catering_company.pico_url(:thumbnail)) %></div>
+                            <div class="col-md-8">
+                              <%=f_item.name%>
+                              <!-- <span>Serve in the box</span> -->
+                            </div>
+                          </div>
+                        <%end%>
+                        
+                        <div class="listdeals text-center">
+                          <a href="#" class="btn btn-close" data-dismiss="modal">Close</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="span2">
+              <%=item.name%>
+            </div>
+            <div class="span3">
+              <div class="input-group">
+                                  <span class="input-group-btn">
+                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
+                                        <i class="fa fa-angle-left"></i>
+                                      </button>
+                                  </span>
+                <input id='<%= "d___#{item.id}_#{index}" %>' type="text" name="quant[<%="d_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('deals', item.id.to_s, index)%>" min="1" max="10">
+                                  <span class="input-group-btn">
+                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
+                                        <i class="fa fa-angle-right"></i>
+                                      </button>
+                                  </span>
+
+              </div>
+              <script type="text/javascript">
+                $(function(){
+                
+                
+
+                $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                  parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price%>
+                  );
+
+                $('#sub_total').html(
+                    parseInt($('#sub_total').html())
+                    + parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                    *<%=item.price%> 
+                  );
+
+                $('#grand_total').html(
+                  parseInt($('#grand_total').html())+ 
+                  parseInt($( '#<%= "d___#{item.id}_#{index}" %>' ).val())
+                  *<%=item.price%> );
+
+                var prev_val=parseInt($( '#<%="d___#{item.id}_#{index}" %>' ).val());
+                
+                $( '#<%= "d___#{item.id}_#{index}" %>' ).change(function(e) {
+                  updateQuantity("deals", <%="#{item.id}".to_i %>, <%="#{index}".to_i %>, $(this).val())
+                  if(prev_val < $(this).val())
+                  {
+                    $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price%>);
+                    var total = parseInt($('#sub_total').html())                      
+                      + <%=item.price%>
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }else{
+                    $('#<%="d___#{item.id}_#{index}_span"%>').html(
+                      parseInt($(this).val())
+                      *<%=item.price%>);
+                    var total = parseInt($('#sub_total').html())                      
+                      - <%=item.price%>
+                    $('#sub_total').html(total);
+
+                    $('#grand_total').html(total);
+                  }
+                  prev_val = $(this).val();
+
+                });
+              });
+              </script>
+            </div>
+            <div class="span4">
+              <%=item.price%>
+              <%total += item.price%>
+            </div>
+            <div class="span5">
+              <span id='<%="d___#{item.id}_#{index}_span"%>'></span>
+            </div>
+            <div class="span6">
+              <a onclick='removeItem("deals",<%="#{item.id}"%>,<%="#{index}"%>  )'>x</a>
+            </div>
+          </div>
+          <%end%>
+          
+        </div>
+        <form action="/order/final/checkout">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="innerpage">
+                <div class="carttop clearfix">
+                  <div class="col-md-6">
+                    <table class="table">
+                      <tr class="subTotl">
+                        <td>
+                        مجموعة فرعيّة
+
+                        </td>
+                        <td class="text-right">
+                          <span id="sub_total">0</span>
+                        </td>
+                      </tr>
+                      <!-- <tr class="subTotl">
+                        <td>
+                          Discount
+                        </td>
+                        <td class="text-right">
+                          20%
+                        </td>
+                      </tr> -->
+                      <tr class="grandTotal">
+                        <td>مجموعة فرعيّة</td>
+                        <td class="text-right"><span id="grand_total">0</span></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-6">
+                    <textarea id="s_request" name="special_request" rows="5" class="form-control" placeholder="Special Request">
+
+
+                      <% if cookies["cart"] %>
+                        <%= JSON.parse(cookies["cart"])["special_request"] %>
+                      <%end%>
+                      
+
+
+
+                    </textarea>
+                  </div>
+                </div>
+                <div style="margin-top: 25px;" class="cartbuttons clearfix text-center">
+                  <a  class="btn btn-close-two" onclick="goBack()">أضفت أكثر</a>
+                  <!-- <a href="/order/final/checkout/" class="btn btn-close">order now</a> -->
+                  <button class="btn btn-close" type="submit">أمر الآن</button>
+
+                  <button  type="button" class="btn btn-close-two"  value="clear cart" onclick="deleteAllCookies('cart')">أخليت كلّ</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
+<div id="footertop">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Useful Links</h3>
+        <div class="links">
+          <a href="/about">About Kater</a>
+          <a href="/policy">Privacy Policy</a>
+          <a href="/terms">Terms & Conditions</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="text" class="form-control" placeholder="Your email address" />
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Follow Along</h3>
+        <div class="followalong">
+          <a href="#"><i class="fa fa-facebook-f"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footerbottom">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-7">
+        <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+        <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>
+      </div>
+      <div class="col-md-6 col-sm-5">
+        <div class="payicons">
+          <%= image_tag('pay-icon-1.jpg') %>
+          <%= image_tag('pay-icon-2.jpg') %>
+          <%= image_tag('pay-icon-3.jpg') %>
+          <%= image_tag('pay-icon-4.jpg') %>
+          <%= image_tag('pay-icon-5.jpg') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(e) {
+        $(".viewOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".hideOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        //editAddress
+        $(".editAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".addressRowShow .delAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+    });
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true   ,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+        });
+
+        $(".mycartbtn").click( function (){
+            $(".myCartWgt").toggle();
+        });
+    });
+
+    var $document = $(document),
+            $elementx = $('.myCartWgt'),
+            $elementsidebar = $('.sideBar'),
+            classNamex = 'hoveradd';
+    sideclassName = 'sidebarhoverad';
+
+    $(window).scroll(function() {
+        $elementx.toggleClass(classNamex, $document.scrollTop() >= 50);
+        $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
+    });
+
+    var $document = $(document),
+            $element = $('#header'),
+            elementsidebar = 'headerfixed'
+
+    $(window).scroll(function() {
+        $element.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+
+
+    // count one
+    $('.btn-number').click(function(e){
+        e.preventDefault();
+
+        fieldName = $(this).attr('data-field');
+        type      = $(this).attr('data-type');
+        var input = $("input[name='"+fieldName+"']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if(type == 'minus') {
+
+                if(currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+
+            } else if(type == 'plus') {
+
+                if(currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+
+            }
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function(){
+        $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function() {
+
+        minValue =  parseInt($(this).attr('min'));
+        maxValue =  parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+
+        name = $(this).attr('name');
+        if(valueCurrent >= minValue) {
+            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if(valueCurrent <= maxValue) {
+            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+    });
+
+    $(".input-number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+
+</script>
+
+<script type="text/javascript">
+    function deleteAllCookies(name) {
+        // This function will attempt to remove a cookie from all paths.
+        var pathBits = location.pathname.split('/');
+        var pathCurrent = ' path=';
+
+        // do a simple pathless delete first.
+        document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+
+        for (var i = 0; i < pathBits.length; i++) {
+            pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+            document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+        }
+        window.location = '/';
+
+        return false;
+    }
+</script>
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+    function goBack() {
+
+        window.history.back();
+        return false;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+<%end%>
