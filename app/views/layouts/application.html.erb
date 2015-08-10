@@ -133,7 +133,7 @@
 
 </head>
 <body>
-
+ <% if  I18n.locale.to_s == 'en' %>
   <div style="position:<%=current_user &&  (current_user.level==2 ||current_user.level==1) ? 'fixed' : '' %>; width: 100%; z-index: 100;" id="header">
       <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid clearfix">
@@ -337,5 +337,237 @@
         </div>
     
     </div>
+
+<%else%>
+<!-- This is Arabic -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div style="position:<%=current_user &&  (current_user.level==2 ||current_user.level==1) ? 'fixed' : '' %>; width: 100%; z-index: 100;" id="header">
+      <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid clearfix">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="<%= root_path%>"><%= image_tag("logo.png", height: '82', width: '62') %></a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          
+
+          <div class="topmenu">  
+          
+            <%if !current_user %>
+              <a href="#myModal" data-toggle="modal">الدخول</a>
+              |
+                <%if I18n.locale.to_s == 'en'%>
+                    <a href="/lang" lang="ar" dir="rtl">العربیہ</a>
+                <%else%>
+                    <a href="/lang" lang="ar" >English</a>
+                <%end%>
+              <!-- Modal HTML --> 
+            <%else%>
+                <%= link_to(current_user.email, user_account_page_path) %>
+                |
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+
+            <%end%>                          
+          
+          </div>
+          
+          <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1"> 
+              
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a href="<%= root_path%>"><i class="fa fa-home"></i> منزل</a>
+                  </li>
+                  <li>
+                      <a href="/caters/all/"><i class="fa fa-cutlery"></i> المطاعم</a>
+                  </li>
+                  <li>
+                      <a href="/user/account#myOrders"><i class="fa fa-truck"></i> طلبات</a>
+                  </li>   
+                  <li class="dropdown search">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span><i class="fa fa-search"></i>  بحث </span> </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <form action="/serach/sm/" method="get"  class="navbar-form navbar-left">
+                              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                                <div class="form-group">
+                                <input name="search[name]" class="form-control" placeholder="Search" type="text">
+                                </div>
+                                <button type="submit" class="btn btn-default btn-block submitBtn">بحث</button>
+                            </form>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      </nav>
+  </div>
+
+  <% flash.each do |type, message| %>
+   <script type="text/javascript">
+
+       $.notify("<%= message%>", "info");
+   </script>
+  <% end %>
+
+  <%= yield %>
+
+
+
+  <div id="myModal" class="modal fade">
+                
+        <div class="modal-dialog">
+    
+            <div class="modal-content"> 
+                <div class="modal-body createpopup">
+    
+                 <ul class="nav nav-tabs" role="tablist" id="myTab">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Login</a></li>
+                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li> 
+                </ul>
+                
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home">
+                    
+                    <!--  -->
+                    <!-- <form class="clearfix" action="<%= new_user_session_path %>" method="post" > -->
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: 'clearfix' }) do |f| %>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[email]"  type="text" class="form-control input-sm" placeholder="User Name" />                                                         
+                            </div>
+                        </div>      
+                      <div class="col-md-6">
+                          <div class="controllink"><a href="#">Forgot username ?</a></div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[password]" type="password" class="form-control input-sm" placeholder="Password" />
+                          
+                            </div>
+                        </div>              
+                      <div class="col-md-6">
+                        
+                          <div class="controllink"><a href="#">Forgot password ?</a></div>
+                        </div>   
+                      <div class="col-md-6 search-btn">
+                        
+                          <input type="submit" value="LOGIN" class="btn btn-warning" />
+                        </div>
+                    <% end %>
+                    <!-- </form> -->
+                    <!--  -->
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="profile">
+                    
+                    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html=> { class: 'clearfix' }) do |f| %>
+                    <!-- <form class="clearfix"> -->
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[first_name]" type="text" class="form-control input-sm" placeholder="First Name" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[last_name]" type="text" class="form-control input-sm" placeholder="Last Name" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[email]" type="text" class="form-control input-sm" placeholder="Email" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[mobile_number1]" type="text" class="form-control input-sm" placeholder="Mobile Number" />
+                            </div>
+                        </div>  
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input name="user[password]" type="password" class="form-control input-sm" placeholder="password" />
+                            </div>
+                        </div>    
+                      <div class="col-md-6">
+                          <div class="form-group">
+                          <input name="user[password_confirmation]" type="password" class="form-control input-sm" placeholder="Password Confirmation" />
+                            </div>
+                        </div>            
+                      <div class="col-md-12">
+                          <div class="form-group">
+                            <input name="user[address]" type="text" class="form-control input-sm" placeholder="Street Address" />
+
+
+
+
+
+                            </div>
+                        </div> 
+
+                             
+                      <!-- <div class="col-md-12">
+                          <div class="form-group">
+                          <input type="text" class="form-control input-sm" placeholder="Street Address (optional)" />
+                            </div>
+                        </div> -->
+                        <div class="col-md-12">
+                          <div class="form-group">
+                          <%= f.input :country %>
+                            <!-- <select class="form-control" name="Area" style="color:#a2a2a2;">                                 
+                  <option>Area</option>
+                                  <option>Dasmān</option>
+                                  <option>Sharq</option>
+                                  <option>Dasma</option>
+                  <option>More areas will be added here...</option>
+                                </select>
+                            </div> -->
+                        </div>      
+                      <div class="col-md-12 search-btn">
+                          <button type="submit" class="btn btn-warning" href="catererpage.html">CREATE MY ACCOUNT</button>
+            </div>
+                    <!-- </form> -->
+                    <% end %>
+                  </div> 
+                </div>
+ 
+                </div>
+     
+            </div>
+    
+        </div>
+    
+    </div>
+
+
+
+<%end%>
+
+
 </body>
 </html>

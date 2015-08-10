@@ -1,4 +1,5 @@
 <%# encoding: utf-8 %>
+<% if  I18n.locale.to_s == 'en' %>
 <div class="container-fluid" id="innerpage">
   <form>
     <div class="row">
@@ -795,3 +796,866 @@
         targetKeep : true
     });
 </script>
+
+<%else%>
+
+
+<!-- Arabic goes here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid" id="innerpage">
+  <form>
+    <div class="row">
+      <div class="col-md-3 pull-right">
+        <div class="sideBar">
+          <%= render 'dashboard/cart'%>
+
+          <div class="cancelPolicy sidBarWgt">
+           <h3>كنسلأيشن سياسة</h3>
+                        <p>لورم إيبسوم يجلس حالة أسى أمت, الاتّحاد الأوروبي يتلقّى توتا فليت, إت إيوس أليقويب ألبوسوس. برسبيت فبلّس إت فيس.</p>
+          </div>
+          <div class="minOrderPolicy sidBarWgt">
+             <h3>أدنى أمر سياسة</h3>
+                        <p>لورم إيبسوم يجلس حالة أسى أمت, الاتّحاد الأوروبي يتلقّى توتا فليت, إت إيوس أليقويب ألبوسوس. برسبيت فبلّس إت فيس.</p>
+          </div>
+          <div class="sideBarImg text-center hidden-xs hidden-sm">
+            <%= image_tag("rightbanner.jpg") %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="innerbannertwo bx-wrapper">
+          <ul class="bxslider">
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+          </ul>
+          <div class="pageouter">
+            <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+          </div>
+        </div>
+        <div class="mainContentTop">
+          <div class="topcntn clearfix">
+            <div class="logosec col-md-3 col-xs-12">
+              <a href="#">
+                <%= image_tag(@comp.pico_url(:thumbnail)) %>
+              </a>
+              <h2><%= @comp.name%></h2>
+            </div>
+            <div class="allstf col-md-6 col-xs-7">
+              <ul class="clearfix">
+
+                <% if @comp.female_servers%>
+                <li>
+                  كلّ نادلات أنثويّة
+                </li>
+                <% end%>
+                <% if @comp.arabic_speaking%>
+                <li>
+                  العربية يتكلّم فقط
+                </li>
+                    <%end%>
+              </ul>
+
+
+
+
+
+            </div>
+            <div class="fivstar col-md-3 col-xs-5">
+              <ul class="clearfix">
+            <% if @overall_rating!=nil %>
+                <% @overall_rating.times do |k|%>
+                <li>
+                  <i class="fa fa-star"></i>
+                </li>
+               <% end%>
+                    <%end%>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-tabs customTabs">
+            <ul class="list-unstyled clearfix">
+              <li role="presentation" class="active">
+                <a href="#Schedule">
+                  <i class="fa fa-calendar"></i> جدول 
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#Menu">
+                  <i class="fa fa-list"></i>  قائمة الطعام 
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#accountInfo">
+                  <i class="fa fa-info"></i> حول   
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#gallerY">
+                  <i class="fa fa-picture-o"></i> رواق  
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#Reviews">
+                  <i class="fa fa-star"></i> مراجعات 
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contentbdox">
+
+
+
+
+          <div id="Schedule" class="Schedule tab-pane">
+            <div class="addreview">
+              <div class="contentbdox">
+                <div class="celenderbox">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <!--   <big class="hidden-xs">Selected date</big> -->
+                      <div class="dates visible-xs">
+                        <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                        <span>April</span>
+                        <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                      </div>
+                      <div class="dates visible-xs">
+                        <a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                        <span>Thur 16</span>
+                        <span>Fri 15</span>
+                        <span>Sat 14</span>
+                        <a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 hidden-xs">
+                      <div class="dates">
+                        <!--<a href="#" class="text-left"><i class="fa fa-angle-left"></i></a>-->
+                        <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>-->
+                        <span><b><%= get_date.strftime("%B %d %A")%></b></span>
+                        <!--<span>April Saturday 18</span>-->
+                        <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
+                      </div>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-12"><a style="left:-870px" href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="productbox">
+                <div class="row">
+                  <div class="col-md-2 col-sm-3">
+                    <div class="img-thumbnail">
+                      <%= image_tag(@comp.pico_url(:standard)) %>
+                    </div><br />
+                    <a href="#"><%=@comp.name%></a>
+
+
+                    <div class="ratings">
+                      <% if @overall_rating!=nil %>
+                          <% @overall_rating.times do |k|%>
+                      <i class="fa fa-star"></i>
+                          <% end%>
+                      <% end%>
+                    </div>
+
+
+
+
+
+
+
+
+
+                  </div>
+                  <div class="col-md-10 co-sm-9">
+                    <div class="tags">
+
+
+                      <% @comp.time_slots.each do |slot| %>
+                          <%if (@comp.inavailabilities.where(time_slot: slot)).blank?%>
+                              <a href=<%="/select/slot/time/#{slot.id}"%>>
+                          <%else%>
+                              <a >
+                          <%end%>
+                          <%if not (@comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
+                                        <span class="inavaiable" >
+                          <%elsif get_selected_time_slots%>
+                                        <span <%=(get_selected_time_slots).id==slot.id ? "class=closed" : ""%> >
+                          <%else%>
+                                        <span >
+                          <%end%>
+
+                          <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                          </span>
+                          </a>
+                      <%end%>
+                      <style type="text/css">
+                          .inavaiable{
+                              pointer-events: none;
+                              background: red !important;
+                              border-color: red !important;
+                              color: white!important;
+                          }
+                      </style>
+
+
+                      <!-- <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span class="active">08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span class="closed">08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span>
+                      <span>08:00 am - 11:00 am</span> -->
+                    </div>
+                    <div class="bottominfo">
+                      <% if get_selected_time_slots %>
+                          <p>بطاقة: ك حصة وقت  <span>
+
+
+                                          <%= "#{get_selected_time_slots.start_time.strftime('%I:%M %p')}" %>
+
+
+                                      </span>بعد الظّهر</p>
+                      <%end%>
+
+
+                      <a href="#" class="btn btn-warning">انتقيت مواد</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="Menu" class="Menu tab-pane">
+                <div class="myMenu">
+                  <div class="table-responsive menudtL">
+
+
+                    <% @comp.food_items.each_with_index do |f_item, index| %>
+                        <div class="mainmaenu clearfix">
+
+
+                          <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
+                          <div class="clearfix">
+                            <div class="menImg col-md-3 col-sm-3 col-xs-12">
+                              <h3 class="visible-xs"><%=f_item.name %></h3>
+                              <%=image_tag f_item.pico_url(:standard) %>
+                            </div>
+                            <div class="menList col-md-9 col-sm-9 col-xs-12">
+                              <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                                <h3 class="hidden-xs"><%=f_item.name %></h3>
+                                <p><%=f_item.description %> </p>
+                              </div>
+                              <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                                <h3><%=f_item.price %> KD</h3>
+
+                                <a href="javascript:void(0)" class="me2SlctBtn">انتقيت مواد</a>
+                              </div>
+                            </div>
+                          </div>
+                          <!--Menu Options-->
+                          <div class="menuOptions">
+                            <div class="clearfix ChooseItem">
+                              <form id="<%=index %>" action="/add_item/" method="get" >
+                                <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
+                                <%if not f_item.food_item_add_ons.empty? %>
+                                    <h3 class="text-center">Please choose an add on</h3>
+                                    <div class="radOpt">
+                                      <%f_item.food_item_add_ons.each do |add_on| %>
+                                          <div class="radio">
+                                            <label><input type="radio" value="<%=add_on.id%>" name="add_on_id"><%=add_on.name%></label>
+                                          </div>
+                                      <%end%>
+
+                                      <!-- <div class="radio">
+                                        <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                                      </div>
+                                      <div class="radio">
+                                        <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                                      </div>
+                                       <div class="radio">
+                                        <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                                      </div> -->
+                                    </div>
+                                <%end%>
+                                <div class="add_cart text-center">
+                                  <button type="submit" class="me2SlctBtn ">Add to Cart</button>
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+
+                          <!-- </form> -->
+                          <!--Menu option END-->
+                        </div>
+
+
+                    <%end%>
+
+
+                    <% @comp.deals.each_with_index do |f_item, index| %>
+                        <div class="mainmaenu clearfix">
+
+
+                          <!-- <input type="hidden" name="food_item_id" value="<%=f_item.id%>"> -->
+                          <div class="clearfix">
+                            <div class="menImg col-md-3 col-sm-3 col-xs-12">
+                              <h3 class="visible-xs"><%=f_item.name %></h3>
+                              <%=image_tag(f_item.pico_url()) %>
+                            </div>
+                            <div class="menList col-md-9 col-sm-9 col-xs-12">
+                              <div class="me1 col-md-9 col-sm-9 col-xs-12">
+                                <h3 class="hidden-xs"><%=f_item.name %></h3>
+                                <p><%=f_item.description %> </p>
+                              </div>
+                              <div class="me2 col-md-3 col-sm-3 col-xs-12">
+                                <h3><%=f_item.price %> KD</h3>
+
+                                <a href="javascript:void(0)" class="me2SlctBtn">SELECT ITEMS</a>
+                              </div>
+                            </div>
+                          </div>
+                          <!--Menu Options-->
+
+                          <div class="menuOptions">
+                            <div class="clearfix ChooseItem">
+                              <!-- <form id="<%=index %>" action="/add_item/" method="get" > -->
+                              <input type="hidden" name="food_item_id" value="<%=f_item.id%>">
+                              <%if not f_item.food_items.empty? %>
+                                  <h3>This Deal contains</h3>
+                                  <div class="radOpt">
+                                    <%f_item.food_items.each do |add_on| %>
+                                        <div class="radio">
+                                          <label><%=image_tag add_on.pico_url(:thumbnail), :class => 'img-thumbnail just_margin'%><%=add_on.name%></label>
+                                        </div>
+                                    <%end%>
+
+                                    <!-- <div class="radio">
+                                      <label><input type="radio" name="optradio">Bronx Bomber (pepperoni, tomato sauce, mozzarella, fresh basil)</label>
+                                    </div>
+                                    <div class="radio">
+                                      <label><input type="radio" name="optradio">Portobello (portobello, wild mushroom puree, red onions, fontina cheese, truffle oil)</label>
+                                    </div>
+                                     <div class="radio">
+                                      <label><input type="radio" name="optradio">Red Sox (caramelized onions, red peppers, crumbled sausage, mozzarella, tomato sauce</label>
+                                    </div> -->
+                                  </div>
+                              <%end%>
+                              <div class="add_cart text-center">
+                                <%=link_to "Add to Cart", "/add_deal/#{f_item.id}/", :class => 'me2SlctBtn' %>
+                                <!-- </form> -->
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <!-- </form> -->
+                          <!--Menu option END-->
+                        </div>
+
+                        <!--//-->
+                    <%end%>
+
+
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </form> -->
+        </div>
+
+
+        <div class="row" >
+        <div class="col-md-12 tabsContent">
+          <div id="accountInfo" class="accInfo tab-pane">
+            <div class="row innerpage">
+              <div class="dtlTxt">
+
+                <p><%= @comp.description %></p>
+              </div>
+            </div>
+          </div >
+        </div>
+      </div>
+
+      <div id="gallerY" class="wgallerY tab-pane">
+        <div class="addpic row">
+          <div class="imgs clearfix">
+           <!-- <div class="col-md-3 col-sm-3 col-xs-6">
+              <img src="images/deals-2.png" />
+              <p>Pizza & Burgers</p>
+            </div>-->
+
+            <%  @comp.food_items.each do |f|%>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+              <%= image_tag(f.pico_url()) %>
+              <p><%= f.name%></p>
+            </div>
+
+                <% end%>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div id="Reviews" class="adReviews tab-pane">
+            <div class="row">
+              <div class="pstRvwBx">
+                <div class="clearfix">
+                  <div class="col-sm-8">
+                    <div class="clearfix rvwPoints">
+                      <div class="rvwPointsA">
+                        <% if @overall_rating!=nil%>
+                        <%= @overall_rating%>
+                            <%else%>
+                        N/A
+                            <%end%>
+                      </div>
+                      <div class="rvwPointsB">
+                        <h3>Overall Rating</h3>
+                        <div class="ratingStars">
+                          <% if @overall_rating!=nil %>
+                          <% @overall_rating.times do |x|%>
+                                <i class="fa fa-star"></i>
+                          <%end%>
+
+                          <%end%>
+                          <span>based on recent rating</span>
+                        </div>
+                      </div>
+                    </div>
+                    <!--//-->
+
+                    <style>
+
+                        .add_cart{
+
+                            padding: 1px;
+                            margin:10px;
+                        }
+                        .just_margin{
+                            margin-right: 5px;
+                        }
+
+                    </style>
+                    <div class="pointsDfrience">
+                      <ul class="clearfix pointsDfrienceList">
+                        <li>
+                          <h5>Food</h5>
+                          <p><%=@food%></p>
+                        </li>
+                        <li>
+                          <h5>Service</h5>
+                          <p><%=@service%></p>
+                        </li>
+                        <li>
+                          <h5>Ambience</h5>
+                          <p><%=@ambience%></p>
+                        </li>
+                        <li>
+                          <h5>Value</h5>
+                          <p><%=@value%></p>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--//-->
+                    <div class="rvwBtm">
+                     <!-- <i class="fa fa-thumbs-o-up"></i>
+                      85% recommend it to the friends-->
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <ul class="list-unstyled">
+                      <li class="clearfix">
+                        <span>5</span>
+                        <div class="rvwBar"><div style="width:<%= @five ;%>"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>4</span>
+                        <div class="rvwBar"><div style="width:<%= @four ;%>"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>3</span>
+                        <div class="rvwBar"><div  style="width:<%= @three ;%>"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>2</span>
+                        <div class="rvwBar"><div  style="width:<%= @two ;%>"></div></div>
+                      </li>
+                      <li class="clearfix">
+                        <span>1</span>
+                        <div class="rvwBar"><div style="width:<%= @one ;%>"></div></div>
+                      </li>
+                    </ul>
+                    <a href="#" class="pstRvwBtn">Post A Review</a>
+                  </div>
+                </div>
+              </div>
+              <!--//-->
+              <div class="postRvwForm customForm clearfix">
+
+                <%= form_for @review do |f| %>
+
+                    <% if @review.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@review.errors.count, "error") %> prohibited the review from being saved:</h2>
+
+                          <ul>
+                            <% @review.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+
+                <div class="clearfix">
+                  <div class="col-sm-12">
+                    <h4>Post a Review</h4>
+                  </div>
+                  <div class="col-sm-6 col-sm-offset-6">
+                    <%= f.text_field :tittle, :placeholder => "Tittle" %>
+                  </div>
+
+
+                  <div class="col-sm-12">
+                    <%= f.text_area :description, :placeholder => "Summary" %>
+                  </div>
+                  <div class="clearfix">
+                    <ul class="clearfix pointsDfrienceList">
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Food</h5>
+                        <div id="hint_food">
+
+                        </div>
+
+
+                        <%= f.text_field :food, :id=> 'hint_food_select' , :class=>'hide_star'%>
+                       <!-- <input  type="hidden" id="hint_food_select" type="text" />-->
+
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Service</h5>
+                        <div id="hint_service">
+                        </div>
+
+                        <%= f.text_field :service, :id=> 'hint_service_select' , :class=>'hide_star' %>
+
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Ambience</h5>
+                        <div id="hint_ambience">
+
+                        </div>
+
+                        <%= f.text_field :ambience, :id=> 'hint_ambience_select' , :class=>'hide_star' %>
+
+
+                      </li>
+                      <li class="col-sm-4 col-xs-6">
+                        <h5>Value</h5>
+                        <div id="hint_value">
+
+                        </div>
+                        <%= f.text_field :value, :id=> 'hint_value_select' , :class=>'hide_star' %>
+
+                      </li>
+                      <%= f.hidden_field :catering_company_id, :value => @comp.id %>
+                    </ul>
+                  </div>
+                  <div class="col-sm-12 text-center postFrmBtmBtn">
+                    <input type="submit" value="Submit Review" class="postRvwBtn" />
+                  </div>
+                </div>
+                    <%end%>
+              </div>
+              <!--//-->  <% @comp.ratings.each do |r|%>
+              <div class="rvwShowBx clearfix">
+
+
+                <% overall_rating= (r.ambience+r.service+r.value+r.food)/4%>
+                <div class="col-sm-3">
+                  <div class="starRating">
+
+                    <% overall_rating.times do |l|%>
+                    <i class="fa fa-star"></i>
+                   <%end%>
+                  </div>
+                  <ul class="list-unstyled">
+                    <li>
+                      <strong><%= r.food%></strong> Food
+                    </li>
+                    <li>
+                      <strong><%= r.service%></strong> Service
+                    </li>
+                    <li>
+                      <strong><%= r.ambience%></strong> Ambience
+                    </li>
+                    <li>
+                      <strong><%= r.value%></strong> Value
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-9">
+                  <h3><%= r.tittle%></h3>
+                  <h6 class="rvwName">
+                    <span><%= r.user.first_name %> <%= r.user.last_name %></span>
+                    Dined <%= time_ago_in_words(r.created_at) %>
+                  </h6>
+                  <p>
+                   <%= r.description%>
+                  </p>
+                </div>
+              </div>
+              <!---->
+             <%end%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  </form>
+</div>
+
+<div id="footertop">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Useful Links</h3>
+        <div class="links">
+          <a href="/about">About Kater</a>
+          <a href="/policy">Privacy Policy</a>
+          <a href="/terms">Terms & Conditions</a>
+          <a href="/contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="text" class="form-control" placeholder="Your email address" />
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h3>Follow Along</h3>
+        <div class="followalong">
+          <a href="#"><i class="fa fa-facebook-f"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-pinterest-p"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hide_star{
+      visibility: hidden;
+  }
+</style>
+
+
+
+<div id="footerbottom">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-7">
+        <p>© Kater 605, 6th Floor, Old Education Ministry Building, Mirqab, Kuwait.</p>
+        <p>Tel: +965 2239 5022   |   Fax: +965 2239 5022   |   <a href="#">info@kater.com.kw</a></p>
+      </div>
+      <div class="col-md-6 col-sm-5">
+        <div class="payicons">
+          <%= image_tag("pay-icon-1.jpg") %>
+          <%= image_tag("pay-icon-2.jpg") %>
+          <%= image_tag("pay-icon-3.jpg") %>
+          <%= image_tag("pay-icon-4.jpg") %>
+          <%= image_tag("pay-icon-5.jpg") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function(e) {
+        $(".viewOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".hideOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        //editAddress
+        $(".editAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".addressRowShow .delAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        // Menu Select
+        $(".me2SlctBtn").click(function(e) {
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(this).text("Select Items");
+                $(this).parent().parent().parent().next().slideUp();
+            }
+            else {
+                $(this).addClass("active");
+                $(this).text("Close");
+                $(this).parent().parent().parent().next().slideDown();
+            }
+        });
+        //
+        /*$( ".clndrBtn" ).click(function(e) {
+         $( ".clndrBtn" ).datepicker({
+         showOn: "button"
+         });
+         });*/
+    });
+
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true  ,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+        });
+
+        //$(".mainContentTop .customTabs").
+
+
+        $(".mycartbtn").click( function (){
+            $(".myCartWgt").toggle();
+        });
+    });
+
+    var $document = $(document),
+            $elementx = $('.myCartWgt'),
+            $elementsidebar = $('.sideBar'),
+            classNamex = 'hoveradd';
+    sideclassName = 'sidebarhoverad';
+
+    $(window).scroll(function() {
+        $elementx.toggleClass(classNamex, $document.scrollTop() >= 50);
+        $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
+    });
+
+    var $document = $(document),
+            $element = $('.mainContentTop .customTabs'),
+            $elements = $('.contentbdox'),
+            className = 'hoveradds';
+    classNames = 'extraspace';
+
+    $document.scroll(function() {
+        $element.toggleClass(className, $document.scrollTop() >= 300);
+        $elements.toggleClass(classNames, $document.scrollTop() >= 300);
+    });
+
+    var $document = $(document),
+            $elementz = $('#header'),
+            elementsidebar = 'headerfixed'
+
+    $(window).scroll(function() {
+        $elementz.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+
+    $('#hint_food').raty({
+
+        target : '#hint_food_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+
+    });
+    $('#hint_service').raty({
+        target : '#hint_service_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+    });
+    $('#hint_value').raty({
+        target : '#hint_value_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+    });
+    $('#hint_ambience').raty({
+        target : '#hint_ambience_select',
+        targetType : 'score',
+        path       : '/images/',
+        targetKeep : true
+    });
+</script>
+
+<%end%>
