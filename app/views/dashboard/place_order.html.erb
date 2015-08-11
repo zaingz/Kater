@@ -66,8 +66,23 @@
                                     <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
                             </div>
-                            <input id="datepicker" type="hidden"  />
-                            <div class="col-md-1 col-sm-1 col-xs-12"><a id="open_datepicker" href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
+                            <div class="col-md-1 col-sm-1 col-xs-12">
+                              <style type="text/css">
+                                .position_datepicker{
+                                    width: 0px;
+                                    height: 0px;
+                                    background-color:inherit;
+                                    border: none;
+                                    position:absolute;
+                                    right:280px;
+                                    top:40px;
+                                }
+                              </style>
+                              <a id="open_datepicker" href="javascript:void(0);" class="chngecal">
+                                <input id="datepicker" class="position_datepicker" type="text"  />
+                                <i class="fa fa-calendar"></i>
+                              </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -492,7 +507,7 @@
                   <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
                 </div>
                  </div>
-                 <div class="mainContete
+                 <div class="mainContete">
                 <div class="contentbdox">
                     <div class="celenderbox">
                         <div class="row">
@@ -520,8 +535,23 @@
                                     <!--<a href="#" data-date-format="mm/dd/yyyy" class="text-right"><i class="fa fa-angle-right"></i></a>-->
                                 </div>
                             </div>
-                            <input id="datepicker" type="hidden"  />
-                            <div class="col-md-1 col-sm-1 col-xs-12"><a style="left:-870px;" id="open_datepicker" href="javascript:void(0);" class="chngecal"><i class="fa fa-calendar"></i></a></div>
+                            <div class="col-md-1 col-sm-1 col-xs-12">
+                              <style type="text/css">
+                                .position_datepicker{
+                                    width: 0px;
+                                    height: 0px;
+                                    background-color:inherit;
+                                    border: none;
+                                    position:absolute;
+                                    right:280px;
+                                    top:40px;
+                                }
+                              </style>
+                              <a style="left:-870px;" id="open_datepicker" href="javascript:void(0);" class="chngecal">
+                                <input id="datepicker" class="position_datepicker" type="text"  />
+                                <i class="fa fa-calendar"></i>
+                              </a>
+                            </div>
                         </div>
                     </div>
                 </div>
