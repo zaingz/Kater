@@ -1,6 +1,6 @@
 <%# encoding: utf-8 %>
 
-
+ <% if  I18n.locale.to_s == 'en' %>
 <div class="container-fluid" id="innerpage">
   <!-- <form> -->
     <div class="row">
@@ -739,3 +739,790 @@
         $elementz.toggleClass(elementsidebar, $document.scrollTop() >= 50);
     });
 </script>
+
+
+
+
+<%else%>
+<!-- 
+Arabic starts here -->
+
+
+
+
+
+
+
+
+<div class="container-fluid" id="innerpage">
+  <!-- <form> -->
+    <div class="row">
+      <div class="col-md-3 pull-right">
+        <div class="sideBar">
+          <%= render 'dashboard/cart'%>
+
+          <div class="cancelPolicy sidBarWgt">
+            <h3>كنسلأيشن سياسة</h3>
+                        <p>لورم إيبسوم يجلس حالة أسى أمت, الاتّحاد الأوروبي يتلقّى توتا فليت, إت إيوس أليقويب ألبوسوس. برسبيت فبلّس إت فيس.</p>
+        <
+          </div>
+          <div class="minOrderPolicy sidBarWgt">
+            div class="minOrderPolicy sidBarWgt">
+          <h3>أدنى أمر سياسة</h3>
+                        <p>لورم إيبسوم يجلس حالة أسى أمت, الاتّحاد الأوروبي يتلقّى توتا فليت, إت إيوس أليقويب ألبوسوس. برسبيت فبلّس إت فيس.</p>
+          </div>
+          <div class="sideBarImg text-center hidden-xs hidden-sm">
+            <%= image_tag("rightbanner.jpg") %>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="innerbannertwo bx-wrapper">
+          <ul class="bxslider">
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+            <li><%= image_tag("inner-banner-two.jpg") %></li>
+          </ul>
+          <div class="pageouter"  id="accountInfo1">
+            <span id="slider-prev">&nbsp;</span> | <span id="slider-next">&nbsp;</span>
+          </div>
+        </div>
+        <div class="mainContentTop tabsContent">
+          <h2 class="h2Hdng">حسابي </h2>
+          <div class="nav-tabs customTabs" id="accountInfo">
+            <ul class="list-unstyled clearfix">
+
+              <li role="presentation">
+                <a href="#accountInfo1">
+                  <i class="fa fa-info"></i>    حساب معلومة
+                                
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#myOrders">
+                  <i class="fa fa-calendar"></i>  أوامري 
+                                
+                </a>
+              </li>
+              <li role="presentation">
+                <a href="#myAddressBk">
+                  <i class="fa fa-list"></i>  أدّرسّ بووك ي
+                                
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="contentbdox">
+          <div class="innerpage">
+            <div class="row">
+              <%= form_for current_user, url: registration_path( current_user), mehotd: 'PUT' do |f| %>
+              <div class="col-md-12">
+                <div id="accountInfo1" class="accInfo">
+
+                  <div class="row customForm">
+                    <!-- <form class="clearfix"> -->
+                    
+                      <div class=" col-sm-6">
+                        <%= f.label :first_name %>
+                        <%= f.text_field :first_name %>
+                        <!-- <label>First Name</label> -->
+
+                        <!-- <input type="text" value="<%= current_user.first_name %>" class="" placeholder="First Name"> -->
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.label :last_name %>
+                        <%= f.text_field :last_name %>
+                        <!-- <label>Last Name</label>
+                        <input type="text" value="" class="" placeholder="Last Name"> -->
+                      </div>
+                      <div class=" col-sm-6">
+                        <!-- <label>Mobile Number</label>
+                        <input type="text" value="<%= current_user.mobile_number1 %>" class="" placeholder=""> -->
+                        <%= f.label :mobile_number1 %>
+                        <%= f.text_field :mobile_number1 %>
+                      </div>
+                      <div class=" col-sm-6">
+                        <%= f.label :mobile_number2 %>
+                        <%= f.text_field :mobile_number2 %>
+                        <!-- <label>Other Number</label>
+                        <input type="text" value="<%= current_user.mobile_number2 %>" class="" placeholder=""> -->
+                      </div>
+                      <div class="clearfix">
+                        <!-- <div class=" col-sm-6"> -->
+                          <!-- <label>Birthday</label> -->
+                        <div class=" col-sm-6">
+                          <%= f.label :birthdate %>
+                          <%= f.text_field :birthdate, class: 'form-control datepicker' %>
+                          <script type="text/javascript">
+                            $('.datepicker').datepicker(
+                              {
+                                format: 'yyyy-mm-dd'
+                              });
+                          </script>
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class=" col-sm-6">
+                          <label><input type="checkbox">
+                            Subscribe to Kater Newsletter</label>
+                          <label><input type="checkbox">
+                            Keep me posted by Kater SMS</label>
+                        </div> -->
+                      
+                      
+                      <div class=" col-sm-6">
+                        <%= f.label :occupation %>
+                        <%= f.text_field :occupation %>
+
+                          <!-- <div class="col-sm-6 col-md-8">
+                            <label><%= f.text_field :occupation %> Female </label>
+                          </div> -->
+
+                      </div>
+
+
+                        <div class="col-sm-6">
+                          <%= f.label :gender %>
+                          <%= f.select :gender, [ 'Male', 'Female', 'Other' ],selected: current_user.gender , prompt: 'Select One' %>
+
+                        </div>
+                      <!-- <div class="col-sm-6 text-right margtop">
+                        <input type="submit" value="Save Changes" />
+                      </div> -->
+
+                    <!-- </form> -->
+                  </div>
+                    </div>
+                  <div class="row customForm">
+                    <!-- <h3 class="customTitle clearfix">Change Password</h3> -->
+                    <!-- <form class="clearfix"> -->
+                      <div class="col-sm-12">
+                        <%= f.label :current_password %>
+                        <%= f.password_field :current_password %>
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.label :password_confirmation %>
+                        <%= f.password_field :password_confirmation %>
+                      </div>
+                      <div class="col-sm-12 text-right">
+                        <input type="submit" value="Save Changes" />
+                      </div>
+                      
+                    <!-- </form> -->
+                  </div>
+                  <%end %>
+                  <br>
+                  <!-- <div class="row customForm">
+                    <h3 class="customTitle clearfix">Change Email</h3>
+                    <form class="clearfix">
+                      <div class="col-sm-12">
+                        <label>Current Email</label>
+                        <input type="email" />
+                      </div>
+                      <div class="col-sm-6">
+                        <label>New Email</label>
+                        <input type="email" />
+                      </div>
+                      <div class="col-sm-6">
+                        <label>Confirm Email</label>
+                        <input type="email" />
+                      </div>
+                      <div class="col-sm-12 text-right">
+                        <input type="submit" value="Save Changes" />
+                      </div>
+                    </form>
+                  </div> -->
+              </div>
+                  <div class="row customForm">
+                    <h3 class="customTitle clearfix">يفوتر عنوان</h3>
+
+
+                    <!-- <form class="clearfix"> -->
+                    <%= form_for @address do |f| %>
+
+                      <% if @address.errors.any? %>
+                        <div id="error_explanation">
+                          <h2><%= pluralize(@address.errors.count, "error") %> prohibited the address from being saved:</h2>
+
+                          <ul>
+                          <% @address.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                          <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
+                      <!-- <div class="col-sm-6">
+                        
+                        <input type="text" placeholder="First Name" />
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" placeholder="Last Name" />
+                      </div> -->
+                      <div class="col-sm-6">
+                        <%= f.text_field :full_name, :placeholder => "Full Name" %>
+                      </div>
+                      <div class="col-sm-6"  id="myOrders">
+                        <%= f.email_field :email, :placeholder => "Email" %>
+                        
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.text_field :mobile_number1, :placeholder => "Mobile Number" %>
+                        <!-- <input type="text" placeholder="Mobile Number" /> -->
+                      </div>
+                      <div class="col-sm-6">
+                        <%= f.text_field :mobile_number2, :placeholder => "Mobile Number (optional)" %>
+                        <!-- <input type="text" placeholder="Mobile Number" /> -->
+                      </div>
+                      <div class="col-sm-12">
+                        <%= f.text_field :street_address, :placeholder => "Street Address" %>
+                      </div>
+                      <div class="col-sm-12">
+                      <%= f.text_field :street_address_opt, :placeholder => "Street Address (optional)" %>                        
+                      </div>
+                      <div class="col-sm-12">
+                        <%= f.select :city, KUWAIT_CITIES , prompt: 'Select One' %>
+                        <!-- <select class="form-control" name="Area" style="color:#bababa;">
+                          <option>Area</option>
+                          <option>Dasmān</option>
+                          <option>Sharq</option>
+                          <option>Dasma</option>
+                          <option>More areas will be added here...</option>
+                        </select> -->
+                        <%= hidden_field_tag :email, current_user.email %>
+                      </div>
+                      <div class="col-sm-12 text-right">
+                        <input class="btn btn-primary" type="submit" value="Save Changes" />
+                      </div>
+                    <!-- </form> -->
+                    <%end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="innerpage">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="myOrders tab-pane " role="tabpanel">
+                  <div class="row">
+                    <div class="clearfix">
+                      <div class="col-sm-12 tableSortLists">
+                        <div class="col-sm-8 col-xs-12">
+                          <ul class="orderListTop">
+                            <li>
+                              <select class="sortAZ">
+                                <option>A-Z</option>
+                                <option>A</option>
+                              </select>
+                            </li>
+                            <li>
+                              <select class="cmpleted">
+                                <option>Completed</option>
+                                <option>A</option>
+                              </select>
+                            </li>
+                            <li>
+                              <select class="futureSelect">
+                                <option>Future</option>
+                                <option>A</option>
+                              </select>
+                            </li>
+                            <li>
+                              <select class="underPrs">
+                                <option>Under Prosess</option>
+                                <option>A</option>
+                              </select>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 viewwAllBtns">
+                          <span>Show</span>
+                          <select>
+                            <option>5</option>
+                            <option>4</option>
+                            <option>3</option>
+                            <option>2</option>
+                            <option>1</option>
+                          </select>
+                          <a href="#" class="vwAllBtn">View all</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-striped">
+                        <tr>
+                          <th>Order</th>
+                          <th>Date</th>
+                          <th>Resturant</th>
+                          <th>Order Total</th>
+                          <th>Order Status</th>
+                          <th>&nbsp;</th>
+                        </tr>
+
+                        <%current_user.orders.each_with_index do |order, index| %>
+                        <!--Order 1 Content Start-->
+                        <tr class="order1">
+                          <td>
+                            <%=order.id %>
+                          </td>
+                          <td>
+                            <%=order.created_at.strftime("%D") %>
+                          </td>
+                          <td>
+                            <h6 class="restName">
+                              <%= order.catering_company.name %>
+                            </h6>
+                          </td>
+                          <td>
+                            <%= order.total%>
+                          </td>
+                          <td>
+                            <%if order.completed %>
+                                Delivered
+                                <%else%>
+                                Pending
+                                <%end%>
+                          </td>
+                          <td>
+                            <a href="javascript:void(0)" class="viewOrder">View Order</a>
+                          </td>
+                        </tr>
+                        <tr class="ordrTitleShow order1">
+                          <td colspan="2">Cash on Delivery</td>
+                          <td colspan="2"><%=order.id %></td>
+                          <td colspan="2"><a href="javascript:void(0)" class="hideOrder">Hide Order</a></td>
+                        </tr>
+                        <tr class="orderDetail order1">
+                          <td colspan="6">
+                            <table class="table table-bordered table-striped">
+                              <tr>
+                                <th colspan="2">
+                                  <%= image_tag(order.catering_company.pico_url(:standard)) %> <%= order.catering_company.name %>
+                                </th>
+                                <th colspan="2" class="ordTimeDate text-right">
+                                  <span><%=order.created_at.strftime("%D") %></span>
+                                  <span class="dviderLine">|</span>
+                                  <span><%=order.created_at.strftime("%T") %></span>
+                                </th>
+                              </tr>
+                              <tr>
+                                <td>Item Order</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                                <td>Sub Total</td>
+                              </tr>
+                              <% order.order_items.each do |o| %>
+                                <% o.oder_item_foods.each_with_index do |f_items, index_f| %>
+                                  <tr>
+                                    <td><a href="#myfood<%="#{index_f}#{order.id}"%>" data-toggle="modal"><%= f_items.food_item.name %></a>
+                                      <div id="myfood<%="#{index_f}#{order.id}"%>" class="modal fade">
+
+                                        <div class="modal-dialog">
+
+                                          <div class="modal-content">
+                                            <div class="modal-body createpopup deals">
+                                              <h2><%= f_items.food_item.name %></h2>
+                                              <div class="row">
+                                                <% f_items.food_item_add_ons.each do |aa|%>
+                                                  <div class="listdeals">
+                                                    <!-- <div class="col-md-2"><img src="images/johnyLogo.png" /></div> -->
+                                                    <div class="col-md-8">
+                                                      <%= aa.name %>
+                                                      <span></span> 
+                                                    </div>
+                                                  </div>
+                                                <%end%>
+                                                
+                                                <div class="listdeals text-center">
+                                                  <a href="#" class="btn btn-close"  data-dismiss="modal">Close</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td><%= f_items.quanitiy %></td>
+                                    <td><%= f_items.food_item.price %></td>
+                                    <%total_add_on = 0%>
+                                    <% f_items.food_item_add_ons.each do |aa|%>
+                                      <%total_add_on += aa.price%>
+                                    <%end%>
+                                    <td><%= (f_items.food_item.price+total_add_on)*f_items.quanitiy %></td>
+                                  </tr>
+                                <%end%>
+
+                                <% o.oder_item_deals.each_with_index do |f_items, index_d| %>
+                                  <tr>
+                                    <td><a href="#mydeal<%="#{index_d}#{order.id}"%>" data-toggle="modal"><%= f_items.deal.name %></a>
+                                      <div id="mydeal<%="#{index_d}#{order.id}"%>" class="modal fade">
+
+                                        <div class="modal-dialog">
+
+                                          <div class="modal-content">
+                                            <div class="modal-body createpopup deals">
+                                              <h2><%= f_items.deal.name %></h2>
+                                              <div class="row">
+                                                <% f_items.deal.food_items.each do |aa|%>
+                                                  <div class="listdeals">
+                                                    <div class="col-md-2"><%= image_tag(aa.pico_url(:thumbnail)) %></div>
+                                                    <div class="col-md-8">
+                                                      <%= aa.name %>
+                                                      <span></span> 
+                                                    </div>
+                                                  </div>
+                                                <%end%>
+                                                
+                                                <div class="listdeals text-center">
+                                                  <a href="#" class="btn btn-close"  data-dismiss="modal">Close</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                    <td><%= f_items.quanitiy %></td>
+                                    <td><%= f_items.deal.price %></td>
+                                    <td><%= f_items.deal.price*f_items.quanitiy %></td>
+                                    
+                                  </tr>
+                                <%end%>
+                              <%end%>
+
+
+                              
+                              <tfoot>
+                              <tr class="ordrInstructions">
+                                <td colspan="4">
+                                  <h5><%=order.request_message%></h5>
+                                  <div class="ordInstList">
+                                    <span>All Female Servers | Arabic Speaking Only</span>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr class="subTotl">
+                                <td colspan="2">
+                                  Sub Total
+                                </td>
+                                <td colspan="2" class="text-right">
+                                  <%=order.total %>
+                                </td>
+                              </tr>
+                              <!-- <tr class="discount">
+                                <td colspan="2">
+                                  Discount
+                                </td>
+                                <td colspan="2" class="text-right">
+                                  20%
+                                </td>
+                              </tr> -->
+                              <tr class="grandTotal">
+                                <td colspan="2">Grand Total</td>
+                                <td colspan="2" class="text-right"><%=order.total %></td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                  <!--//-->
+                                  <div class="row delivrAddress addressInfo">
+                                    <h3 class="customTitle clearfix">Delivery Address</h3>
+                                    <div class="dlvrData col-sm-12">
+                                      <h4><%=order.address.full_name %></h4>
+                                      <p><%=order.address.street_address %></p>
+                                      <p><%=order.address.street_address_opt %></p>
+                                      <div class="row">
+                                        <div class="col-sm-6 col-md-4">
+                                          <h5>Telephone:</h5>
+                                          <p><%=order.address.mobile_number1 %></p>
+                                          <p><%=order.address.mobile_number2 %></p>
+                                        </div>
+                                        <!-- <div class="col-sm-6 col-md-8">
+                                          <h5>Fax</h5>
+                                          <p>+965.9729 0717</p>
+                                          <p>+965.6588 3596</p>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--//-->
+                                  <div class="row BillingAddress addressInfo">
+                                    <h3 class="customTitle clearfix">Billing Address</h3>
+                                    <div class="dlvrData col-sm-12">
+                                      <h4><%=order.address.full_name %></h4>
+                                      <p><%=order.address.street_address %></p>
+                                      <p><%=order.address.street_address_opt %></p>
+                                      <div class="row">
+                                        <div class="col-sm-6 col-md-4">
+                                          <h5>Telephone:</h5>
+                                          <p><%=order.address.mobile_number1 %></p>
+                                          <p><%=order.address.mobile_number2 %></p>
+                                        </div>
+                                        <!-- <div class="col-sm-6 col-md-8">
+                                          <h5>Fax</h5>
+                                          <p>+965.9729 0717</p>
+                                          <p>+965.6588 3596</p>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!--//-->
+                                </td>
+                              </tr>
+                              </tfoot>
+                            </table>
+                          </td>
+                        </tr>
+                        
+                        <%end%>
+
+
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="innerpage" id="myAddressBk">
+            <div class="row">
+              <div class="col-md-12 tabsContent">
+
+                <div class="addBook tab-pane">
+                  <div class="addBookTable row ">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-bordered">
+                        <tr>
+                          <th>
+                            Address Name
+                          </th>
+                          <th colspan="3">Location</th>
+                        </tr>
+                        <!--//first Address Info START-->
+                        <% current_user.addresses.each do |a| %>
+
+                        <tr class="addressRow1">
+                          <td><!-- <i class="fa fa-briefcase small"></i> --> <%=a.full_name %></td>
+                          <td><%=a.city %></td>
+                          <td><a href="javascript:void(0)" class="editAddress">Edit</a></td>
+                          <td> <%= link_to( raw('<span class="fa fa-trash-o" />'), "/addresses/#{a.id}", method: :delete, data: { confirm: "You sure?" }) %></td>
+                          <!-- <td><a href="javascript:void(0)" class="delAddress"><i class="fa fa-trash"></i></a></td> -->
+                        </tr>
+                        
+                        <tr class="addressRow1 addressRowShow">
+                          <td>Ooorderoo</td>
+                          <td colspan="2" class="text-center">
+                            Kuwait City  - <%=a.city %>
+                          </td>
+                          <td><a href="javascript:void(0)" class="delAddress">Trash</a></td>
+                        </tr>
+                        <tr class="addresEditForm">
+                          <td colspan="4">
+                            <div class="row customForm">
+                              <!-- <form class="clearfix"> -->
+                              <%= form_for a, mehtod: "PUT" do |f| %>
+                                <div class="col-sm-6">
+                                  <%= f.text_field :full_name, :placeholder => "Full Name" %>
+                                </div>
+                                <div class="col-sm-6"  id="myOrders">
+                                  <%= f.email_field :email, :placeholder => "Email" %>
+                                  
+                                </div>
+                                <div class="col-sm-6">
+                                  <%= f.text_field :mobile_number1, :placeholder => "Mobile Number" %>
+                                  <!-- <input type="text" placeholder="Mobile Number" /> -->
+                                </div>
+                                <div class="col-sm-6">
+                                  <%= f.text_field :mobile_number2, :placeholder => "Mobile Number (optional)" %>
+                                  <!-- <input type="text" placeholder="Mobile Number" /> -->
+                                </div>
+                                <div class="col-sm-12">
+                                  <%= f.text_field :street_address, :placeholder => "Street Address" %>
+                                </div>
+                                <div class="col-sm-12">
+                                <%= f.text_field :street_address_opt, :placeholder => "Street Address (optional)" %>                        
+                                </div>
+                                <div class="col-sm-12">
+                                  <%= f.select :city, KUWAIT_CITIES , prompt: 'Select One' %>                                  
+                                </div>
+                                <div class="col-sm-12 text-right">
+                                  <input type="submit" value="Save Changes" />
+                                </div>
+                              <!-- </form> -->
+                              <%end %>
+
+                            </div>
+                          </td>
+                        </tr>
+                        
+                        <%end %>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  <!-- </form> -->
+</div>
+ 
+    <div id="footertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>خطوات مفيدة</h3>
+                    <div class="links">
+                        <a href="/about">حول كتر</a>     
+                        <a href="/policy">بريفسي بوليسي</a>        
+                        <a href="/terms">عبارات & شروط</a>       
+                        <a href="/contact">اتّصل بنا </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3>الرسالة الإخباريّة</h3>
+                    <div class="newsletter">
+                        <input type="text" class="form-control" placeholder="Your email address" />
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3>تبعت جانبا</h3>
+                    <div class="followalong">
+                        <a href="#"><i class="fa fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footerbottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-7">
+                    <p>© كتر 605, 6ث أرضية, قديمة تربية وزارة بناية, ميرقب, كويت.</p>
+                    <p>تل: +965 2239 5022   |   فاكس: +965 2239 5022   |      <a href="#">إينفوكتر.كم.كو</a></p>                    
+                </div>
+                <div class="col-md-6 col-sm-5">
+                    <div class="payicons">
+                        <%= image_tag("pay-icon-1.jpg") %>
+                        <%= image_tag("pay-icon-2.jpg") %>
+                        <%= image_tag("pay-icon-3.jpg") %>
+                        <%= image_tag("pay-icon-4.jpg") %>
+                        <%= image_tag("pay-icon-5.jpg") %>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script>
+    $(document).ready(function(e) {
+        $(".viewOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".hideOrder").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+        //editAddress
+        $(".editAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().slideDown();
+            $(this).parent().parent().next().next().slideDown();
+        });
+        $(".addressRowShow .delAddress").click(function(e) {
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().prev().show();
+        });
+    });
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true   ,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+        });
+
+        $(".mycartbtn").click( function (){
+            $(".myCartWgt").toggle();
+        });
+    });
+    var $document = $(document),
+            $elementx = $('.myCartWgt'),
+            $elementsidebar = $('.sideBar'),
+            classNamex = 'hoveradd';
+    sideclassName = 'sidebarhoverad';
+
+    $(window).scroll(function() {
+        $elementx.toggleClass(classNamex, $document.scrollTop() >= 50);
+        $elementsidebar.toggleClass(sideclassName, $document.scrollTop() >= 50);
+    });
+
+    var $document = $(document),
+            $element = $('.mainContentTop .customTabs'),
+            $elements = $('.contentbdox'),
+            className = 'hoveradds';
+    classNames = 'extraspace';
+
+    $document.scroll(function() {
+        $element.toggleClass(className, $document.scrollTop() >= 300);
+        $elements.toggleClass(classNames, $document.scrollTop() >= 300);
+    });
+
+    var $document = $(document),
+            $elementz = $('#header'),
+            elementsidebar = 'headerfixed'
+
+    $(window).scroll(function() {
+        $elementz.toggleClass(elementsidebar, $document.scrollTop() >= 50);
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%end%>
