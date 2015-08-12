@@ -190,7 +190,7 @@ class DashboardController < ApplicationController
 
      cart = cookies.fetch(:cart, '{}')
      cart = JSON.parse(cart)
-     cart["date"] = Date.current
+     cart["date"] ||= Date.current
      cookies[:cart] = JSON.generate(cart)
      @price_min = 0
      @price_max = 1
