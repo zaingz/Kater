@@ -347,17 +347,8 @@
                     </table>
                   </div>
                   <div class="col-md-6">
-                    <textarea id="s_request" name="special_request" rows="2" class="form-control" placeholder="Special Request">
 
-
-                      <% if cookies["cart"] %>
-                        <%= JSON.parse(cookies["cart"])["special_request"] %>
-                      <%end%>
-                      
-
-
-
-                    </textarea>
+                    <textarea id="s_request" style="width:440px; height:130px;" type="text" name="special_request" class="form-control" placeholder="Special Request"><% if cookies["cart"] %><% if JSON.parse(cookies["cart"])["special_request"] %><%= JSON.parse(cookies["cart"])["special_request"] %><%else%><%end%><%end%></textarea>
                   </div>
                 </div>
                 <div style="margin-top: 25px;" class="cartbuttons clearfix text-center">
@@ -376,6 +367,9 @@
   </div>
   </form>
 </div>
+
+
+
 
 <div id="footertop">
   <div class="container-fluid">
@@ -576,6 +570,7 @@
         return false;
     }
 </script>
+
 
 
 <script type="text/javascript">
@@ -950,17 +945,7 @@ Arabic Starts here -->
                     </table>
                   </div>
                   <div class="col-md-6">
-                    <textarea id="s_request" name="special_request" rows="5" class="form-control" placeholder="Special Request">
-
-
-                      <% if cookies["cart"] %>
-                        <%= JSON.parse(cookies["cart"])["special_request"] %>
-                      <%end%>
-                      
-
-
-
-                    </textarea>
+                    <textarea id="s_request" style="width:440px; height:130px;" type="text" name="special_request" class="form-control" placeholder="Special Request"><% if cookies["cart"] %><% if JSON.parse(cookies["cart"])["special_request"] %><%= JSON.parse(cookies["cart"])["special_request"] %><%else%><%end%><%end%></textarea>
                   </div>
                 </div>
                 <div style="margin-top: 25px;" class="cartbuttons clearfix text-center">
