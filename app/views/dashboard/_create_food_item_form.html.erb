@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Price</label>
-              <%=f.text_field :price, value:a.price, class: "form-control"%>
+              <%=f.number_field :price, value:a.price, class: "form-control" , min: 1 %>
               
             </div>
           <%end%>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Price</label>
-          <%=f.text_field :price, class: "form-control"%>
+          <%=f.number_field :price, class: "form-control", min: 1 %>
           
         </div>
 
@@ -71,8 +71,34 @@
     </div>
   </div>
 
+<style>
+  .full_btn{
+      background: #c6c601;
+      border-color: #c6c601;
+width: inherit;
+
+      color: #FFF;
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 4%;
+      text-transform: uppercase;
+  }
+.full_btn:hover{
+      background: #c6c601;
+      border-color: #c6c601;
+      width: inherit;
+
+      color: #FFF;
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 4%;
+      text-transform: uppercase;
+  }
+
+</style>
+
   <div class="form-actions">
-    <%= f.button :submit, "Create Food Item", :class => "btn btn-success"  %>
+    <%= f.button :submit, "Save", :class => "btn btn-lg full_btn"  %>
   </div>
 <% end %>
 

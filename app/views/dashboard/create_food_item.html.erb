@@ -48,16 +48,28 @@
 
       <style>
           .full_btn{
-              margin-bottom: 20px; width: 100%;background: #c6c601;
-              border-color: #c6c601;
+      margin-bottom: 20px; width: 100%;background: #c6c601;
+      border-color: #c6c601;
 
 
-              color: #fff;
-              font-size: 18px;
-              font-weight: 400;
-              margin-right: 4%;
-              text-transform: uppercase;
-          }
+     color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 4%;
+      text-transform: uppercase;
+  }
+.full_btn:hover{
+      margin-bottom: 20px; width: 100%;background: #c6c601;
+      border-color: #c6c601;
+
+
+     color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      margin-right: 4%;
+      text-transform: uppercase;
+  }
+
       </style>
           
         <button class="btn btn-lg full_btn"  type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -71,12 +83,12 @@
               <table class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
+                  <th style="text-align: center;">#</th>
+                  <th style="text-align: center;">Name</th>
+                  <th style="text-align: center;">Description</th>
+                  <th style="text-align: center;">Price</th>
+                  <th style="text-align: center;">Edit</th>
+                  <th style="text-align: center;">Delete</th>
                 </tr>
                 </thead>
 
@@ -85,13 +97,13 @@
                 <tbody>
                 <% @all_food_items.each_with_index do |item, index| %>
                     <tr>
-                      <td><%= index+1 %></td>
-                      <td><%= image_tag(item.pico_url(:standard), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= item.name %></span></td>
-                      <td><%= item.description %></td>
-                      <td><%= item.price %></td>
+                      <td style="text-align: center;"><%= index+1 %></td>
+                      <td style="text-align: center;"><%= image_tag(item.pico_url(:standard), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= item.name %></span></td>
+                      <td style="text-align: center;"><%= item.description %></td>
+                      <td style="text-align: center;"><%= item.price %></td>
 
-                      <td><%= link_to( raw('<span class="fa fa-pencil" />'), edit_food_item_path(item.id) ) %></td>
-                      <td><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_food_item", id: item.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
+                      <td style="text-align: center;"><%= link_to( raw('<span class="fa fa-pencil" />'), edit_food_item_path(item.id) ) %></td>
+                      <td style="text-align: center;"><%= link_to( raw('<span class="fa fa-trash-o" />'), {controller: "dashboard", action: "delete_food_item", id: item.id}, method: :delete, data: { confirm: "You sure?" }) %></td>
 
                     </tr>
                 <%end %>

@@ -62,13 +62,13 @@
           <thead>
           <tr>
 
-            <th>ID</th>
-            <th>Status</th>
-            <th>User</th>
-            <th>Total</th>
-            <th>Items</th>
-            <th>Created at</th>
-            <th>Address</th>
+            <th style="text-align: center;">ID</th>
+            <th style="text-align: center;">Status</th>
+            <th style="text-align: center;">User</th>
+            <th style="text-align: center;">Total</th>
+            <th style="text-align: center;">Items</th>
+            <th style="text-align: center;">Created at</th>
+            <th style="text-align: center;"> Address</th>
 
 
 
@@ -83,12 +83,12 @@
                   <tr>
 
 
-                    <td><%=order.id %></td>
+                    <td style="text-align: center;"> <%=order.id %></td>
 
-                    <td>
+                    <td style="text-align: center;">
 
                       <% if not order.completed %>
-                        <%= link_to "Deliver", complete_order_path(order.id), class: "btn btn-success" %>
+                        <%= link_to "Pending", complete_order_path(order.id), class: "btn btn-danger" %>
                           <%else%>
                           <span>Delivered</span>
                       <%end%>
@@ -98,10 +98,10 @@
 
 
 
-                    <td><%= order.user.email%></td>
+                    <td style="text-align: center;"><%= order.user.email%></td>
 
-                    <td><%= order.total%></td>
-                    <td>
+                    <td style="text-align: center;"><%= order.total%></td>
+                    <td style="text-align: center;">
 
 
                       <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -144,12 +144,12 @@
                                       <% o.oder_item_foods.each do |f_items| %>
 
 
-                                        <td><%= image_tag(f_items.food_item.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.food_item.name %></span></td>
-                                        <td><%= f_items.food_item.price %></td>
+                                        <td style="text-align: center;"><%= image_tag(f_items.food_item.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.food_item.name %></span></td>
+                                        <td style="text-align: center;"><%= f_items.food_item.price %></td>
 
-                                        <td><%= f_items.quanitiy %></td>
+                                        <td style="text-align: center;"><%= f_items.quanitiy %></td>
 
-                                        <td>
+                                        <td style="text-align: center;">
                                         
                                         <% f_items.food_item_add_ons.each do |aa|%>
 
@@ -173,10 +173,10 @@
                                   <tr>
 
 
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Food Items</th>
+                                    <th style="text-align: center;">Name</th>
+                                    <th style="text-align: center;">Price</th>
+                                    <th style="text-align: center;">Quantity</th>
+                                    <th style="text-align: center;">Food Items</th>
 
 
                                   </tr>
@@ -192,11 +192,11 @@
                                       <% o.oder_item_deals.each do |f_items| %>
 
 
-                                        <td><%= image_tag(f_items.deal.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.deal.name %></span></td>
-                                        <td><%= f_items.deal.price %></td>
+                                        <td style="text-align: center;"><%= image_tag(f_items.deal.pico_url(:thumbnail), class: 'img-thumbnail') %><span style="margin-left: 5px"><%= f_items.deal.name %></span></td>
+                                        <td style="text-align: center;"><%= f_items.deal.price %></td>
 
-                                        <td><%= f_items.quanitiy %></td>
-                                            <td><% f_items.deal.food_items.each do |i| %>
+                                        <td style="text-align: center;"><%= f_items.quanitiy %></td>
+                                            <td style="text-align: center;"><% f_items.deal.food_items.each do |i| %>
                                                   <%=i.name%>
 
                                               <%end%>
@@ -226,7 +226,7 @@
 
                     </td>
 
-                    <td><%= time_ago_in_words order.created_at%> ago</td>
+                    <td style="text-align: center;"><%= time_ago_in_words order.created_at%> ago</td>
 
                     <td><p>Street Address 1: <%=order.address.street_address%></p>
                       <% if order.address.street_address_opt%>

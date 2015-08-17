@@ -7,7 +7,10 @@ class FoodItem < ActiveRecord::Base
 
 	attr_accessor :add_ons
 
+
+
 	validates_presence_of :name, :description, :price, :catering_company
+	 validates :price, numericality: { greater_than_or_equal_to: 1 }
 
 	accepts_nested_attributes_for :food_item_add_ons
 

@@ -66,7 +66,7 @@ class DashboardController < ApplicationController
 
 
   def manage_orders
-    @orders = Order.all
+    @orders = current_user.catering_company.orders
   end
 
 
@@ -204,7 +204,7 @@ class DashboardController < ApplicationController
     name =  params[:search][:name]
 
     if name
-      @companies = CateringCompany.where("name LIKE ?" , "%#{name}%")
+      @companies = CateringCompany.where("lower(name) LIKE ?" , "%#{name.downcase}%")
     else
       @companies = CateringCompany.all
     end
