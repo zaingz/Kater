@@ -206,9 +206,17 @@
 <script type="text/javascript">
   $(function () {
     $('#myTab a:first').tab('show');
+
+ $(".datepicker").on("changeDate", function(event) {   
+          // alert("Date is changed");  
+           $(".datepicker").datepicker('hide');               
+        });
+
+
 	$('.datepicker').datepicker({
         format: 'yyyy-mm-dd'
     });
+
 	$('.carousel').carousel({
 		item: 3	
 	}); 
