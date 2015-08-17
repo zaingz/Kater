@@ -322,7 +322,14 @@
         //         $("#datepicker").datepicker('getFormattedDate')
         //      )
         // });
+
         
+        $("#datepicker").on("changeDate", function(event) {   
+          // alert("Date is changed");  
+           set_date( $("#datepicker").val() );                   
+        });
+
+
         $("#datepicker").on("hide", function(event) {   
            set_date( $("#datepicker").val() );                 
         });
