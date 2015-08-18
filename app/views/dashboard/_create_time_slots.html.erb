@@ -53,4 +53,27 @@
       <%= f.button :submit, "Create Time slot", :id=>'z_btn3' %>
     </div>
 
+
+
+
+
 <% end %>
+
+<script type="text/javascript">
+  
+
+  $('#z_btn3').on('click', function(){
+    var start_time = $('#time_slot_start_time').val();
+    var end_time = $('#time_slot_end_time').val();
+    
+    if (start_time.length!=5 || end_time.length!=5)
+         alert('Time is invalid');
+       var start_sub =parseInt(start_time.substring(0, 2));
+       var end_sub = parseInt(end_time.substring(0, 2));
+       if (start_sub>24 || end_sub>24)
+        alert('Time is invalid');
+
+    });
+
+
+</script>

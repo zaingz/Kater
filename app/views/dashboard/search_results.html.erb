@@ -311,6 +311,8 @@ Date.prototype.format = function (mask, utc) {
                     </div>
                 </div>
 
+                <%if @companies.count>1%>
+                <!-- Hello -->
                 <% @companies.each do |comp| %>
 
                     <% if (comp.food_items_with_in_range @price_min, @price_max).count>0 %>
@@ -395,6 +397,11 @@ Date.prototype.format = function (mask, utc) {
                     </div>
                       <%end%>
                 <%end%>
+                <%else%>
+                <!-- Hello hello -->
+                <h4>No results found</h4>
+                <%end%>
+
                 <div class="row search-btn">
 
 

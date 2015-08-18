@@ -66,7 +66,7 @@ class DashboardController < ApplicationController
 
 
   def manage_orders
-    @orders = current_user.catering_company.orders
+    @orders = current_user.catering_company.orders.order('created_at DESC')
   end
 
 

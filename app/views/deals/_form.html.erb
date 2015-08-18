@@ -17,7 +17,7 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :price %>
+    <%= f.input :price,  as: :string %>
 
     <%= f.hidden_field :pico_cache %>
     <%= f.input :pico , as: :file, :label => "Picture" %>
@@ -54,7 +54,7 @@
   </style>
 
   <div class="form-actions">
-    <%= f.button :submit, "Create Deal", :class=>'btn  ', :id=>'z_btn2' %>
+    <%= f.button :submit, "Save", :class=>'btn  ', :id=>'z_btn2' %>
   </div>
 
 <% end %>
