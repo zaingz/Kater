@@ -4,6 +4,7 @@ class CreateInavailabilities < ActiveRecord::Migration
 
       t.references :time_slot
       t.references :catering_company
+    
       t.date :date
 
       t.timestamps null: false

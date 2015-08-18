@@ -11,7 +11,7 @@
 #            :level => 3, :birthdate => Date.today, :first_name=> 'Ali',  :last_name => 'bhagwan' )
 #
  reg_userx = User.create(:email => 'user@kater.com', :password => '12345678', :password_confirmation =>'12345678',
-                        :level => 3, :birthdate => Date.today, :first_name=> 'Ali',  :last_name => 'Murtaza' )
+                        :level => 3, :birthdate => Date.today, :first_name=> 'Test',  :last_name => 'User' )
 #
 #
 #
@@ -23,7 +23,7 @@
 #
 #
  shopKeeper_user = User.create(:email => 'shopkeeper@kater.com', :password => '12345678', :password_confirmation =>'12345678',
-                       :level => 2, :birthdate => Date.today, :first_name=> 'Nadeem',  :last_name => 'Murtaza' )
+                       :level => 2, :birthdate => Date.today, :first_name=> 'Test',  :last_name => 'User2' )
 #
  admin_user = User.create(:email => 'admin@kater.com', :password => '12345678', :password_confirmation =>'12345678',
                        :level => 1, :birthdate => Date.today)

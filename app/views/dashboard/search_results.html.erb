@@ -342,7 +342,7 @@ Date.prototype.format = function (mask, utc) {
                                         <%if (comp.inavailabilities.where(time_slot: slot)).blank?%>
                                             <a href=<%="/select/slot/time/#{slot.id}"%>>
                                         <%else%>
-                                            <a >
+                                            <a href="#">
                                         <%end%>
                                         <%if not (comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
                                             <span class="inavaiable" >
@@ -353,6 +353,8 @@ Date.prototype.format = function (mask, utc) {
                                         <%end%>
                                         
                                             <%= "#{slot.start_time.strftime('%I:%M %p')} - #{slot.end_time.strftime('%I:%M %p')}" %>
+                                           
+                                        </span>
                                         </span>
                                         </a>
                                     <%end%>

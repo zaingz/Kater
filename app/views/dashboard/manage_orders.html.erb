@@ -67,7 +67,7 @@
             <th style="text-align: center;">User</th>
             <th style="text-align: center;">Total</th>
             <th style="text-align: center;">Items</th>
-            <th style="text-align: center;">Created at</th>
+            <th style="text-align: center;">Time and Date</th>
             <th style="text-align: center;"> Address</th>
 
 
@@ -226,7 +226,9 @@
 
                     </td>
 
-                    <td style="text-align: center;"><%= time_ago_in_words order.created_at%> ago</td>
+                    <td style="text-align: center;"><%=  order.inavailability.date.strftime("%B %d %A") %> | <%=  
+                    order.inavailability.time_slot.start_time.strftime("%H:%M:%S")      %> - <%=  
+                    order.inavailability.time_slot.end_time.strftime("%H:%M:%S")     %></td>
 
                     <td><p>Street Address 1: <%=order.address.street_address%></p>
                       <% if order.address.street_address_opt%>

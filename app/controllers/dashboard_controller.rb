@@ -364,15 +364,18 @@ class DashboardController < ApplicationController
           o_i_f = OderItemDeal.create( order_item: o_item, deal_id: item["item_id"].to_i, quanitiy: item["quantity"].to_i )
         end
 
-        o.save
+    
         o_item.save
 
         cart = cookies.fetch(:cart, '{}')
         cart = JSON.parse(cart)
         date = cart[:date]
 
-        Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: date||Date.current)
-
+        inavail = Inavailability.create(time_slot: slot, catering_company: slot.catering_company, date: date||Date.current)
+            
+          o.inavailability_id = inavail.id
+           o.save
+       
         cookies[:cart] = "{}"
         flash[:success] = "Order has been created succesfully"
         

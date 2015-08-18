@@ -94,6 +94,7 @@
                                     <a href="#gallerY">
                                         <i class="fa fa-picture-o"></i> Gallery
                                     </a>
+
                                 </li>
                                 <li role="presentation">
                                     <a href="#Reviews">
@@ -567,7 +568,7 @@ Date.prototype.format = function (mask, utc) {
             <%  @comp.food_items.each do |f|%>
 
             <div class="col-md-3 col-sm-3 col-xs-6">
-              <%= image_tag(f.pico_url()) %>
+              <%= image_tag(f.pico_url(), :style=> 'max-width: 100%;min-height: 125px;') %>
               <p><%= f.name%></p>
             </div>
 
