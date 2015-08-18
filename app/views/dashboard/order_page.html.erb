@@ -110,13 +110,13 @@
             <div class="span3">
               <div class="input-group">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field='quant[<%="f_#{item.id}_#{index}" %>]'>
+                                      <button type="button" class="btn-number  visible-lg" disabled="disabled" data-type="minus" data-field='quant[<%="f_#{item.id}_#{index}" %>]'>
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
                 <input id='<%= "f___#{item.id}_#{index}" %>' type="text" name="quant[<%="f_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('food_items', item.id.to_s, index)%>" min="1" max="10">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="f_#{item.id}_#{index}" %>]">
+                                      <button type="button" class="btn-number  visible-lg" data-type="plus" data-field="quant[<%="f_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
                                       </button>
                                   </span>
@@ -240,18 +240,20 @@
             <div class="span3">
               <div class="input-group">
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
+                                      <button type="button" class="btn-number visible-lg" disabled="disabled" data-type="minus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-left"></i>
                                       </button>
                                   </span>
                 <input id='<%= "d___#{item.id}_#{index}" %>' type="text" name="quant[<%="d_#{item.id}_#{index}" %>]" class="form-control input-number" value="<%=get_food_item_quanity('deals', item.id.to_s, index)%>" min="1" max="10">
-                                  <span class="input-group-btn">
-                                      <button type="button" class="btn-number" data-type="plus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
+                                  <span class="input-group-btn btn-number">
+                                      <button type="button" class="btn-number visible-lg" data-type="plus" data-field="quant[<%="d_#{item.id}_#{index}" %>]">
                                         <i class="fa fa-angle-right"></i>
                                       </button>
                                   </span>
 
+
               </div>
+            
               <script type="text/javascript">
                 $(function(){
                 
@@ -348,7 +350,7 @@
                   </div>
                   <div class="col-md-6">
 
-                    <textarea id="s_request" style="width:440px; height:130px;" type="text" name="special_request" class="form-control" placeholder="Special Request"><% if cookies["cart"] %><% if JSON.parse(cookies["cart"])["special_request"] %><%= JSON.parse(cookies["cart"])["special_request"] %><%else%><%end%><%end%></textarea>
+                    <textarea id="s_request" style="width:100%; height:130px;" type="text" name="special_request" class="form-control" placeholder="Special Request"><% if cookies["cart"] %><% if JSON.parse(cookies["cart"])["special_request"] %><%= JSON.parse(cookies["cart"])["special_request"] %><%else%><%end%><%end%></textarea>
                   </div>
                 </div>
                 <div style="margin-top: 25px;" class="cartbuttons clearfix text-center">

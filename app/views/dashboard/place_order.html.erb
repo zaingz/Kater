@@ -45,7 +45,9 @@
                             <div class="col-md-2 col-sm-3 col-xs-12">
                                 <big class="hidden-xs">Select date</big>
                                 <div class="dates visible-xs">
-                                  <span><b><%=get_date.strftime("%B %d %A") %></b>   </span>
+                                 <a id="date_prev" href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                  <span><b><%=get_date.strftime("%d %A") %></b>   </span>
+                                 <a href="#" id="date_next" class="text-right"><i class="fa fa-angle-right"></i></a>
 
                                 </div>
 
@@ -232,7 +234,7 @@ Date.prototype.format = function (mask, utc) {
                                         top:40px;
                                     }
                                 </style>
-                                <a id="open_datepicker" href="javascript:void(0);" class="chngecal date">
+                                <a id="open_datepicker" href="javascript:void(0);" class="chngecal date"  style="padding: 15px 10px 15px;>
                                     <input id="datepicker" class="position_datepicker" type="text"  />
                                     <i class="fa fa-calendar"></i>
                                 </a>
