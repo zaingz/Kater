@@ -311,7 +311,7 @@ Date.prototype.format = function (mask, utc) {
                     </div>
                 </div>
 
-                <%if @companies.count>1%>
+                <%if @companies.count>=1%>
                 <!-- Hello -->
                 <% @companies.each do |comp| %>
 
