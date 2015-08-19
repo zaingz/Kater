@@ -116,28 +116,28 @@
 
                                 <div class="dates visible-xs">
 
-                                 <a id="date_prev" href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                 <a id="" href="#" class="text-left date_prev"><i class="fa fa-angle-left"></i></a>
                                   <span><b><%=get_date.strftime("%d %A") %></b>   </span>
-                                 <a href="#" id="date_next" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                 <a href="#" id="" class="text-right date_next"><i class="fa fa-angle-right"></i></a>
                                 </div>
 
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-12 hidden-xs">
                                 <div class="dates">
-                                    <a id="date_prev" href="#" class="text-left"><i class="fa fa-angle-left"></i></a>
+                                    <a id="" href="#" class="text-left date_prev"><i class="fa fa-angle-left"></i></a>
                                     <!--<span>April Thursday 16   &nbsp;|&nbsp;</span>   -->
                                     <span id="date_prev_val"><%=((get_date)-1).strftime("%B %d %A")%></span></span>
                                     <span><b><%=get_date.strftime("%B %d %A")%></b></span></span>
                                      <span id="date_next_val" ><%=((get_date)+1).strftime("%B %d %A")%></span>
                                     
-                                    <a href="#" id="date_next" class="text-right"><i class="fa fa-angle-right"></i></a>
+                                    <a href="#" id="" class="text-right date_next"><i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
 
                             <script type="text/javascript">
                                     var da = new Date(parseDate(' <%= get_date %> '));
 
-                                    $('#date_next').on('click', function(){
+                                    $('.date_next').on('click', function(){
                                        
                                           //da.setDate(da.getDate() + 1);
                                           da.add(1).day();
@@ -145,7 +145,7 @@
                                          set_date( da.format("yyyy-mm-dd") );  
 
                                     });
-                                     $('#date_prev').on('click', function(){
+                                     $('.date_prev').on('click', function(){
                                          
                                           da.add(-1).day();
 
