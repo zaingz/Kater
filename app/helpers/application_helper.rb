@@ -126,6 +126,15 @@ module ApplicationHelper
 			nil
 	end
 
+	def get_selected_time_slots_comp
+
+		cart = cookies.fetch(:cart, '{}')
+		cart = JSON.parse(cart)
+		slot_id = cart.fetch("slot_comp_id", nil)
+
+	end
+
+
 	# can be security issue
 	# def get_cart_total_price
 	# 	cart = cookies.fetch(:cart, '{}')

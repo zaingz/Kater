@@ -87,7 +87,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
+                        <style type="text/css">#ass:hover{color:#FFF;}</style>
+                            <input id="ass" type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
                         </div>
                     </div>
                 </div>
@@ -346,9 +347,9 @@ Date.prototype.format = function (mask, utc) {
 
                                     <% comp.time_slots.each do |slot| %>
                                         <%if (comp.inavailabilities.where(time_slot: slot)).blank?%>
-                                            <a href=<%="/select/slot/time/#{slot.id}"%>>
+                                            <a href=<%="/select/slot/time/#{slot.id}&#{comp.id}"%>>
                                         <%else%>
-                                            <a href="#">
+                                          <a href=<%="/select/slot/time/#{slot.id}&#{comp.id}"%>>
                                         <%end%>
                                         <%if not (comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
                                             <span class="inavaiable" >
@@ -384,7 +385,8 @@ Date.prototype.format = function (mask, utc) {
                                     <span>08:00 am - 11:00 am</span> -->
                                 </div>
                                 <div class="bottominfo">
-                                  <% if get_selected_time_slots %>
+                                  <% if get_selected_time_slots && get_selected_time_slots_comp==comp.id %>
+
                                     <p>Note: Your serving time is <span>
 
                                         
@@ -552,14 +554,11 @@ Date.prototype.format = function (mask, utc) {
 
     
     <!--  -->
-    
-
-
 
     <div class="container-fluid" id="innerpage" style="padding-top:1px;">
         <div class="row">
             <div class="col-md-3 pull-right">
-                 <a href="#" class="findbtn visible-xs btn btn-success">Find Caterers</a>
+                 <a href="#" class="findbtn visible-xs " >Find Caterers</a>
               <form action="/serach/results/" method="get">
                 <div class="filterbox">
                     <h3>اكتشاف متعهدات</h3>
@@ -641,7 +640,10 @@ Date.prototype.format = function (mask, utc) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-searchs btn-block" value="Find Caterers" />
+                        
+                      
+                            <input id="ass" type="submit" class="btn btn-block" value="Find Caterers" />
+
                         </div>
                   
                     </div>

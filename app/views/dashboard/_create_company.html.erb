@@ -15,8 +15,8 @@
     <div class="form-inputs">
       <%= f.input :name %>
       <%= f.input :description %>
-      <%= f.input :number_of_employes %>
-      <%= f.input :sitting_capacity %>
+      <%= f.input :number_of_employes, :as=>'string' %>
+      <%= f.input :sitting_capacity, :as=>'string' %>
       <%= f.input :female_servers %>
       <%= f.input :arabic_speaking %>
       <%= f.input :contact_number %>

@@ -298,7 +298,13 @@ class DashboardController < ApplicationController
   def select_time_slot
     cart = cookies.fetch(:cart, '{}')
     cart = JSON.parse(cart)
-    cart["slot_id"] = params[:id]
+    param_get =  params[:id]
+    parsed = param_get.split("&")
+    p "**********Got value is #{param_get}"
+    p "**********Splited value is is #{parsed.inspect}"
+  
+    cart["slot_id"] = parsed[0]
+    cart["slot_comp_id"] = parsed[1]
     cookies[:cart] = JSON.generate(cart) 
 
     redirect_to :back
