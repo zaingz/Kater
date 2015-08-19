@@ -351,9 +351,9 @@ Date.prototype.format = function (mask, utc) {
 
                       <% @comp.time_slots.each do |slot| %>
                           <%if (@comp.inavailabilities.where(time_slot: slot)).blank?%>
-                              <a href=<%="/select/slot/time/#{slot.id}"%>>
+                              <a href=<%="/select/slot/time/#{slot.id}&#{@comp.id}"%>>
                           <%else%>
-                              <a >
+                              <a href=<%="/select/slot/time/#{slot.id}&#{@comp.id}"%>>
                           <%end%>
                           <%if not (@comp.inavailabilities.where('date = ?', get_date).where(time_slot: slot)).blank? %>
                                         <span class="inavaiable" >
@@ -387,7 +387,7 @@ Date.prototype.format = function (mask, utc) {
                       <span>08:00 am - 11:00 am</span> -->
                     </div>
                     <div class="bottominfo">
-                      <% if get_selected_time_slots %>
+                      <% if get_selected_time_slots  and get_selected_time_slots_comp.to_i==@comp.id %>
                           <p>Note: Your serving time is <span>
 
 

@@ -130,7 +130,7 @@ module ApplicationHelper
 
 		cart = cookies.fetch(:cart, '{}')
 		cart = JSON.parse(cart)
-		slot_id = cart.fetch("slot_comp_id", nil)
+		return cart.fetch("slot_comp_id", nil)
 
 	end
 

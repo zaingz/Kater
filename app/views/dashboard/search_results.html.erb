@@ -385,7 +385,8 @@ Date.prototype.format = function (mask, utc) {
                                     <span>08:00 am - 11:00 am</span> -->
                                 </div>
                                 <div class="bottominfo">
-                                  <% if get_selected_time_slots && get_selected_time_slots_comp==comp.id %>
+
+                                  <% if get_selected_time_slots and get_selected_time_slots_comp.to_i==comp.id %>
 
                                     <p>Note: Your serving time is <span>
 
